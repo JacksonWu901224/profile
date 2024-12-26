@@ -9,10 +9,19 @@
 <body>
 
 <header>
-    <h1>Welcome to My Profile</h1>
+    <button class="menu-button" onclick="toggleMenu()">☰</button>
+    <h2>Welcome to My Profile</h2>
 </header>
 
-<section>
+<div id="sidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()"></a>
+    <a href="Recent.html">Recent</a>
+    <a href="#projects">Projects</a>
+    <a href="#blog">Blog</a>
+</div>
+
+
+<section id="main-content">
     <div class="profile-info">
         <img src="IMG_0087.JPG" alt="Profile Picture" width="150">
         <div>
@@ -35,6 +44,6 @@
 <footer>
     <p>&copy; 2024 Jackson. All rights reserved.</p>
 </footer>
-
+<script src="script.js"></script>
 </body>
 </html>

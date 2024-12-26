@@ -7,12 +7,12 @@ body {
 
 .menu-button {
     position: absolute; /* 固定位置 */
-    top: 20px; /* 距離視窗頂部的距離 */
+    top: 15px; /* 距離視窗頂部的距離 */
     left: 10px; /* 距離視窗左側的距離 */
     background: none;
     border: none;
     color: #333;
-    font-size: 20px;
+    font-size: 27px;
     cursor: pointer;
     z-index: 1000; /* 確保按鈕顯示在最上層 */
 }

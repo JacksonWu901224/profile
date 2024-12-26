@@ -19,7 +19,7 @@ body {
 @media (max-width: 390px) {
     .menu-button {
         position: absolute;
-        left: 7px;  /* 在6.1吋手機上，讓按鈕離左邊稍微多一點 */
+        left: 4px;  /* 在6.1吋手機上，讓按鈕離左邊稍微多一點 */
         top: 15px;
         background: none;
         border: none;

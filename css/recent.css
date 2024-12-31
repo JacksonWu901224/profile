@@ -19,28 +19,50 @@ header{
     align-items: center; 
     margin-top: 100px;
 }
-.image-container1 img{
+.image-container1 img, .image-container2 img{
     width: 65px;
     height: auto;
     margin-right: 15px;
     border-radius: 50%;
-}   
-#btc-price {
-    display: inline; /* 讓 div 與 h2 顯示在同一行 */
 }
 .image-container2{
     display: flex;
     align-items: center;
     margin-top: 30px; 
 }
-#eth-price, #ada-price {
+#eth-price, #ada-price, #btc-price {
     display: inline; /* 讓 div 與 h2 顯示在同一行 */
 }
-.image-container2 img{
-    width:65px;
-    height: auto;
-    margin-right:15px;
-    border-radius: 50%;
+
+
+
+/* 媒體查詢 - 當視窗寬度小於等於 390px 時 */
+@media (max-width: 390px) {
+    header {
+        padding: 10px 0; /* 增加頭部間距 */
+    }
+    
+    .image-container1{
+        display: flex;
+        align-items: center; 
+        margin-top: 100px;
+    }
+
+    .image-container1 img, .image-container2 img {
+        width: 100px; /* 圖片縮小 */
+        margin-bottom: 10px; /* 圖片和文字間隔 */
+    }
+    .image-container2{
+        display: flex;
+        align-items: center;
+        margin-top: 30px; 
+    }
+    h2 {
+        font-size: 16px; /* 調整文字大小 */
+        margin-top: 5px;
+    }
+
+    #btc-price, #eth-price, #ada-price {
+        font-size: 16px; /* 調整價格顯示大小 */
+    }
 }
-
-

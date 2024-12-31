@@ -115,17 +115,18 @@ section .spot{
     }
 
     .image-container1, .image-container2 {
+        display: fixed;
         flex-direction: column; /* 圖片與文字垂直排列 */
         padding: 20px;
         width: 100%; /* 占滿屏幕寬度 */
     }
 
     .image-container1 img, .image-container2 img {
-        width: 100px; /* 增大圖片尺寸 */
+        width: 300px; /* 增大圖片尺寸 */
     }
 
     #eth-price, #ada-price, #btc-price, #snek-price,
     #btc-change, #eth-change, #ada-change, #snek-change {
-        font-size: 24px; /* 增大文字顯示 */
+        font-size: 30px; /* 增大文字顯示 */
     }
 }

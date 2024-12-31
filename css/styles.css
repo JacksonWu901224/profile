@@ -37,7 +37,7 @@ header {
     left: 0; /* 固定在視窗左側 */
     width: 100%; /* 填滿視窗寬度 */
     background-color: dodgerblue;
-    padding: 3x 0;
+    padding: 3px 0;
     text-align: center;
     z-index: 999; /* 確保 header 在最上層，但低於 menu button */
 }
@@ -97,12 +97,6 @@ section {
     margin-right: 20px;
 }
 
-.btc {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 90px;
-}
 
 h2 {
     color: #333;

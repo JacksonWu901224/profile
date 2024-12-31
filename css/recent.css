@@ -1,0 +1,46 @@
+body {
+    background-color:black;
+    color:aliceblue;
+    font-family: 'Roboto', sans-serif;
+}
+
+header{
+    position: fixed; /* 固定位置 */
+    top: 0; /* 固定在視窗頂部 */
+    left: 0; /* 固定在視窗左側 */
+    width: 100%; /* 填滿視窗寬度 */
+    background-color: rgb(182, 182, 182);
+    padding: 5px 0;
+    text-align: center;
+}
+
+.image-container1{
+    display: flex;
+    align-items: center; 
+    margin-top: 100px;
+}
+.image-container1 img{
+    width: 65px;
+    height: auto;
+    margin-right: 15px;
+    border-radius: 50%;
+}   
+#btc-price {
+    display: inline; /* 讓 div 與 h2 顯示在同一行 */
+}
+.image-container2{
+    display: flex;
+    align-items: center;
+    margin-top: 30px; 
+}
+#eth-price, #ada-price {
+    display: inline; /* 讓 div 與 h2 顯示在同一行 */
+}
+.image-container2 img{
+    width:65px;
+    height: auto;
+    margin-right:15px;
+    border-radius: 50%;
+}
+
+

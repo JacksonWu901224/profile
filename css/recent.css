@@ -1,6 +1,6 @@
 body {
-    background-color:black;
-    color:aliceblue;
+    background-color:rgba(160, 160, 160, 0.005);
+    color:rgb(46, 49, 52);
     font-family: 'Roboto', sans-serif;
 }
 
@@ -30,7 +30,7 @@ header{
     align-items: center;
     margin-top: 30px; 
 }
-#eth-price, #ada-price, #btc-price {
+#eth-price, #ada-price, #btc-price, #snek-price{
     display: inline; /* 讓 div 與 h2 顯示在同一行 */
 }
 
@@ -61,7 +61,7 @@ header{
         font-size: 36px; /* 調整文字大小 */
     }
 
-    #btc-price, #eth-price, #ada-price {
+    #btc-price, #eth-price, #ada-price, #snek-price{
         font-size: 36px; /* 調整價格顯示大小 */
     }
 }

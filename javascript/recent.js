@@ -46,7 +46,7 @@ function fetchADAPrice() {
     fetch('https://api.binance.com/api/v3/ticker/price?symbol=ADAUSDT')
         .then(response => response.json()) // 解析 JSON 響應
         .then(data => {
-            // 更新頁面上顯示的 ETH 價格
+            // 更新頁面上顯示的 ADA 價格
             const adaPrice = data.price;
             document.getElementById('ada-price').textContent = `$${adaPrice}`;
         })
@@ -60,3 +60,26 @@ function fetchADAPrice() {
 fetchADAPrice();
 
 setInterval(fetchADAPrice, 1000); 
+
+//------------------------------------------------------------------------------------
+// 使用 fetch API 獲取 MEXC SNEK 價格
+function fetchSNEKPrice() {
+    fetch('https://api.coingecko.com/api/v3/simple/price?ids=snek&vs_currencies=usd')
+        .then(response => response.json()) // 解析 JSON 響應
+        .then(data => {
+            console.log(data);
+            // 更新頁面上顯示的 SNEK 價格
+            const snekPrice = data.snek.usd; // 正確的字段應該是 data.snek.usd
+            document.getElementById('snek-price').textContent = `$${snekPrice}`;
+        })
+        .catch(error => {
+            console.error('Error fetching the SNEK price:', error);
+            document.getElementById('snek-price').textContent = 'Failed to fetch the price.';
+        });
+}
+
+// 初次載入頁面時顯示 SNEK 價格
+fetchSNEKPrice();
+
+// 每秒更新 SNEK 價格
+setInterval(fetchSNEKPrice, 20000);

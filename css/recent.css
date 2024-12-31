@@ -98,7 +98,7 @@ section .spot{
 /* 媒體查詢 - 小於 390px 寬度（適配 iPhone 13 Pro） */
 @media(max-width: 390px) {
     header {
-        font-size: 28px; /* 更大標題字體 */
+        font-size: 48px; /* 更大標題字體 */
         padding: 20px 0;
     }
 
@@ -127,6 +127,6 @@ section .spot{
 
     #eth-price, #ada-price, #btc-price, #snek-price,
     #btc-change, #eth-change, #ada-change, #snek-change {
-        font-size: 30px; /* 增大文字顯示 */
+        font-size: 50px; /* 增大文字顯示 */
     }
 }

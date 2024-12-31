@@ -94,47 +94,38 @@ section .spot{
     position:relative;
     left: 170px;
 }
-/* 媒體查詢 - 當視窗寬度小於等於 390px 時 */
+
+/* 媒體查詢 - 小於 390px 寬度（適配 iPhone 13 Pro） */
 @media(max-width: 390px) {
-    /* 調整 header 的 padding */
     header {
-        padding: 10px 0;
+        font-size: 28px; /* 更大標題字體 */
+        padding: 20px 0;
     }
 
-    /* 調整 section 排列方式 */
     section {
-        flex-direction: column;
-        align-items: center; /* 使內容垂直居中 */
-        top: 120px; /* 增加 margin-top */
+        flex-direction: column; /* 改為垂直排列 */
+        margin: 120px 0 0 0;
     }
 
     .spot, .lastprice, .change {
-        position: relative;
-        left: 0;
-        margin-top: 10px; /* 增加元素之間的間距 */
-        text-align: center; /* 居中文本 */
+        flex: unset; /* 移除寬度均分 */
+        text-align: center; /* 居中 */
+        font-size: 24px; /* 增大字體 */
+        margin-bottom: 15px;
     }
 
-    /* 圖片調整大小 */
+    .image-container1, .image-container2 {
+        flex-direction: column; /* 圖片與文字垂直排列 */
+        padding: 20px;
+        width: 100%; /* 占滿屏幕寬度 */
+    }
+
     .image-container1 img, .image-container2 img {
-        width: 50px;
-        margin-bottom: 10px; /* 增加圖片與文字之間的間距 */
+        width: 100px; /* 增大圖片尺寸 */
     }
 
-    .btcclass, .ethclass, .adaclass, .snekclass {
-        position: relative;
-        left: 0; /* 調整元素的排列 */
-        margin-top: 10px;
-    }
-
-    .btcchange, .ethchange, .adachange, .snekchange {
-        position: relative;
-        left: 0;
-        margin-top: 10px;
-    }
-
-    /* 調整價格顯示大小 */
-    #btc-price, #eth-price, #ada-price, #snek-price, #btc-change, #eth-change, #ada-change, #snek-change {
-        font-size: 18px; /* 調整字體大小 */
+    #eth-price, #ada-price, #btc-price, #snek-price,
+    #btc-change, #eth-change, #ada-change, #snek-change {
+        font-size: 24px; /* 增大文字顯示 */
     }
 }

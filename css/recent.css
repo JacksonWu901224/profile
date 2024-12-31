@@ -49,7 +49,7 @@ header{
     }
 
     .image-container1 img, .image-container2 img {
-        width: 100px; /* 圖片縮小 */
+        width: 80%; /* 圖片縮小 */
         margin-bottom: 10px; /* 圖片和文字間隔 */
     }
     .image-container2{
@@ -58,11 +58,10 @@ header{
         margin-top: 30px; 
     }
     h2 {
-        font-size: 16px; /* 調整文字大小 */
-        margin-top: 5px;
+        font-size: 36px; /* 調整文字大小 */
     }
 
     #btc-price, #eth-price, #ada-price {
-        font-size: 16px; /* 調整價格顯示大小 */
+        font-size: 36px; /* 調整價格顯示大小 */
     }
 }

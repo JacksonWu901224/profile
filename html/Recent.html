@@ -6,29 +6,35 @@
     </head>
     <body>
         <header><h1>price</h1></header>
+        <section>
+            <div class=spot><h3>Spot</h3></div>
+            <div class="lastprice"><h3>Last Price</h3></div>
+            <div class=change><h3>24hChange%</h3></div>
+        </section>
+        
         <div class="image-container1">
             <a href="https://bitcoin.org">
                 <img src="../photo/btc.png" alt="btc" class="btc">
             </a>
-            <h2>BTC : <div id="btc-price" class="loading">Loading...</div></h2>
+            <h2>BTC : <div id="btc-price" class="btcclass">Loading...</div> <div id="btc-change" class="btcchange">Loading...</div></h2>
         </div>
         <div class="image-container2">
             <a href="https://ethereum.org/">
                 <img src="../photo/eth.png" alt="eth" class="eth">
             </a>
-            <h2>ETH : <div id="eth-price" class="loading">Loading...</div></h2>
+            <h2>ETH : <div id="eth-price" class="ethclass">Loading...</div> <div id="eth-change" class="ethchange">Loading...</div></h2>
         </div>
         <div class="image-container2">
             <a href="https://cardano.org/">
                 <img src="../photo/cardano.png" alt="ada" class="ada">
             </a>
-            <h2>ADA : <div id="ada-price" class="loading">Loading...</div></h2>
+            <h2>ADA : <div id="ada-price" class="adaclass">Loading...</div> <div id="ada-change" class="adachange">Loading...</div></h2>
         </div>
         <div class="image-container2">
             <a href="https://www.snek.com/">
                 <img src="../photo/snek.jpg" alt="snek" class="snek">
             </a>
-            <h2>SNEK : <div id="snek-price" class="loading">Loading...</div></h2>
+            <h2>SNEK : <div id="snek-price" class="snekclass">Loading...</div> <div id="snek-change" class="snekchange">Loading...</div></h2>
         </div>
         <script src="../javascript/recent.js"></script>
     </body>

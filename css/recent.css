@@ -14,10 +14,34 @@ header{
     text-align: center;
 }
 
+section{
+    position: fixed;
+    display: flex;
+    top: 100px;
+}
+.spot, .lastprice, .change{
+    display: inline-block;
+    position: relative;
+}
+section .spot{
+    position: flex;
+    left: 11px;
+}
+
+.lastprice{
+    position: flex;
+    left: 205px;
+}
+
+.change{
+    position: flex;
+    left: 305px;
+}
+
 .image-container1{
     display: flex;
     align-items: center; 
-    margin-top: 100px;
+    margin-top: 150px;
 }
 .image-container1 img, .image-container2 img{
     width: 65px;
@@ -30,38 +54,43 @@ header{
     align-items: center;
     margin-top: 30px; 
 }
-#eth-price, #ada-price, #btc-price, #snek-price{
+#eth-price, #ada-price, #btc-price, #snek-price, #btc-change, #eth-change, #ada-change, #snek-change{
     display: inline; /* 讓 div 與 h2 顯示在同一行 */
 }
 
+.btcclass{
+    position:relative;
+    left:70px;
+}
+.ethclass{
+    position:relative;
+    left:85px;
+}
+.adaclass{
+    position:relative;
+    left:95px;
+}
+.snekclass{
+    position:relative;
+    left:40px;
+}
 
+.btcchange{
+    position:relative;
+    left: 200px;
+}
 
-/* 媒體查詢 - 當視窗寬度小於等於 390px 時 */
-@media (max-width: 390px) {
-    header {
-        padding: 10px 0; /* 增加頭部間距 */
-    }
-    
-    .image-container1{
-        display: flex;
-        align-items: center; 
-        margin-top: 100px;
-    }
+.ethchange{
+    position:relative;
+    left: 215px;
+}
 
-    .image-container1 img, .image-container2 img {
-        width: 80%; /* 圖片縮小 */
-        margin-bottom: 10px; /* 圖片和文字間隔 */
-    }
-    .image-container2{
-        display: flex;
-        align-items: center;
-        margin-top: 30px; 
-    }
-    h2 {
-        font-size: 36px; /* 調整文字大小 */
-    }
+.adachange{
+    position:relative;
+    left: 225px;
+}
 
-    #btc-price, #eth-price, #ada-price, #snek-price{
-        font-size: 36px; /* 調整價格顯示大小 */
-    }
+.snekchange{
+    position:relative;
+    left: 170px;
 }

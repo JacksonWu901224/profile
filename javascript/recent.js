@@ -8,7 +8,7 @@ function fetchBTCPrice() {
             const priceChangePercent = data.priceChangePercent;
             document.getElementById('btc-price').textContent = `$${parseFloat(btcPrice).toFixed(2)}`;
             const btcChangeElement=document.getElementById('btc-change');
-            if(btcChangeElement*100>=0){
+            if(priceChangePercent>=0){
                 btcChangeElement.style.color='green';
             }else{
                 btcChangeElement.style.color='red';
@@ -40,7 +40,7 @@ function fetchETHPrice() {
             const priceChangePercent = data.priceChangePercent;
             document.getElementById('eth-price').textContent = `$${parseFloat(ethPrice).toFixed(2)}`;
             const ethChangeElement=document.getElementById('eth-change');
-            if(ethChangeElement*100>=0){
+            if(priceChangePercent>=0){
                 ethChangeElement.style.color='green';
             }else{
                 ethChangeElement.style.color='red';
@@ -70,7 +70,7 @@ function fetchADAPrice() {
             const priceChangePercent = data.priceChangePercent;
             document.getElementById('ada-price').textContent = `$${parseFloat(adaPrice).toFixed(4)}`;
             const adaChangeElement=document.getElementById('ada-change');
-            if(adaChangeElement*100>=0){
+            if(priceChangePercent>=0){
                 adaChangeElement.style.color='green';
             }else{
                 adaChangeElement.style.color='red';
@@ -102,7 +102,7 @@ function fetchSNEKPrice() {
             const snekPriceChange = snekData.price_change_percentage_24h; 
             document.getElementById('snek-price').textContent = `$${snekPrice.toFixed(7)}`;
             const snekChangeElement=document.getElementById('snek-change');
-            if(snekChangeElement*100>=0){
+            if(snekPriceChange>=0){
                 snekChangeElement.style.color='green';
             }else{
                 snekChangeElement.style.color='red';

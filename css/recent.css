@@ -103,11 +103,9 @@ section .change{
         padding: 20px 0;
         width: 100%; /* 保證寬度是 100% */
         margin: 0 auto; /* 水平居中 */
+        text-align: center;
     }
     
-    h1{
-        margin-left:-40px;
-    }
 
     h3{
         font-size:15px;
@@ -180,21 +178,21 @@ section .change{
 
     .btcchange{
         position:relative;
-        left: 170px;
+        left: 171px;
     }
     
     .ethchange{
         position:relative;
-        left: 175px;
+        left: 174px;
     }
     
     .adachange{
         position:relative;
-        left: 182px;
+        left: 181px;
     }
     
     .snekchange{
         position:relative;
-        left: 160px;
+        left: 154px;
     }
 }

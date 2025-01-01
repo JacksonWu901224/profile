@@ -7,7 +7,14 @@ function fetchBTCPrice() {
             const btcPrice = data.lastPrice;
             const priceChangePercent = data.priceChangePercent;
             document.getElementById('btc-price').textContent = `$${parseFloat(btcPrice).toFixed(2)}`;
+            const btcChangeElement=document.getElementById('btc-change');
+            if(btcChangeElement>=0){
+                btcChangeElement.style.color='green';
+            }else{
+                btcChangeElement.style.color='red';
+            }
             document.getElementById('btc-change').textContent = `${priceChangePercent}%`;
+            
         })
         .catch(error => {
             console.error('Error fetching the BTC price:', error);
@@ -32,6 +39,12 @@ function fetchETHPrice() {
             const ethPrice = data.lastPrice;
             const priceChangePercent = data.priceChangePercent;
             document.getElementById('eth-price').textContent = `$${parseFloat(ethPrice).toFixed(2)}`;
+            const ethChangeElement=document.getElementById('eth-change');
+            if(ethChangeElement>=0){
+                ethChangeElement.style.color='green';
+            }else{
+                ethChangeElement.style.color='red';
+            }
             document.getElementById('eth-change').textContent = `${priceChangePercent}%`;
         })
         .catch(error => {
@@ -56,6 +69,12 @@ function fetchADAPrice() {
             const adaPrice = data.lastPrice;
             const priceChangePercent = data.priceChangePercent;
             document.getElementById('ada-price').textContent = `$${parseFloat(adaPrice).toFixed(4)}`;
+            const adaChangeElement=document.getElementById('ada-change');
+            if(adaChangeElement>=0){
+                adaChangeElement.style.color='green';
+            }else{
+                adaChangeElement.style.color='red';
+            }
             document.getElementById('ada-change').textContent = `${priceChangePercent}%`;
         })
         .catch(error => {
@@ -82,6 +101,12 @@ function fetchSNEKPrice() {
             const snekPrice = snekData.current_price; // 正確的字段應該是 data.snek.usd
             const snekPriceChange = snekData.price_change_percentage_24h; 
             document.getElementById('snek-price').textContent = `$${snekPrice.toFixed(7)}`;
+            const snekChangeElement=document.getElementById('snek-change');
+            if(snekChangeElement>=0){
+                snekChangeElement.style.color='green';
+            }else{
+                snekChangeElement.style.color='red';
+            }
             document.getElementById('snek-change').textContent = `${snekPriceChange.toFixed(3)}%`;
         })
         .catch(error => {

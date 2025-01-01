@@ -96,35 +96,105 @@ section .change{
 }
 
 /* 媒體查詢 - 小於 390px 寬度（適配 iPhone 13 Pro） */
-@media(max-width: 390px) {
+@media(min-width: 390px) {
     header {
-        font-size: 20px;
+        position:fixed;
+        font-size: 10px;
         padding: 20px 0;
+        width: 100%; /* 保證寬度是 100% */
+        margin: 0 auto; /* 水平居中 */
+    }
+    
+    h1{
+        margin-left:-40px;
     }
 
-    section {
-        flex-direction: column; /* 改為垂直排列 */
-        margin: 120px 0 0 0;
+    h3{
+        font-size:15px;
     }
 
-    .spot, .lastprice, .change {
-        flex: unset; /* 移除寬度均分 */
-        font-size: 10px; /* 增大字體 */
-        margin-bottom: 15px;
+    h2{
+        font-size:18px;
     }
 
-    .image-container1, .image-container2 {
-        display: fixed;
-        flex-direction: column; /* 圖片與文字垂直排列 */
-        padding: 20px;
+    .spot, .lastprice, .change{
+        display: inline-block;
+        position: relative;
     }
 
-    .image-container1 img, .image-container2 img {
-        width: 70px; /* 增大圖片尺寸 */
+    section .spot{
+        position: flex;
+        left: 1px;
+    }
+    
+    section .lastprice{
+        position: flex;
+        left: 115px;
+    }
+    
+    section .change{
+        position: flex;
+        left: 165px;
+    }
+
+    .image-container1{
+        display: flex;
+        align-items: center; 
+        margin-top: 150px;
+    }
+
+    .image-container1 img, .image-container2 img{
+        width: 40px;
+        height: auto;
+        margin-right: 15px;
+        border-radius: 50%;
+    }
+
+    .image-container2{
+        display: flex;
+        align-items: center; 
+        margin-top: 50px;
     }
 
     #eth-price, #ada-price, #btc-price, #snek-price,
     #btc-change, #eth-change, #ada-change, #snek-change {
+        display: inline;
         font-size: 10px; 
+    }
+    .btcclass{
+        position:relative;
+        left:65px;
+    }
+    .ethclass{
+        position:relative;
+        left:73px;
+    }
+    .adaclass{
+        position:relative;
+        left:75px;
+    }
+    .snekclass{
+        position:relative;
+        left:48px;
+    }
+
+    .btcchange{
+        position:relative;
+        left: 170px;
+    }
+    
+    .ethchange{
+        position:relative;
+        left: 175px;
+    }
+    
+    .adachange{
+        position:relative;
+        left: 182px;
+    }
+    
+    .snekchange{
+        position:relative;
+        left: 160px;
     }
 }

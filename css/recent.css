@@ -94,3 +94,33 @@ section .change{
     position:relative;
     left: 170px;
 }
+
+/* 媒體查詢 - 小於 390px 寬度（適配 iPhone 13 Pro） */
+@media(max-width: 390px) {
+    header {
+        font-size: 20px; /* 更大標題字體 */
+        padding: 20px 0;
+    }
+
+    section {
+        flex-direction: column; /* 改為垂直排列 */
+        margin: 120px 0 0 0;
+    }
+
+    .spot, .lastprice, .change {
+        flex: unset; /* 移除寬度均分 */
+        font-size: 10px; /* 增大字體 */
+        margin-bottom: 15px;
+    }
+
+    .image-container1, .image-container2 {
+        display: fixed;
+        flex-direction: column; /* 圖片與文字垂直排列 */
+        padding: 20px;
+    }
+
+    #eth-price, #ada-price, #btc-price, #snek-price,
+    #btc-change, #eth-change, #ada-change, #snek-change {
+        font-size: 10px;
+    }
+}

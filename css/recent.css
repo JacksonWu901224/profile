@@ -98,7 +98,7 @@ section .change{
 /* 媒體查詢 - 小於 390px 寬度（適配 iPhone 13 Pro） */
 @media(max-width: 390px) {
     header {
-        font-size: 20px; /* 更大標題字體 */
+        font-size: 20px;
         padding: 20px 0;
     }
 
@@ -119,8 +119,12 @@ section .change{
         padding: 20px;
     }
 
+    .image-container1 img, .image-container2 img {
+        width: 70px; /* 增大圖片尺寸 */
+    }
+
     #eth-price, #ada-price, #btc-price, #snek-price,
     #btc-change, #eth-change, #ada-change, #snek-change {
-        font-size: 10px;
+        font-size: 10px; 
     }
 }

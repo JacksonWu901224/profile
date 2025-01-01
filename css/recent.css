@@ -28,12 +28,12 @@ section .spot{
     left: 11px;
 }
 
-.lastprice{
+section .lastprice{
     position: flex;
     left: 205px;
 }
 
-.change{
+section .change{
     position: flex;
     left: 305px;
 }

@@ -96,7 +96,7 @@ section .change{
 }
 
 /* 媒體查詢 - 小於 390px 寬度（適配 iPhone 13 Pro） */
-@media(min-width: 390px) {
+@media(max-width: 390px) {
     header {
         position:fixed;
         font-size: 10px;

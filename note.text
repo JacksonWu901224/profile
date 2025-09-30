@@ -1,0 +1,11 @@
+# 查看當前修改狀態
+git status  
+
+# 加入所有修改 (注意 add 和 . 之間要有空格)
+git add .  
+
+# 建立一次 commit，後面 -m 要加訊息
+git commit -m "你的提交訊息"  
+
+# 推送到遠端 main 分支
+git push origin main  

@@ -1,0 +1,28 @@
+/* 表格置中 */
+table {
+  border-collapse: collapse; /* 邊框合併 */
+  margin: 0 auto;            /* 整張表格置中 */
+}
+
+/* 標題列和單元格 */
+th, td {
+  border: 1px solid black;   /* 邊框 */
+  padding: 8px;              /* 內距 */
+  text-align: center;        /* 文字置中 */
+  vertical-align: middle;    /* 垂直置中 */
+}
+
+/* 標題列背景色 */
+th {
+  background-color: #f2f2f2;
+}
+
+/* 斑馬條紋效果 */
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* 標題文字置中 */
+h2 {
+  text-align: center;
+}

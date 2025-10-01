@@ -26,4 +26,15 @@ tr:nth-child(even) {
 h2 {
   text-align: center;
 }
+/* 手機版（iPhone 13 Pro 390px 寬左右） */
+@media screen and (max-width: 430px) {
+  table {
+    width: 90%;          /* 讓表格跟螢幕一樣寬 */
+    font-size: 10px;      /* 放大字體讓手機好讀 */
+  }
 
+  th, td {
+    padding: 8px;        /* 增加 padding，避免字太擠 */
+  }
+
+}

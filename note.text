@@ -1,3 +1,7 @@
+常用
+#查看 Git 命令的說明文件
+git help
+
 # 查看當前修改狀態
 git status  
 
@@ -9,3 +13,80 @@ git commit -m "你的提交訊息"
 
 # 推送到遠端 main 分支
 git push origin main  
+---------------------------------------------------
+分支管理
+
+# 查看分支
+git branch
+
+# 建立新分支
+git branch 分支名稱
+
+# 切換分支
+git checkout 分支名稱
+# 或 Git 2.23+ 推薦用
+git switch 分支名稱
+
+# 建立新分支並切換過去
+git checkout -b 新分支名稱
+# 或
+git switch -c 新分支名稱
+
+# 合併分支
+git merge 分支名稱
+---------------------------------------------------
+遠端操作
+
+# 取得遠端更新，但不合併
+git fetch
+
+# 拉取遠端最新變更並自動合併
+git pull origin main
+
+# 刪除遠端分支
+git push origin --delete 分支名稱
+----------------------------------------------------
+檢查歷史
+
+# 查看提交歷史
+git log
+
+# 簡短歷史
+git log --oneline
+
+# 查看圖形化分支歷史
+git log --oneline --graph --all --decorate
+-----------------------------------------------------
+暫存與修改
+
+# 取消暫存（還保留修改）
+git reset HEAD 檔案名稱
+
+# 丟棄本地修改（回到最後一次 commit）
+git checkout -- 檔案名稱
+
+# 比較修改
+git diff          # 與暫存區比
+git diff --staged # 與 commit 比
+----------------------------------------------------
+回退與還原
+
+# 回到上一次 commit（保留修改）
+git reset --soft HEAD~1
+
+# 回到上一次 commit（取消修改）
+git reset --hard HEAD~1
+
+# 針對某個 commit 回退
+git revert commit_id
+-----------------------------------------------------
+標籤管理
+
+# 建立標籤
+git tag v1.0
+
+# 查看標籤
+git tag
+
+# 推送標籤到遠端
+git push origin v1.0

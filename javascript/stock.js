@@ -8,7 +8,7 @@ let interval;
 let days = [];
 let prices = [];
 let currentPrice = 100; // 初始股價
-let totalDays = 3650; // 十年
+let totalDays = 7300; // 二十年
 let currentDay = 0;
 
 // 初始化圖表
@@ -32,17 +32,17 @@ function initChart() {
     },
   });
 }
-let positiveDaysRemaining = 0; // 全域變數，放在最上面
+let Bull = 0; // 全域變數，放在最上面
 
 // 模擬每天股價變動
 function simulateDay() {
   // 計算前一年同一天的索引
   const oneYearAgoIndex = currentDay - 365;
 
-  // 如果有前一年同一天的價格，且前一年價格 > 當前價格
-  if (oneYearAgoIndex >= 0 && prices[oneYearAgoIndex] > currentPrice) {
-    // 可選：可以記錄剩餘天數
-    positiveDaysRemaining = 30;
+  //跌破去年價 → 啟動「修復上漲期」或者 0.05% 的機率自然啟動一段牛市
+  if ( Bull == 0 &&  oneYearAgoIndex >= 0 &&
+      (prices[oneYearAgoIndex] >= currentPrice || Math.random() < 0.0005)) {
+        Bull = 60;
   }
 
   // 擲骰子決定方向
@@ -50,20 +50,18 @@ function simulateDay() {
   let direction = Math.random() < 0.5 ? -1 : 1;   // 隨機方向
 
   // 如果強制正漲幅
-  if (positiveDaysRemaining > 0) {
+  if (Bull > 0) {
     direction = 1;  // 強制正
-    positiveDaysRemaining--;
+    Bull--;
   }
 
   // 生成漲幅
-  const magnitude = (dice / 6) * 0.028;
+  const magnitude = (dice / 6) * 0.015;
   const change = direction * magnitude;
 
   currentPrice *= 1 + change;
   currentPrice = Math.max(currentPrice, 0);
 }
-
-
 
 // 更新圖表
 function updateChart() {
@@ -113,7 +111,7 @@ startBtn.onclick = function () {
   }
 
   interval = setInterval(() => {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 30; i++) {
       if (currentDay >= totalDays) {
         clearInterval(interval);
         interval = null;
@@ -124,7 +122,7 @@ startBtn.onclick = function () {
       currentDay++;
     }
 
-    // 每 10 天才更新圖表
+    // 每 30 天才更新圖表
     days.push("Day " + currentDay);
     prices.push(currentPrice);
     chart.data.datasets[0].data = prices.map(p => p.toFixed(2));
@@ -132,8 +130,6 @@ startBtn.onclick = function () {
 
   }, 50);
 };
-
-
 
 // 重設
 resetBtn.onclick = function () {

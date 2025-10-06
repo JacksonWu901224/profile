@@ -1,0 +1,50 @@
+body {
+  font-family: "Microsoft JhengHei", sans-serif;
+  text-align: center;
+  background-color: #f2f5f8;
+  color: #333;
+  margin: 0;
+}
+
+#stockChart {
+  width: 90%;            /* 改成百分比，自動響應不同螢幕 */
+  max-width: 1300px;      /* 最大寬度限制 */
+  max-height: 400px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  display: block;
+  margin: 20px auto;     /* 上下間距 + 置中 */
+  border-radius: 10px;   /* 圓角 */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* 投影效果 */
+}
+
+button {
+  margin: 10px 5px;
+  padding: 10px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #000;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #333;
+  transform: translateY(-2px); /* 滑鼠 hover 小浮動效果 */
+}
+
+#stats {
+  width: 90%;            /* 響應式寬度 */
+  max-width: 400px;      /* 最大寬度限制 */
+  min-height: 200px;
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin: 20px auto;     /* 與圖表間距 */
+  text-align: left;
+  overflow-y: auto;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}

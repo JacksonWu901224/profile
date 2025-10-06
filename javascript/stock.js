@@ -32,21 +32,37 @@ function initChart() {
     },
   });
 }
+let positiveDaysRemaining = 0; // 全域變數，放在最上面
 
 // 模擬每天股價變動
 function simulateDay() {
+  // 計算前一年同一天的索引
+  const oneYearAgoIndex = currentDay - 365;
+
+  // 如果有前一年同一天的價格，且前一年價格 > 當前價格
+  if (oneYearAgoIndex >= 0 && prices[oneYearAgoIndex] > currentPrice) {
+    // 可選：可以記錄剩餘天數
+    positiveDaysRemaining = 30;
+  }
+
   // 擲骰子決定方向
   const dice = Math.floor(Math.random() * 6) + 1; // 1~6
-  const direction = Math.random() < 0.5 ? -1 : 1; // 隨機方向
-  
-  // 生成 0~2.8% 的隨機變動
-  const magnitude = (dice / 6)* 0.028;
+  let direction = Math.random() < 0.5 ? -1 : 1;   // 隨機方向
 
-  const change =  direction * magnitude;
+  // 如果強制正漲幅
+  if (positiveDaysRemaining > 0) {
+    direction = 1;  // 強制正
+    positiveDaysRemaining--;
+  }
+
+  // 生成漲幅
+  const magnitude = (dice / 6) * 0.028;
+  const change = direction * magnitude;
 
   currentPrice *= 1 + change;
   currentPrice = Math.max(currentPrice, 0);
 }
+
 
 
 // 更新圖表

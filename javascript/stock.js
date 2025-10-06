@@ -35,10 +35,19 @@ function initChart() {
 
 // 模擬每天股價變動
 function simulateDay() {
-  const change = (Math.random() * 5.6 - 2.8) / 100;
+  // 擲骰子決定方向
+  const dice = Math.floor(Math.random() * 6) + 1; // 1~6
+  const direction = Math.random() < 0.5 ? -1 : 1; // 隨機方向
+  
+  // 生成 0~2.8% 的隨機變動
+  const magnitude = (dice / 6)* 0.028;
+
+  const change =  direction * magnitude;
+
   currentPrice *= 1 + change;
   currentPrice = Math.max(currentPrice, 0);
 }
+
 
 // 更新圖表
 function updateChart() {

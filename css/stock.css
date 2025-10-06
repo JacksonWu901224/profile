@@ -40,10 +40,10 @@ button:hover {
   max-width: 400px;      /* 最大寬度限制 */
   min-height: 200px;
   background-color: #fff;
-  padding: 20px;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  margin: 20px auto;     /* 與圖表間距 */
+  margin: 10px auto;     /* 與圖表間距 */
   text-align: left;
   overflow-y: auto;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);

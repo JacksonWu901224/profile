@@ -97,10 +97,10 @@ function calculateStats() {
   `;
 }
 
+const bgm = document.getElementById("bgm");
+
 // 開始模擬
 startBtn.onclick = function () {
-  if (interval) return;
-
   // 如果圖表還沒開始，先把第一天的初始價格顯示出來
   if (currentDay === 0) {
     days.push("Day 1");
@@ -133,6 +133,8 @@ startBtn.onclick = function () {
 
 // 重設
 resetBtn.onclick = function () {
+  bgm.pause();
+  bgm.currentTime = 0; // 重設播放位置到開頭
   clearInterval(interval);
   interval = null;
   days = [];

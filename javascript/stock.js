@@ -101,6 +101,7 @@ const bgm = document.getElementById("bgm");
 
 // 開始模擬
 startBtn.onclick = function () {
+  bgm.play();
   // 如果圖表還沒開始，先把第一天的初始價格顯示出來
   if (currentDay === 0) {
     days.push("Day 1");

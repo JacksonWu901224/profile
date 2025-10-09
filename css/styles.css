@@ -8,7 +8,7 @@ body {
 
 .menu-button {
     position: absolute; /* 固定位置 */
-    top: 15px; /* 距離視窗頂部的距離 */
+    top: 12px; /* 距離視窗頂部的距離 */
     left: 10px; /* 距離視窗左側的距離 */
     background: none;
     border: none;
@@ -20,8 +20,8 @@ body {
 @media (max-width: 390px) {
     .menu-button {
         position: absolute;
-        left: 0.3px;  /* 在6.1吋手機上，讓按鈕離左邊稍微多一點 */
-        top: 15px;
+        left: 0.4px;  /* 在6.1吋手機上，讓按鈕離左邊稍微多一點 */
+        top: 10px;
         background: none;
         border: none;
         color: #333;
@@ -36,6 +36,7 @@ header {
     top: 0; /* 固定在視窗頂部 */
     left: 0; /* 固定在視窗左側 */
     width: 100%; /* 填滿視窗寬度 */
+    height: 60px;
     background-color: dodgerblue;
     padding: 3px 0;
     text-align: center;
@@ -51,7 +52,7 @@ header {
     background-color: #111;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
+    padding-top: 65px;
     z-index: 1000;
 }
 

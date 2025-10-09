@@ -8,7 +8,7 @@ let interval;
 let days = [];
 let prices = [];
 let currentPrice = 100; // 初始股價
-let totalDays = 7300; // 二十年
+let totalDays = 7200; // 二十年
 let currentDay = 0;
 
 // 初始化圖表

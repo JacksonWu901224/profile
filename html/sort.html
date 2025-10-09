@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sorting Visualizer - Numbers</title>
+  <link rel="stylesheet" href="../css/sort.css">
+</head>
+<body>
+  <header>
+    <h1>Sorting Visualizer</h1>
+  </header>
+
+  <main>
+    <section id="controls">
+      <label>Algorithm:
+        <select id="algorithm">
+          <option value="bubble">Bubble Sort</option>
+          <option value="selection">Selection Sort</option>
+          <option value="insertion">Insertion Sort</option>
+          <option value="merge">Merge Sort</option>
+          <option value="quick">Quick Sort</option>
+          <option value="heap">Heap Sort</option>
+        </select>
+      </label>
+
+      <label>Array size:
+        <input type="range" id="size" min="5" max="20" value="15">
+        <span id="sizeVal">15</span>
+      </label>
+
+      <label>Speed:
+        <input type="range" id="speed" min="50" max="1000" value="200">
+        <span id="speedVal">200 ms</span>
+      </label>
+
+      <button id="shuffleBtn">random array</button>
+      <button id="startBtn" class="primary">start sorting</button>
+      <button id="stopBtn">pause</button>
+    </section>
+
+    <section id="visual-area">
+      <div id="numbers"></div>
+    </section>
+  </main>
+
+  <script src="../javascript/sort.js"></script>
+</body>
+</html>

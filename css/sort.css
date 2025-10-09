@@ -1,0 +1,59 @@
+body {
+  background: #d1d1d1;
+  color: #000000;
+  font-family: "Microsoft JhengHei", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 20px;
+}
+
+header h1 {
+  margin: 0 0 10px 0;
+}
+
+#controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#numbers {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.number {
+  padding: 6px 12px;
+  background: #222;
+  border-radius: 6px;
+  min-width: 24px;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.number.active {
+  background: #ffd166;
+  color: #111;
+}
+
+.number.compare {
+  background: #ff6b6b;
+  color: #fff;
+}
+
+.number.sorted {
+  background: #9be7a3;
+  color: #111;
+}
+
+button.primary {
+  background: #00d1b2;
+  color: #042825;
+}

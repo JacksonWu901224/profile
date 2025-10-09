@@ -43,6 +43,14 @@ header {
     z-index: 999; /* 確保 header 在最上層，但低於 menu button */
 }
 
+header h2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 完全水平+垂直置中 */
+    margin: 0;
+}
+
 .sidebar {
     height: 100%;
     width: 0;

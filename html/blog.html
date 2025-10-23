@@ -14,6 +14,46 @@
             <div class="blog">
                 <h3>KNOW ABOUT ME</h3>
             <hr>
+            <div style="display: flex; justify-content: center; margin-top: 20px;">
+            <table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse; text-align:center;">
+                <thead style="background-color:#f0f0f0;">
+                <tr>
+                    <th>狀況</th>
+                    <th>是否要查 Page Table(主記憶體)</th>
+                    <th>是否要取資料(主記憶體)</th>
+                    <th>總次數</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>TLB hit + cache hit</td>
+                    <td style="color:red;">❌</td>
+                    <td style="color:red;">❌</td>
+                    <td>0 次主記憶體存取(全cache命中)</td>
+                </tr>
+                <tr>
+                    <td>TLB hit + cache miss</td>
+                    <td style="color:red;">❌</td>
+                    <td style="color:green;">✅</td>
+                    <td>1 次(從 memory 取資料)</td>
+                </tr>
+                <tr>
+                    <td>TLB miss + cache hit</td>
+                    <td style="color:green;">✅</td>
+                    <td style="color:red;">❌</td>
+                    <td>1 次(查 page table)</td>
+                </tr>
+                <tr>
+                    <td>TLB miss + cache miss</td>
+                    <td style="color:green;">✅</td>
+                    <td style="color:green;">✅</td>
+                    <td>2 次(最糟情況)</td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+
+            <hr>
                 <h4>Different types of distances used in ML</h4>
                 <p><b>Minkowski distance:</b></p>
                 <div>\[

@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>network.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///c%3A//Users//%E5%B7%AB%E4%BD%B3%E7%A5%90//Desktop//vscodemd//.vscode//style.css" type="text/css">
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.4.0/dist/mermaid.min.js "></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD046 -->
+<!-- markdownlint-disable MD004 -->
+<h1 id="network">network</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">比較項目</th>
+<th style="text-align:left">直線(乙太網路纜線)</th>
+<th style="text-align:left">跳線(Patch Cable)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">長度</td>
+<td style="text-align:left">較長，從幾英尺到數百英尺</td>
+<td style="text-align:left">較短，通常幾英寸到幾英尺</td>
+</tr>
+<tr>
+<td style="text-align:left">用途</td>
+<td style="text-align:left">永久性安裝，例如佈線到不同房間，用於高速資料傳輸的穩定連接</td>
+<td style="text-align:left">臨時性連接，例如在網路機架內互連設備、測試設備或在不同設備之間進行臨時駁接</td>
+</tr>
+<tr>
+<td style="text-align:left">佈建方式</td>
+<td style="text-align:left">於牆壁內或走廊固定佈線</td>
+<td style="text-align:left">位於機架內或設備附近，用於快速連接</td>
+</tr>
+<tr>
+<td style="text-align:left">結構</td>
+<td style="text-align:left">雙絞銅線，可最大限度減少干擾</td>
+<td style="text-align:left">也可以是雙絞線，但有不同型號（非屏蔽或屏蔽）以滿足不同用途</td>
+</tr>
+</tbody>
+</table>
+<p>乙太網路透過標準化的IEEE 802.3協議，利用載波感應多重存取/碰撞偵測（<strong>CSMA/CD</strong>）或交換器（<strong>Switch</strong>）來管理資料傳輸。</p>
+<ol>
+<li>
+<p>CSMA/CD (舊式集線器網路)<br>
+概念: 每個節點共享同一條網路線，並以廣播方式傳送訊框。<br>
+運作流程:<br>
+<strong>載波感應</strong>(<span style="color:blue;">Carrier Sense</span>): 傳送前先監聽網路是否有其他訊號。<br>
+<strong>多重存取</strong>(<span style="color:blue;">Multiple Access</span>): 多個節點共用同一通道。<br>
+<strong>碰撞偵測</strong>(<span style="color:blue;">Collision Detection</span>): 傳送過程中，若偵測到訊號碰撞（表示有多個節點同時傳送），則立即停止傳送，並發送一連串的干擾訊號「Jam signal」，告知所有設備發生了衝突。 。<br>
+<strong>隨機退避</strong>(<span style="color:blue;">Random Backoff</span>)： 停止傳送後，等待一個隨機的時間，然後再次從載波偵聽開始重試。<br>
+若連續發生多次衝突，則會使用更複雜的「截斷式二進位指數退避演算法」來增加等待時間。若嘗試多次後仍失敗，則會放棄傳送。</p>
+</li>
+<li>
+<p>交換器(現代網路)<br>
+概念: 使用交換器代替集線器，建立點對點的連接。<br>
+運作流程:<br>
+<strong>接收與處理</strong>(<span style="color:blue;">Receiving and Processing</span>): 交換器接收到數據封包後，會根據封包內的目的MAC 位址查找內建的位址表。<br>
+<strong>轉發封包</strong>(<span style="color:blue;">Forwarding Frames</span>): 將封包直接轉發到目標設備所在的埠口。<br>
+<strong>解決衝突</strong>(<span style="color:blue;">Collision Avoidance</span>): 在全雙工模式下，交換器可以同時進行傳輸和接收，避免了訊號碰撞。<br>
+<strong>流量控制</strong>(<span style="color:blue;">Flow Control</span>): 如果高速埠的數據傳輸到較低速埠，交換器會暫時儲存數據並發送「暫停訊框」(Pause frame) 給傳送端，讓傳送端暫停傳送以避免緩衝區溢出。</p>
+</li>
+</ol>
+<h2 id="span-style%22color006400%22repeaterspan"><span style="color:#006400">repeater</span>:</h2>
+<p><span style="color:#006400">是OSI 7 layer的layer 1設備</span>，一個將輸入訊號增強放大的類比裝置，而不考慮輸入訊號種類（是類比的還是數位的）。<br>
+ <span style="color:green;">優點</span>:延長傳送距離。<br>
+ <span style="color:red;">缺點</span>:<br>
+  1.由於共享頻寬，每台電腦理論分配的頻寬減少，就是效能減少。<br>
+  2.碰撞領域變大(碰撞所影響到的範圍變大)。<br>
+中繼器是用來加強纜線上的訊號，把訊號送得更遠，以延展網路長度。當電子訊號在電纜上傳送時，訊號強度會隨著傳遞長度的增加而遞減。因此需要中繼器將訊號重新加強以增加資料的傳送距離。</p>
+<h2 id="span-style%22color006400%22hub"><span style="color:#006400">hub:</h2>
+<p><span style="color:#006400">是OSI 7 layer的layer 1設備</span>，只會放大電子訊號，但不去判斷封包的內容。目前星狀架構，hub以取代repeater。hub跟repeater運作原理一樣。<br>
+ =&gt;個人電腦和hub相接是用雙絞線的直線相接。<br>
+ =&gt;hub和hub相接是用雙絞線的跳線相接。<br>
+ <span style="color:green;">優點</span>:延長傳送距離。<br>
+ <span style="color:red;">缺點</span>:<br>
+    1.由於共享頻寬，每台電腦理論分配的頻寬減少，就是效能減少。<br>
+    2.碰撞領域變大(碰撞所影響到的範圍變大)。<br>
+由於集線器會把收到的任何數位訊號，經過再生或放大，再從集線器的所有ports送出，這會造成訊號之間碰撞的機會很大，而且訊號也可能被竊聽，並且這代表所有連到集線器的裝置，都是屬於同一個碰撞網域以及廣播網域，因此大部份集線器已被交換機取代。</p>
+<h2 id="span-style%22color008000%22bridgespan%E6%A9%8B%E6%8E%A5%E5%99%A8"><span style="color:#008000">bridge</span>(橋接器):</h2>
+<p>改良了hub的缺點，<span style="color:#008000">是OSI 7 layer的layer 2設備</span>。可以認得每個封包的來源端和目的端的MAC address。主要用在RG-58同軸電纜的網路線上。<br>
+bridge內部有forwarding table, port number和所接電腦的MAC address對照表，對於不知道該往哪裡送的封包(目的端的MAC address不在forwarding tabble)，會從bridge的每個port送出去。</p>
+<pre><code class="language-mermaid"><div class="mermaid">flowchart LR
+  A[PC A 💻] <-->B
+  B[PC B 💻] <-->bridge
+  C[PC C 💻] <-->D[PC D 💻]
+  bridge[bridge 🖧] <--> C
+</div></code></pre>
+<p>特性:<br>
+ <span style="color:blue">增加效能</span>:A傳給B，封包會被bridge擋住，這段時間C就可以傳資料給D。<br>
+ <span style="color:blue">隔離碰撞封包</span>:若bridge左段發生碰撞，不會影響到右段。</p>
+<h2 id="span-style%22color008000%22switchspan"><span style="color:#008000">switch</span>:</h2>
+<p>效能好，價格便宜。<span style="color:#008000">是OSI 7 layer的layer 2設備</span>，已取代hub,bridge。主要用在雙絞線的網路線上。大部分的port都是全雙工(可同時傳送接收資料)。可認得電腦在哪個port上。有學習功能，會建立forwarding table。</p>
+<pre><code class="language-mermaid"><div class="mermaid">graph TD
+    S[Switch 🖧] 
+    A[PC A 💻]
+    B[PC B 💻]
+    C[PC C 💻]
+    D[PC D 💻]
+
+    S <--> A
+    S <--> B
+    S <--> C
+    S <--> D
+</div></code></pre>
+<p>How to build a forwarding table?
+     每個乙太網路frame會含有來源端和目的端的MAC address。(OSI layer2的封包稱為frame，layer3的封包才稱為packet)
+     剛開始，forwarding table is empty。</p>
+<ul>
+<li>steps:<br>
+1.A傳資料給D。<br>
+  swtich從port-1收到，知道電腦A連接到port-1，建立一筆(1,A)的table。<br>
+2.因為forwarding table is empty，switch不知送往哪裡，所以全送，每個port都送，但只有D會收到這個封包，因為B,C發現MAC address不是自己的MAC address，所以B,C會把這個封包丟掉。<br>
+3.D收到是送給自己，接收資料後回傳給A。<br>
+  swtich從port-4收到，知道電腦D連接到port-4，建立一筆(4,D)的table。<br>
+4.switch查表得知A在port-1，就從port-1送出給A。<br>
+5.A收到。</li>
+</ul>
+<p><u>重要觀念:forwarding table的建立是根據來源端的MAC address。</u><br>
+特性:<br>
+ <span style="color:blue">增加效能</span>:A傳給B，封包會被bridge擋住，這段時間C就可以傳資料給D。<br>
+ <span style="color:blue">隔離碰撞封包</span>:若switch左段發生碰撞，不會影響到右段。稱為microsegment。</p>
+<p>比較:<br>
+<img src="hubswitch.png" alt="siwtch vs hub"></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">hub</th>
+<th style="text-align:left">switch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">共用頻寬</td>
+<td style="text-align:left">專屬頻寬</td>
+</tr>
+<tr>
+<td style="text-align:left">半雙工</td>
+<td style="text-align:left">全雙工</td>
+</tr>
+<tr>
+<td style="text-align:left">無法隔離碰撞域封包</td>
+<td style="text-align:left">可隔離碰撞域封包</td>
+</tr>
+<tr>
+<td style="text-align:left">Layer 1</td>
+<td style="text-align:left">Layer 2</td>
+</tr>
+<tr>
+<td style="text-align:left">複製電子訊號</td>
+<td style="text-align:left">辨別MAC位址</td>
+</tr>
+<tr>
+<td style="text-align:left">無表格</td>
+<td style="text-align:left">傳送表</td>
+</tr>
+</tbody>
+</table>
+<h2 id="span-style%22color90ee90%22routerspan"><span style="color:#90EE90">router</span>:</h2>
+<p><span style="color:#90EE90">是OSI 7 layer的layer 3設備</span>，想像成一台電腦，配有兩張以上網路卡以及路由協定程式。就可以將封包從一張網路卡傳到另一張網路卡。
+<strong>重要功能</strong>: <span style="color: blue">尋找路徑</span>,<span style="color: blue">隔離封包</span><br>
+尋找路徑:幫封包找到正確的路徑。
+隔離封包:隔離廣播封包
+  =&gt;router最重要的table:(routing table）or（RIB, Routing Information Base)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">目的地網路號碼</th>
+<th style="text-align:left">目的地subnet mask</th>
+<th style="text-align:left">下一站IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Network ID, Network number</td>
+<td style="text-align:left">subnet mask</td>
+<td style="text-align:left">Next hop / interface</td>
+</tr>
+<tr>
+<td style="text-align:left">就是目標位址的網路ID</td>
+<td style="text-align:left">用來判斷IP所屬網絡</td>
+<td style="text-align:left">就是資料在傳送到目標位址的旅途中下一站的位址</td>
+</tr>
+</tbody>
+</table>
+<p><u>router對於不知道往哪裡送的封包，會直接<span style="color:red">丟棄</span></u></p>
+<h2 id="%F0%9F%92%BDosi-7-layers">💽OSI 7 Layers</h2>
+<p><img src="osi.gif" alt="OSI"></p>
+<h2 id="%F0%9F%92%BEtcpip">💾TCP/IP</h2>
+<p>為另一種模型，只有分四層。因為發展過程比OSI早，所以並沒有遵守OSI模型</p>
+<p><img src="tcpip.jpg" alt="TCP/IP"></p>
+<p><strong>比較</strong>:</p>
+<p><img src="tcpiposi.jpg" alt="tcpipvsosi"></p>
+<h2 id="ip-class">IP class</h2>
+<p><img src="ipclass.png" alt="IP class"></p>
+<hr>
+<h1 id="%E5%B8%B8%E8%A6%8B%E7%84%A1%E7%B7%9A%E9%A0%BB%E6%AE%B5%E8%88%87%E6%87%89%E7%94%A8">常見無線頻段與應用</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">頻段 (GHz)</th>
+<th style="text-align:left">應用範圍與技術</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">0.9GHz (900MHz)</td>
+<td style="text-align:left">遠距通訊、工業自動化、RFID、智慧家庭</td>
+</tr>
+<tr>
+<td style="text-align:left">1.8GHz - 2.1GHz</td>
+<td style="text-align:left">行動通訊（3G、4G LTE 頻段）</td>
+</tr>
+<tr>
+<td style="text-align:left">2.3GHz - 2.7GHz</td>
+<td style="text-align:left">LTE 擴展頻段（WiMAX、部分行動網路）</td>
+</tr>
+<tr>
+<td style="text-align:left">3.5GHz</td>
+<td style="text-align:left">5G NR、固定無線接取、衛星通訊</td>
+</tr>
+<tr>
+<td style="text-align:left">4.9GHz</td>
+<td style="text-align:left">公共安全無線網路（政府用途）</td>
+</tr>
+<tr>
+<td style="text-align:left">5.8GHz</td>
+<td style="text-align:left">無線橋接、商業 Wi-Fi（特殊用途）</td>
+</tr>
+<tr>
+<td style="text-align:left">6GHz</td>
+<td style="text-align:left">Wi-Fi 6E（更高頻寬、更低延遲）</td>
+</tr>
+<tr>
+<td style="text-align:left">10GHz - 30GHz</td>
+<td style="text-align:left">衛星通訊、雷達系統、專用無線連結</td>
+</tr>
+<tr>
+<td style="text-align:left">24GHz - 28GHz</td>
+<td style="text-align:left">5G mmWave（高速行動網路）</td>
+</tr>
+<tr>
+<td style="text-align:left">60GHz (毫米波)</td>
+<td style="text-align:left">WiGig（高速無線傳輸，如 8K 影像）</td>
+</tr>
+<tr>
+<td style="text-align:left">77GHz</td>
+<td style="text-align:left">汽車雷達（自駕車、碰撞預警）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="900mhz-09ghz-%E9%A0%BB%E6%AE%B5">900MHz (0.9GHz) 頻段</h2>
+<ul>
+<li>
+<p><strong>主要應用</strong>：物聯網 (IoT)、RFID、農業、智慧家居</p>
+</li>
+<li>
+<p><strong>特點</strong>：</p>
+<ul>
+<li><strong>穿透力強</strong>：由於低頻段的波長較長，能夠有效穿透牆壁、建築物等障礙物，適合長距離無線傳輸。</li>
+<li><strong>距離遠</strong>：相比較高頻段的頻率，這個頻段可以實現更遠的信號傳播，因此適用於需要廣域覆蓋的應用。</li>
+<li><strong>低速率</strong>：由於頻寬較窄，這個頻段的資料傳輸速率較低，適合傳輸少量資料。</li>
+</ul>
+</li>
+<li>
+<p><strong>典型應用場景</strong>：</p>
+<ul>
+<li><strong>物聯網 (IoT)</strong>：例如智慧城市中的各種感應器與設備。</li>
+<li><strong>RFID</strong>：例如自動識別和追蹤貨物。</li>
+<li><strong>農業應用</strong>：遠距離的感測器監控農田。</li>
+<li><strong>智慧家居</strong>：例如智能燈泡、智能插座等設備之間的通訊。</li>
+</ul>
+</li>
+</ul>
+<h2 id="35ghz---6ghz-%E9%A0%BB%E6%AE%B5">3.5GHz - 6GHz 頻段</h2>
+<ul>
+<li>
+<p><strong>主要應用</strong>：5G NR (新無線標準)，固定無線接入 (FWA)，公共安全</p>
+</li>
+<li>
+<p><strong>特點</strong>：</p>
+<ul>
+<li><strong>高速與低延遲</strong>：這個頻段的頻寬較大，支援更高的資料傳輸速率與更低的延遲，適合5G網絡所需的性能。</li>
+<li><strong>較差的穿牆能力</strong>：相比低頻段，較高的頻率信號容易被牆壁或其他障礙物阻擋，距離也較短。</li>
+<li><strong>多樣化的應用</strong>：這個頻段被廣泛用於未來的 5G 網絡，能夠支援大規模物聯網 (IoT) 和高速資料傳輸。</li>
+</ul>
+</li>
+<li>
+<p><strong>典型應用場景</strong>：</p>
+<ul>
+<li><strong>5G NR</strong>：支援高數據傳輸速率與低延遲，適用於智慧城市、智能製造和增強現實 (AR)、虛擬現實 (VR) 等高頻寬需求應用。</li>
+<li><strong>固定無線接入 (FWA)</strong>：將寬帶服務提供給無法直接通過光纖或有線連接到網際網路的區域。</li>
+<li><strong>公共安全</strong>：如警察、消防等緊急通訊系統需要低延遲、穩定的連接。</li>
+</ul>
+</li>
+</ul>
+<h2 id="24ghz---60ghz-%E6%AF%AB%E7%B1%B3%E6%B3%A2-mmwave">24GHz - 60GHz (毫米波 mmWave)</h2>
+<ul>
+<li>
+<p><strong>主要應用</strong>：5G極高速資料傳輸、短距離高頻無線傳輸、車聯網等</p>
+</li>
+<li>
+<p><strong>特點</strong>：</p>
+<ul>
+<li><strong>極高的資料傳輸速率</strong>：毫米波支援極高的資料速率，遠超過 4G LTE 和 5G 的其他頻段，因此被用於需要大量資料傳輸的應用，如 4K/8K 影片串流。</li>
+<li><strong>短距離傳輸</strong>：由於高頻信號衰減快，因此其有效範圍較小，穿牆能力差，適合用於開闊或小範圍區域內的高速傳輸。
+高頻段使用挑戰：毫米波容易被雨、葉子或其他物體阻擋，因此需要更密集的基站來支援無線網路。</li>
+</ul>
+</li>
+<li>
+<p><strong>典型應用場景</strong>：</p>
+<ul>
+<li><strong>5G mmWave</strong>：提供極高的資料速度，適用於密集都市或大範圍公共場所的 5G 網路部署。
+車聯網 (V2X)：在自駕車和交通系統中進行超高速、低延遲的資料傳輸。</li>
+<li><strong>無線顯示（WiGig）</strong>：支持高解析度影片流，如無線 HDMI、虛擬現實 (VR)、擴增現實 (AR) 等應用。</li>
+</ul>
+</li>
+</ul>
+<h2 id="60ghz-wigig">60GHz WiGig</h2>
+<ul>
+<li>
+<p><strong>主要應用</strong>：無線 HDMI、虛擬現實、8K 影像流</p>
+</li>
+<li>
+<p><strong>特點</strong>：</p>
+<ul>
+<li><strong>極高的傳輸速率</strong>：60GHz 頻段支援更高的資料傳輸速率（可達數十 Gbps），適合無線傳輸大量資料（例如 8K 影像流）。</li>
+<li><strong>非常短的有效範圍</strong>：由於頻段特性，信號衰減快，穿牆能力幾乎沒有，因此此技術適用於短距離、同一房間內的應用。</li>
+<li><strong>對準性強</strong>：通常需要在同一空間內有精確的設備對準才能達到最佳性能。</li>
+</ul>
+</li>
+<li>
+<p><strong>典型應用場景</strong>：</p>
+<ul>
+<li><strong>無線 HDMI 傳輸</strong>：用於連接電視、投影儀等設備，實現高品質的影音傳輸。</li>
+<li><strong>虛擬現實 (VR)</strong>：提供高速無線傳輸，減少延遲，提升體驗。</li>
+<li><strong>8K 影像流</strong>：支持極高畫質的影像流傳輸，適合高清視頻或遊戲。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="%E6%9C%AA%E4%BE%86%E6%8A%80%E8%A1%93%E7%99%BC%E5%B1%95-%E8%B6%85-ghz-%E9%A0%BB%E6%AE%B5">未來技術發展 (超 GHz 頻段)</h2>
+<h3 id="100ghz-%E9%A0%BB%E6%AE%B5-%E5%A4%AA%E8%B5%AB%E8%8C%B2%E6%B3%A2%E6%AE%B5-thz">100GHz+ 頻段 (太赫茲波段, THz)</h3>
+<ul>
+<li>
+<p><strong>主要應用</strong>：未來 6G 網絡、高精度雷達、超高速資料傳輸等</p>
+</li>
+<li>
+<p><strong>特點</strong>：</p>
+<ul>
+<li><strong>非常高的傳輸速率</strong>：太赫茲波段可以提供比毫米波更高的資料傳輸速率，預計會成為未來超高速網絡的一部分。
+穿透性差：這個頻段的波長較短，穿透能力非常差，受到物體阻擋的影響很大。</li>
+<li><strong>廣泛的應用領域</strong>：除了 6G 網絡，太赫茲波段在高精度雷達、醫療影像、物質分析等領域也有潛力。</li>
+</ul>
+</li>
+<li>
+<p><strong>典型應用場景</strong>：</p>
+<ul>
+<li><strong>6G 網絡</strong>：6G 預計會使用太赫茲波段來支援超高速的資料傳輸和極低的延遲。</li>
+<li><strong>高精度雷達與成像技術</strong>：可用於車輛、航空和醫療領域，進行高精度監測與影像分析。</li>
+<li><strong>超高速資料傳輸</strong>：在未來的應用中，太赫茲波段有可能支援下一代極高頻寬和超低延遲的資料交換。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="%E6%AF%94%E8%BC%83router-vs-switch">比較：Router vs. Switch</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">功能/特性</th>
+<th style="text-align:left">Router (路由器)</th>
+<th style="text-align:left">Switch (交換機)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>主要用途</strong></td>
+<td style="text-align:left">連接內外網，分配 IP，管理流量</td>
+<td style="text-align:left">連接內部設備，交換資料</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>IP 分配 (DHCP)</strong></td>
+<td style="text-align:left"><span style="color:green;">✅</span> 支援，自動分配內部 IP</td>
+<td style="text-align:left"><span style="color:red;">🚫</span> 不支援，僅資料轉發</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>無線功能 (Wi-Fi)</strong></td>
+<td style="text-align:left"><span style="color:green;">✅</span> 常見內建</td>
+<td style="text-align:left"><span style="color:red;">🚫</span> 不支援</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>設備數量支援</strong></td>
+<td style="text-align:left">4~8 個 LAN 埠，適合小型網路</td>
+<td style="text-align:left">8+ 埠，支援更多設備</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>連外網</strong></td>
+<td style="text-align:left"><span style="color:green;">✅</span> 可以連到外網 (ISP 提供)</td>
+<td style="text-align:left"><span style="color:red;">🚫</span> 僅供內部資料交換</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>適用範圍</strong></td>
+<td style="text-align:left">家用/小型企業網路</td>
+<td style="text-align:left">中大型企業網路擴展</td>
+</tr>
+</tbody>
+</table>
+<h2 id="%E6%AF%94%E8%BC%83--router-vs-gateway">比較 : Router vs. Gateway</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">功能</th>
+<th style="text-align:left">Router (路由器)</th>
+<th style="text-align:left">Gateway (閘道器)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">主要用途</td>
+<td style="text-align:left">管理內部設備，連接到外網</td>
+<td style="text-align:left">網路出入口，連接不同網路</td>
+</tr>
+<tr>
+<td style="text-align:left">IP 分配</td>
+<td style="text-align:left">提供 DHCP，分配內部 IP</td>
+<td style="text-align:left">不一定分配 IP，依設備而定</td>
+</tr>
+<tr>
+<td style="text-align:left">家用常見？</td>
+<td style="text-align:left"><span style="color:green;">✅</span> 常見</td>
+<td style="text-align:left"><span style="color:red;">🚫</span>  少見 (多內建於路由器)</td>
+</tr>
+<tr>
+<td style="text-align:left">企業常見？</td>
+<td style="text-align:left"><span style="color:green;">✅</span> 使用 (和交換機配合)</td>
+<td style="text-align:left"><span style="color:green;">✅</span> 必備 (內建於防火牆等)</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ tex2jax: {inlineMath: [['$', '$']]}, messageStyle: "none" });</script>

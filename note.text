@@ -22,6 +22,14 @@ ipconfig
 外部ip
 nslookup myip.opendns.com resolver1.opendns.com
 
+快速測ip
+ping or ping -4
+
+網址mapip
+nslookup www.google.com.tw or nslookup -query=A www.google.com.tw
+
+檢查從本地主機到目的端之間經過的路由器(hop)
+tracert
 ----------------------------------------------------------------------------------------------------------------------------------------------
 
 分支管理

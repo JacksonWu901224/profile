@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Graph Canvas</title>
+  <link rel="stylesheet" href="../css/graph.css" />
+</head>
+<body>
+  <h1>Graph Canvas</h1>
+
+  <div class="controls">
+    <label><input type="radio" name="algo" value="bfs" checked> BFS</label>
+    <label><input type="radio" name="algo" value="astar"> A*</label>
+    <button id="regen">rebuild graph</button>
+    <button id="start">Start</button>
+    <label for="speed">velocity:</label>
+    <input id="speed" type="range" min="5" max="200" value="30" />
+    <span id="speedVal">30</span> ms
+  </div>
+
+  <canvas id="c" width="450" height="450" aria-label="Graph visualisation"></canvas>
+
+  <script src="../javascript/graph.js"></script>
+</body>
+</html>

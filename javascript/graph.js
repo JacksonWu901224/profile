@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     for(let r=0;r<rows;r++){
       for(let c=0;c<cols;c++){
         const x = c*cellW, y = r*cellH;
+        if ((r === start[0] && c === start[1]) || (r === goal[0] && c === goal[1])) continue;
         ctx.fillStyle = grid[r][c]===1?'#333':'#fff';
         ctx.fillRect(x,y,cellW,cellH);
         ctx.strokeRect(x,y,cellW,cellH);

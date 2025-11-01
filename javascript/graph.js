@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function neighbors(r,c){
     const res=[];
-    [[1,0],[-1,0],[0,1],[0,-1]].forEach(([dr,dc])=>{
+    [[1,0],[0,1],[-1,0],[0,-1]].forEach(([dr,dc])=>{
       const nr=r+dr,nc=c+dc;
       if(nr>=0 && nr<rows && nc>=0 && nc<cols && grid[nr][nc]===0) res.push([nr,nc]);
     });

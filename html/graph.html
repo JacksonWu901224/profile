@@ -12,12 +12,14 @@
 
   <div class="controls">
     <label><input type="radio" name="algo" value="bfs" checked> BFS</label>
+    <label><input type="radio" name="algo" value="dfs"> DFS</label>
     <label><input type="radio" name="algo" value="astar"> A*</label>
     <button id="regen">rebuild graph</button>
     <button id="start">Start</button>
     <label for="speed">velocity:</label>
     <input id="speed" type="range" min="5" max="200" value="30" />
     <span id="speedVal">30</span> ms
+    <span id="timeDisplay" class="time-box">time-consuming : 0.00s</span>
   </div>
 
   <canvas id="c" width="450" height="450" aria-label="Graph visualisation"></canvas>

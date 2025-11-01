@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function createGrid() {
     const g = Array.from({ length: rows }, () => Array(cols).fill(0));
-    for (let i = 0; i < 250; i++) {
+    for (let i = 0; i < 300; i++) {
       g[Math.floor(Math.random() * rows)][Math.floor(Math.random() * cols)] = 1;
     }
     return g;
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     visitedSet.forEach(k=>{
       const [r,c] = k.split(',').map(Number);
-      ctx.fillStyle='rgba(0, 106, 255, 0.5)';
+      ctx.fillStyle='rgba(0, 106, 254, 0.5)';
       ctx.fillRect(c*cellW,r*cellH,cellW,cellH);
     });
 
@@ -80,7 +80,40 @@ document.addEventListener('DOMContentLoaded', () => {
     return res;
   }
 
+  async function dfs() {
+    const startTime = performance.now(); // 開始計時
+    const stack = [[start[0], start[1]]]; // 用 stack
+    const parent = {};
+    const visited = new Set([start.join(',')]);
+    const frontier = new Set([start.join(',')]);
+    drawGrid(frontier, visited);
+
+    while (stack.length) {
+      const [r, c] = stack.pop(); // DFS 使用 pop
+      frontier.delete([r, c].join(','));
+      visited.add([r, c].join(','));
+      drawGrid(frontier, visited);
+      const currentTime = ((performance.now() - startTime)/1000).toFixed(2);
+      document.getElementById('timeDisplay').textContent = `time-consuming : ${currentTime} s`;
+      await new Promise(rp => setTimeout(rp, Number(speedInput.value)));
+
+      if (r === goal[0] && c === goal[1]) break;
+
+      for (const [nr, nc] of neighbors(r, c)) {
+        const key = [nr, nc].join(',');
+        if (!visited.has(key) && !frontier.has(key)) {
+          parent[key] = [r, c];
+          stack.push([nr, nc]); // DFS 推入 stack
+          frontier.add(key);
+        }
+      }
+    }
+    reconstructPath(parent);
+  }
+
+
   async function bfs(){
+    const startTime = performance.now(); // 開始計時
     const q=[[start[0],start[1]]];
     const parent={};
     const visited=new Set([start.join(',')]);
@@ -92,6 +125,8 @@ document.addEventListener('DOMContentLoaded', () => {
       frontier.delete([r,c].join(','));
       visited.add([r,c].join(','));
       drawGrid(frontier,visited);
+      const currentTime = ((performance.now() - startTime)/1000).toFixed(2);
+      document.getElementById('timeDisplay').textContent = `time-consuming : ${currentTime} s`;
       await new Promise(rp=>setTimeout(rp,Number(speedInput.value)));
       if(r===goal[0] && c===goal[1]) break;
       for(const [nr,nc] of neighbors(r,c)){
@@ -110,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return Math.abs(a[0]-b[0])+Math.abs(a[1]-b[1]);
   }
   async function astar(){
+    const startTime = performance.now(); // 開始計時
     const openSet=[[start[0],start[1]]];
     const parent={};
     const gScore={};
@@ -123,6 +159,8 @@ document.addEventListener('DOMContentLoaded', () => {
       frontier.delete([r,c].join(','));
       visited.add([r,c].join(','));
       drawGrid(frontier,visited);
+      const currentTime = ((performance.now() - startTime)/1000).toFixed(2);
+      document.getElementById('timeDisplay').textContent = `time-consuming : ${currentTime} s`;
       await new Promise(rp=>setTimeout(rp,Number(speedInput.value)));
       if(r===goal[0] && c===goal[1]) break;
       for(const [nr,nc] of neighbors(r,c)){
@@ -160,8 +198,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if(running) return;
     running = true;
     const algo=document.querySelector('input[name="algo"]:checked').value;
+    const startTime = performance.now(); // 記錄開始時間
     if(algo==='bfs') await bfs();
+    else if (algo==='dfs') await dfs();
     else if(algo==='astar') await astar();
+    const endTime = performance.now(); // 記錄結束時間
+    const elapsed = ((endTime - startTime)/ 1000).toFixed(2);
+    document.getElementById('timeDisplay').textContent = `time-consuming : ${elapsed} s`;
     running = false;
   }
 

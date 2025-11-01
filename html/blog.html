@@ -14,104 +14,192 @@
         <section>
             <div class="blog">
                 <h3>KNOW ABOUT ME</h3>
-            <hr>
-            <div style="display: flex; justify-content: center; margin-top: 20px;">
-            <table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse; text-align:center;">
-                <thead style="background-color:#f0f0f0;">
-                <tr>
-                    <th>狀況</th>
-                    <th>是否要查 Page Table(主記憶體)</th>
-                    <th>是否要取資料(主記憶體)</th>
-                    <th>總次數</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>TLB hit + cache hit</td>
-                    <td style="color:red;">❌</td>
-                    <td style="color:red;">❌</td>
-                    <td>0 次主記憶體存取(全cache命中)</td>
-                </tr>
-                <tr>
-                    <td>TLB hit + cache miss</td>
-                    <td style="color:red;">❌</td>
-                    <td style="color:green;">✅</td>
-                    <td>1 次(從 memory 取資料)</td>
-                </tr>
-                <tr>
-                    <td>TLB miss + cache hit</td>
-                    <td style="color:green;">✅</td>
-                    <td style="color:red;">❌</td>
-                    <td>1 次(查 page table)</td>
-                </tr>
-                <tr>
-                    <td>TLB miss + cache miss</td>
-                    <td style="color:green;">✅</td>
-                    <td style="color:green;">✅</td>
-                    <td>2 次(最糟情況)</td>
-                </tr>
-                </tbody>
-            </table>
+                <hr>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>狀況</th>
+                            <th>是否要查 Page Table(主記憶體)</th>
+                            <th>是否要取資料(主記憶體)</th>
+                            <th>總次數</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>TLB hit + cache hit</td>
+                            <td style="color:red;">❌</td>
+                            <td style="color:red;">❌</td>
+                            <td>0 次主記憶體存取(全cache命中)</td>
+                        </tr>
+                        <tr>
+                            <td>TLB hit + cache miss</td>
+                            <td style="color:red;">❌</td>
+                            <td style="color:green;">✅</td>
+                            <td>1 次(從 memory 取資料)</td>
+                        </tr>
+                        <tr>
+                            <td>TLB miss + cache hit</td>
+                            <td style="color:green;">✅</td>
+                            <td style="color:red;">❌</td>
+                            <td>1 次(查 page table)</td>
+                        </tr>
+                        <tr>
+                            <td>TLB miss + cache miss</td>
+                            <td style="color:green;">✅</td>
+                            <td style="color:green;">✅</td>
+                            <td>2 次(最糟情況)</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                    <hr>
+                        <h3>The comparison-based sorting algorithm on n data requires \(&Omega;(nlogn)\) time</h3>
+                        <h3>\(f(n)\)為polynomial-bounded\(\iff\) \(logf(n)=O(logn)\)</h3>
+                        <h3>\(log(n!)=&Theta;(nlogn)\)</h3>
+                        <h3>\(H(n)=1+1/2+1/3+1/4+...+1/n,&forall; n \in \mathbb{Z}^{+} , H(n)=&Theta;(logn)\)</h3>
+                    <hr>
+                        For two arbitrary <span style="color: blue">infinitely countable</span> sets A and B, both \(2^A\) and \(2^B\) are <span style="color: blue">uncountable</span>.
+                    <hr>
+                        <h4>Different types of distances used in ML</h4>
+                        <p><b>Minkowski distance:</b></p>
+                        <div>\[
+                        \left( \sum_{i=1}^{n} |x_i - y_i|^p \right)^{\frac{1}{p}}
+                        \]</div>
+
+                        <p><b>Euclidean distance:</b> (Minkowski distance → p is 2)</p>
+                        <div>\[
+                        \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2}
+                        \]</div>
+
+                        <p><b>Manhattan distance:</b> (Minkowski distance->p is 1)</p>
+                        <div>\[
+                        \sum_{i=1}^{n} |x_i - y_i|
+                        \]</div>
+
+                        <p><b>Chebyshev distance:</b> (Minkowski distance->p is &infin;)</p>
+                        <div>\[
+                        \lim_{p\to\infty} \left( \sum_{i=1}^{n} |x_i - y_i|^p \right)^{\frac{1}{p}}=\max_i |x_i - y_i|
+                        \]</div>
+
+                        <p><b>Hamming distance:</b></p>
+                        <div>\[
+                        \sum_{i=1}^{n} [x_i \neq y_i]
+                        \]</div>
+                    <hr>
+                        <h4>scalability interoperability sustainability</h4>
+                    <hr>
+                        <div style="display: inline-block; text-align: left;">
+                            基本上這世界上的問題可以分類為：<br>
+                            (1) Unsolvable Problem<br>
+                            (2) Intractable Problem<br>
+                            (3) NP-Problem<br>
+                            (4) P-Problem
+                        </div>
+                        <h4>若\(\text{A}&le;_p\text{B}\), 則\(\text{B}\)為polynomial-time solvable \(\implies \) \(\text{A}\)為polynomial-time solvable</h4>
+                        <h4>若\(&exist;\)一個\(\text{NP-complete}\)的問題為polynomial-time solvable, 則\(\text{P}&equals;\text{NP}\)</h4>
+                        <div style="display: inline-block; text-align: left;">
+                            <h4>NP-hard:\( \forall A \in \text{NP} \), \(\text{A}&le;_p\text{B}\), 則\(\text{B}\)為NP-hard</h4>
+                            <h4>NP-complete:若\(A \in \text{NP} \)且\(\text{A}\)為NP-hard, 則\(\text{A}\)為NP-complete</h4>
+                        </div>
+                        <br>
+                        <span style="white-space: pre;"><h3>(a)若\(\text{P}&ne;\text{NP}\)                                                           (b)若\(\text{P}&equals;\text{NP}\)</h3></span>
+                        <br>
+                        <img src="../photo/P_np_np-complete_np-hard..png">
+                        <h4><span style="color: blue">Any problem in P can be reduced to SAT in polynomial time.</span></h4>
+                        <h4><span style="color: blue">If SAT has a polynomial time algorithm, then P =NP.</span></h4>
+                        <h4><span style="color: blue">SAT is NP-complete.</span></h4>
             </div>
-            <hr>
-                <h3>The comparison-based sorting algorithm on n data requires \(&Omega;(nlogn)\) time</h3>
-                <h3>\(f(n)\)為polynomial-bounded\(\iff\) \(logf(n)=O(logn)\)</h3>
-                <h3>\(log(n!)=&Theta;(nlogn)\)</h3>
-                <h3>\(H(n)=1+1/2+1/3+1/4+...+1/n,&forall; n \in \mathbb{Z}^{+} , H(n)=&Theta;(logn)\)</h3>
-            <hr>
-                For two arbitrary <span style="color: blue">infinitely countable</span> sets A and B, both \(2^A\) and \(2^B\) are <span style="color: blue">uncountable</span>.
-            <hr>
-                <h4>Different types of distances used in ML</h4>
-                <p><b>Minkowski distance:</b></p>
-                <div>\[
-                \left( \sum_{i=1}^{n} |x_i - y_i|^p \right)^{\frac{1}{p}}
-                \]</div>
-
-                <p><b>Euclidean distance:</b> (Minkowski distance → p is 2)</p>
-                <div>\[
-                \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2}
-                \]</div>
-
-                <p><b>Manhattan distance:</b> (Minkowski distance->p is 1)</p>
-                <div>\[
-                \sum_{i=1}^{n} |x_i - y_i|
-                \]</div>
-
-                <p><b>Chebyshev distance:</b> (Minkowski distance->p is &infin;)</p>
-                <div>\[
-                \lim_{p\to\infty} \left( \sum_{i=1}^{n} |x_i - y_i|^p \right)^{\frac{1}{p}}=\max_i |x_i - y_i|
-                \]</div>
-
-                <p><b>Hamming distance:</b></p>
-                <div>\[
-                \sum_{i=1}^{n} [x_i \neq y_i]
-                \]</div>
-            <hr>
-                <h4>scalability interoperability sustainability</h4>
-            <hr>
-                <div style="display: inline-block; text-align: left;">
-                    基本上這世界上的問題可以分類為：<br>
-                    (1) Unsolvable Problem<br>
-                    (2) Intractable Problem<br>
-                    (3) NP-Problem<br>
-                    (4) P-Problem
+                <div class="Karp21">
+                    <img src="../photo/Karp21NPC.png" width="900">
                 </div>
-                <h4>若\(\text{A}&le;_p\text{B}\), 則\(\text{B}\)為polynomial-time solvable \(\implies \) \(\text{A}\)為polynomial-time solvable</h4>
-                <h4>若\(&exist;\)一個\(\text{NP-complete}\)的問題為polynomial-time solvable, 則\(\text{P}&equals;\text{NP}\)</h4>
-                <div style="display: inline-block; text-align: left;">
-                    <h4>NP-hard:\( \forall A \in \text{NP} \), \(\text{A}&le;_p\text{B}\), 則\(\text{B}\)為NP-hard</h4>
-                    <h4>NP-complete:若\(A \in \text{NP} \)且\(\text{A}\)為NP-hard, 則\(\text{A}\)為NP-complete</h4>
-                </div>
-                <br>
-                <span style="white-space: pre;"><h3>(a)若\(\text{P}&ne;\text{NP}\)                                                           (b)若\(\text{P}&equals;\text{NP}\)</h3></span>
-                <br>
-                <img src="../photo/P_np_np-complete_np-hard..png">
-                <h4><span style="color: blue">Any problem in P can be reduced to SAT in polynomial time.</span></h4>
-                <h4><span style="color: blue">If SAT has a polynomial time algorithm, then P =NP.</span></h4>
-                <h4><span style="color: blue">SAT is NP-complete.</span></h4>
-            </div>
-            <div class="Karp21">
-                <img src="../photo/Karp21NPC.png" width="900">
+                <hr>
+                <h2 style="text-align:center;">C/C++ operator precedence</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>優先順序</th>
+                            <th>運算子</th>
+                            <th>關聯性</th>
+                            <th>說明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>
+                            <span class="op">()</span>
+                            <span class="op">[]</span>
+                            <span class="op">a->b</span>
+                            <span class="op">a.b</span>
+                            <span class="op">a++</span>
+                            <span class="op">a--</span></td><td>左至右</td><td>括號、陣列、成員存取、遞增、遞減</td></tr>
+                        <tr><td>2</td><td>
+                            <span class="op">!a</span>、
+                            <span class="op">~a</span>、
+                            <span class="op">+a</span>
+                            <span class="op">-a</span>、
+                            <span class="op">*a</span>
+                            <span class="op">&amp;a</span>、
+                            <span class="op">(type)a</span>、
+                            <span class="op">sizeof</span>
+                        </td><td>右至左</td><td>邏輯非、位元非、正負號、指標解參考/取址、型態轉換、sizeof</td></tr>
+                        <tr><td>3</td><td>
+                            <span class="op">a*b</span>
+                            <span class="op">a/b</span>
+                            <span class="op">a%b</span>
+                        </td><td>左至右</td><td>乘法、除法、餘數</td></tr>
+                        <tr><td>4</td><td>
+                            <span class="op">a+b</span>
+                            <span class="op">a-b</span>
+                        </td><td>左至右</td><td>加法、減法</td></tr>
+                        <tr><td>5</td><td>
+                            <span class="op">a&lt;&lt;b</span>
+                            <span class="op">a&gt;&gt;b</span>
+                        </td><td>左至右</td><td>左移、右移</td></tr>
+                        <tr><td>6</td><td>
+                            <span class="op">a&lt;b</span>
+                            <span class="op">a&lt;=b</span>
+                            <span class="op">a&gt;b</span>
+                            <span class="op">a&gt;=b</span>
+                        </td><td>左至右</td><td>小於、小於或等於、大於、大於或等於</td></tr>
+                        <tr><td>7</td><td>
+                            <span class="op">a==b</span>
+                            <span class="op">a!=b</span>
+                        </td><td>左至右</td><td>等於、不等於</td></tr>
+                        <tr><td>8</td><td>
+                            <span class="op">a&amp;b</span>
+                        </td><td>左至右</td><td>bitwise AND</td></tr>
+                        <tr><td>9</td><td>
+                            <span class="op">a^b</span>
+                        </td><td>左至右</td><td>bitwise XOR</td></tr>
+                        <tr><td>10</td><td>
+                            <span class="op">a|b</span>
+                        </td><td>左至右</td><td>bitwise OR</td></tr>
+                        <tr><td>11</td><td>
+                            <span class="op">a&amp;&amp;b</span>
+                        </td><td>左至右</td><td>logical AND</td></tr>
+                        <tr><td>12</td><td>
+                            <span class="op">a||b</span>
+                        </td><td>左至右</td><td>logical OR</td></tr>
+                        <tr><td>13</td><td>
+                            <span class="op">a ? b : c</span>
+                        </td><td>右至左</td><td>條件運算子</td></tr>
+                        <tr><td>14</td><td>
+                            <span class="op">a=b</span>
+                            <span class="op">a+=b</span>
+                            <span class="op">a-=b</span>
+                            <span class="op">a*=b</span>
+                            <span class="op">a/=b</span>
+                            <span class="op">a%=b</span>
+                            <span class="op">a&amp;=b</span>
+                            <span class="op">a^=b</span>
+                            <span class="op">a|=b</span>
+                        </td><td>右至左</td><td>賦值、複合賦值</td></tr>
+                        <tr><td>15</td><td>
+                            <span class="op">a, b</span>
+                        </td><td>左至右</td><td>逗號運算子</td></tr>
+                    </tbody>
+                </table>
             </div>
         </section>
     </body>

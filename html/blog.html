@@ -102,8 +102,8 @@
                         <p style="font-weight: bold;">3.模式切換 (mode bit switch)</p> 
                         &#9679; CPU 將模式位元 (Mode Bit) 設為 <span style="color:green">Kernel Mode</span>。<br> 
                         &#9679; 系統進入核心模式後, CPU 可存取所有受保護的資源與硬體。 
-                        <p style="font-weight: bold;">4.執行服務常式 (Interrupt/Trap Service Routine)</p>
-                        &#9679; 服務常式是作業系統的一部分。<br>
+                        <p style="font-weight: bold;">4.執行服務程式 (Interrupt/Trap Service Routine)</p>
+                        &#9679; Service routine是作業系統的一部分。<br>
                         &#9679; 核心根據中斷號碼或陷阱代號 (Trap ID) 判斷是何種事件並執行對應的服務。
                         <p style="font-weight: bold;">5.保存與恢復狀態 (Save and Restore Context)</p>
                         &#9679; 核心會先儲存當前的 CPU 狀態（暫存器、程式計數器等），以便事件處理結束後能恢復原執行狀態。<br>
@@ -124,7 +124,7 @@
                         <p style="font-weight: bold;">3.模式切換 (mode bit switch)</p>
                         &#9679; CPU 將 Mode Bit 設為 <span style="color:green">Kernel Mode</span>。<br>
                         &#9679; 現在 CPU 擁有完整的系統資源存取權限。
-                        <p style="font-weight: bold;">4.執行系統呼叫服務常式 (System Call Service Routine)</p>
+                        <p style="font-weight: bold;">4.執行系統呼叫服務程式 (System Call Service Routine)</p>
                         &#9679; Service routine 是作業系統的一部分。<br>
                         &#9679; Kernel 檢查the interrupting instruction(or System Call ID) to determine what system call has occured.
                         <p style="font-weight: bold;">5.解析與檢查參數 (Parameter Passing)</p>

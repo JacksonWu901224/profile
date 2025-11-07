@@ -100,7 +100,7 @@
                         <p style="font-weight: bold;">2.控制權轉移 (control transfer)</p> 
                         CPU 透過中斷向量表 (Interrupt Vector Table) 或陷阱向量表 (Trap Vector)，跳轉到作業系統對應的中斷／陷阱服務常式 (Service Routine)。
                         <p style="font-weight: bold;">3.模式切換 (mode bit switch)</p> 
-                        &#9679; CPU 將模式位元 (Mode Bit) 設為 Kernel Mode。<br> 
+                        &#9679; CPU 將模式位元 (Mode Bit) 設為 <span style="color:green">Kernel Mode</span>。<br> 
                         &#9679; 系統進入核心模式後, CPU 可存取所有受保護的資源與硬體。 
                         <p style="font-weight: bold;">4.執行服務常式 (Interrupt/Trap Service Routine)</p>
                         &#9679; 服務常式是作業系統的一部分。<br>
@@ -114,7 +114,7 @@
                         &#9679; 若為例外 (Exception) → 採取錯誤處理機制（例如除以零錯誤、記憶體違例等）。
                         <p style="font-weight: bold;">7.返回使用者程式 (Return to User Program)</p>
                         &#9679; 處理完成後，控制權傳回被中斷或陷阱發生前的程式位置。<br>
-                        &#9679; CPU 模式切回 User Mode,恢復正常程式執行。<br> 
+                        &#9679; CPU 模式切回 <span style="color:green">User Mode</span>,恢復正常程式執行。<br> 
                         <br>
                         <div style="font-weight: 900; font-size: 20px; color: blue">system call flow :</div>
                         <p style="font-weight: bold;">1.使用者程式發出 <span style="color:red">Trap</span> 指令(issue a trap)</p>
@@ -122,20 +122,20 @@
                         <p style="font-weight: bold;">2.控制權轉移 (control transfer)</p>
                         CPU 透過 Interrupt Vector 或 System Call Vector,跳轉至作業系統對應的 Service Routine(服務常式)。
                         <p style="font-weight: bold;">3.模式切換 (mode bit switch)</p>
-                        &#9679; CPU 將 Mode Bit 設為 Kernel Mode。<br>
+                        &#9679; CPU 將 Mode Bit 設為 <span style="color:green">Kernel Mode</span>。<br>
                         &#9679; 現在 CPU 擁有完整的系統資源存取權限。
                         <p style="font-weight: bold;">4.執行系統呼叫服務常式 (System Call Service Routine)</p>
                         &#9679; Service routine 是作業系統的一部分。<br>
                         &#9679; Kernel 檢查the interrupting instruction(or System Call ID) to determine what system call has occured.
                         <p style="font-weight: bold;">5.解析與檢查參數 (Parameter Passing)</p>
-                        系統呼叫參數 (system call parameters) 說明使用者想請求的服務。<br>
-                        參數傳遞方式可能有: 暫存器 (registers), 堆疊 (stack), memory(以指標傳遞給核心)
+                        &#9679; 系統呼叫參數 (system call parameters) 說明使用者想請求的服務。<br>
+                        &#9679; 參數傳遞方式可能有: registers, stack, memory(以指標傳遞給核心)
                         <p style="font-weight: bold;">6.kernel檢查請求是否合法</p>
-                        若參數正確 → 執行請求的服務。<br>
-                        若不合法 → 傳回錯誤碼給使用者程式。(例如「Permission Denied」或「Invalid Argument」)
+                        &#9679; 若參數正確 → 執行請求的服務。<br>
+                        &#9679; 若不合法 → 傳回錯誤碼給使用者程式。(例如「Permission Denied」或「Invalid Argument」)
                         <p style="font-weight: bold;">7.完成服務後返回</p>
-                        kernel完成系統呼叫的動作後, 將控制權 (control) 傳回到「系統呼叫指令的下一條指令」。<br>
-                        模式切回 User Mode,繼續執行使用者程式。
+                        &#9679; kernel完成系統呼叫的動作後, 將控制權 (control) 傳回到「系統呼叫指令的下一條指令」。<br>
+                        &#9679; 模式切回 <span style="color:green">User Mode</span>,繼續執行使用者程式。
                     </div>
                     <hr>
                         <h3>The comparison-based sorting algorithm on n data requires \(&Omega;(nlogn)\) time</h3>

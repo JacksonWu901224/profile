@@ -55,6 +55,88 @@
                         </tbody>
                     </table>
                 </div>
+                <br>
+                <br>
+                <div class="table-container">
+                    <table> 
+                        <thead>
+                            <tr>
+                                <th>類型</th>
+                                <th>觸發來源</th>
+                                <th>性質</th>
+                                <th>目的</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Interrupt(中斷)</strong></td>
+                                <td>由 <strong>硬體裝置</strong> 或 <strong>外部事件</strong> 觸發</td>
+                                <td><strong>非同步 (asynchronous)</strong></td>
+                                <td>告訴 CPU 某件外部事件需要立即處理，如鍵盤輸入、磁碟 I/O 完成</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Trap(陷阱) / System Call(系統呼叫)</strong></td>
+                                <td>由 <strong>使用者程式</strong> 主動執行軟體指令觸發</td>
+                                <td><strong>同步 (synchronous)</strong></td>
+                                <td>讓使用者程式請求作業系統服務(如開檔、寫檔、分配記憶體)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                    <br>
+                    <div style="display: inline-block; font-family: Arial, sans-serif; line-height: 1.3; border: 2px solid #333; padding: 15px; border-radius: 8px; 
+                    background-color: #f9f9f9; width: fit-content;">
+                        <p><strong>Interrupt</strong> ──► 硬體事件觸發 → 進入核心處理 → 回到使用者程式</p>
+                        <p><strong>Trap</strong> ──► 軟體事件觸發 → 進入核心處理 → 回到使用者程式</p>
+                        <p>└── <strong>System Call</strong> = 使用者主動呼叫作業系統服務的 Trap</p>
+                    </div>
+                    <br>
+                    <br>
+                    <div style="display: inline-block; text-align: left; font-size: 15px;border: 2px solid #333;border-radius: 8px;background-color: #f9f9f9; line-height: 1;
+                                padding: 10px; "> 
+                        <div style="font-weight: 900; font-size: 20px; color: red">trap or interrupt flow :</div> 
+                        <p style="font-weight: bold;">1.事件發生 (trap or interrupt issued)</p> 
+                        → 當使用者程式執行異常、發出系統呼叫 (trap)，或外部裝置產生中斷 (interrupt) 時，會觸發此流程。 
+                        <p style="font-weight: bold;">2.控制權轉移 (control transfer)</p> 
+                        CPU 透過中斷向量表 (Interrupt Vector Table) 或陷阱向量表 (Trap Vector)，跳轉到作業系統對應的中斷／陷阱服務常式 (Service Routine)。
+                        <p style="font-weight: bold;">3.模式切換 (mode bit switch)</p> 
+                        &#9679; CPU 將模式位元 (Mode Bit) 設為 Kernel Mode。<br> 
+                        &#9679; 系統進入核心模式後, CPU 可存取所有受保護的資源與硬體。 
+                        <p style="font-weight: bold;">4.執行服務常式 (Interrupt/Trap Service Routine)</p>
+                        &#9679; 服務常式是作業系統的一部分。<br>
+                        &#9679; 核心根據中斷號碼或陷阱代號 (Trap ID) 判斷是何種事件並執行對應的服務。
+                        <p style="font-weight: bold;">5.保存與恢復狀態 (Save and Restore Context)</p>
+                        &#9679; 核心會先儲存當前的 CPU 狀態（暫存器、程式計數器等），以便事件處理結束後能恢復原執行狀態。<br>
+                        &#9679; 事件處理完成後，核心會將先前保存的狀態恢復。
+                        <p style="font-weight: bold;">6.執行相應的服務或例外處理 (Service or Exception Handling)</p>
+                        &#9679; 若為系統呼叫 → 執行對應的核心服務。<br>
+                        &#9679; 若為硬體中斷 → 讀取裝置狀態或完成 I/O 處理。<br>
+                        &#9679; 若為例外 (Exception) → 採取錯誤處理機制（例如除以零錯誤、記憶體違例等）。
+                        <p style="font-weight: bold;">7.返回使用者程式 (Return to User Program)</p>
+                        &#9679; 處理完成後，控制權傳回被中斷或陷阱發生前的程式位置。<br>
+                        &#9679; CPU 模式切回 User Mode,恢復正常程式執行。<br> 
+                        <br>
+                        <div style="font-weight: 900; font-size: 20px; color: blue">system call flow :</div>
+                        <p style="font-weight: bold;">1.使用者程式發出 <span style="color:red">Trap</span> 指令(issue a trap)</p>
+                        → 用來「呼叫 (invoke)」系統呼叫。
+                        <p style="font-weight: bold;">2.控制權轉移 (control transfer)</p>
+                        CPU 透過 Interrupt Vector 或 System Call Vector,跳轉至作業系統對應的 Service Routine(服務常式)。
+                        <p style="font-weight: bold;">3.模式切換 (mode bit switch)</p>
+                        &#9679; CPU 將 Mode Bit 設為 Kernel Mode。<br>
+                        &#9679; 現在 CPU 擁有完整的系統資源存取權限。
+                        <p style="font-weight: bold;">4.執行系統呼叫服務常式 (System Call Service Routine)</p>
+                        &#9679; Service routine 是作業系統的一部分。<br>
+                        &#9679; Kernel 檢查the interrupting instruction(or System Call ID) to determine what system call has occured.
+                        <p style="font-weight: bold;">5.解析與檢查參數 (Parameter Passing)</p>
+                        系統呼叫參數 (system call parameters) 說明使用者想請求的服務。<br>
+                        參數傳遞方式可能有: 暫存器 (registers), 堆疊 (stack), memory(以指標傳遞給核心)
+                        <p style="font-weight: bold;">6.kernel檢查請求是否合法</p>
+                        若參數正確 → 執行請求的服務。<br>
+                        若不合法 → 傳回錯誤碼給使用者程式。(例如「Permission Denied」或「Invalid Argument」)
+                        <p style="font-weight: bold;">7.完成服務後返回</p>
+                        kernel完成系統呼叫的動作後, 將控制權 (control) 傳回到「系統呼叫指令的下一條指令」。<br>
+                        模式切回 User Mode,繼續執行使用者程式。
+                    </div>
                     <hr>
                         <h3>The comparison-based sorting algorithm on n data requires \(&Omega;(nlogn)\) time</h3>
                         <h3>\(f(n)\)為polynomial-bounded\(\iff\) \(logf(n)=O(logn)\)</h3>
@@ -159,12 +241,13 @@
                         <h4><span style="color: blue">Any problem in P can be reduced to SAT in polynomial time.</span></h4>
                         <h4><span style="color: blue">If SAT has a polynomial time algorithm, then P =NP.</span></h4>
                         <h4><span style="color: blue">SAT is NP-complete.</span></h4>
-            </div>
+            
                 <div class="Karp21">
                     <img src="../photo/Karp21NPC.png" width="900">
                 </div>
                 <hr>
                 <h2 style="text-align:center;">C/C++ operator precedence</h2>
+            </div>
             <div class="table-container">
                 <table>
                     <thead>

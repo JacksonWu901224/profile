@@ -16,6 +16,8 @@
                 <br>
                 <span style="text-decoration: underline;">In general, <span style="color:blue">hash table</span></span> (Suppose that the size of the hash table is much adequately larger than the maximum number of possible entries. Therefore, very few data collision occurs.)
                 <span style="text-decoration: underline;">is the most commonly used one for constructing a symbol table of a compiler.</span>
+                <br>
+                Memoization是一種優化技術,透過將函式執行後的結果暫存起來(快取)，當下次再次以相同參數呼叫時,就能直接從快取中提取結果,而無需重新計算,藉此提升程式執行速度。
                 <hr>
                 <div class="table-container">
                     <table>
@@ -222,6 +224,36 @@
                     <hr>
                         <h4>scalability interoperability sustainability</h4>
                     <hr>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>類型</th>
+                                <th>圖的性質</th>
+                                <th>主要演算法</th>
+                                <th>找到的東西</th>
+                                <th>時間複雜度</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><strong>SCC(Strongly Connected Components)</strong></td>
+                                <td><strong>有向圖 (Directed Graph)</strong></td>
+                                <td><strong>Kosaraju's Algorithm</strong>、<strong>Tarjan's SCC Algorithm</strong></td>
+                                <td>強連通分量</td>
+                                <td class="mono">O(V + E)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>BCC(Biconnected Components)</strong></td>
+                                <td><strong>無向圖 (Undirected Graph)</strong></td>
+                                <td><strong>Tarjan's BCC Algorithm</strong></td>
+                                <td>雙連通分量(邊或點)</td>
+                                <td class="mono">O(V + E)</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <hr>
                         <div style="display: inline-block; text-align: left;">
                             基本上這世界上的問題可以分類為：<br>
                             (1) Unsolvable Problem<br>
@@ -246,7 +278,7 @@
                 <div class="Karp21">
                     <img src="../photo/Karp21NPC.png" width="900">
                 </div>
-                <hr>
+            <hr>
                 <h2 style="text-align:center;">C/C++ operator precedence</h2>
             </div>
             <div class="table-container">

@@ -19,6 +19,41 @@
                 <br>
                 Memoization是一種優化技術,透過將函式執行後的結果暫存起來(快取)，當下次再次以相同參數呼叫時,就能直接從快取中提取結果,而無需重新計算,藉此提升程式執行速度。
                 <hr>
+                <h2 style="text-align:center;">Multilevel paging: 假設每個 page table 剛好佔一個 page</h2>
+                <h3 style="text-align:center;text-decoration: underline;">「每個 page table 剛好佔一個 page」的設計，使得記憶體配置、位址切割、硬體查表與效能實作都能保持規則、對齊、且高效。</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                            <th>原因</th>
+                            <th>說明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <td><strong>1️⃣ 管理方便</strong></td>
+                            <td>作業系統配置實體記憶體時以「頁 (page)」為最小單位。若每個頁表剛好佔一頁，則建立、釋放與置換都能以整頁為單位進行，管理簡單且不浪費空間。</td>
+                            </tr>
+                            <tr>
+                            <td><strong>2️⃣ 位址切割整齊</strong></td>
+                            <td>若每頁表剛好一頁，則「每層索引 bits」=log₂(頁內可放的表項數)。這讓虛擬位址可整齊分為：<br/>‧ 第1層索引 bits<br/>‧ 第2層索引 bits<br/>‧ offset bits</td>
+                            </tr>
+                            <tr>
+                            <td><strong>3️⃣ 查表邏輯簡化</strong></td>
+                            <td>每層頁表的每個表項剛好對應下一層page table的一個「整頁起始位址」。硬體 (MMU) 查表時不需考慮跨頁問題。</td>
+                            </tr>
+                            <tr>
+                            <td><strong>4️⃣ 對齊整潔 (alignment)</strong></td>
+                            <td>所有page table都與實體記憶體的frame邊界對齊，運算中只需簡單位元偏移計算。</td>
+                            </tr>
+                            <tr>
+                            <td><strong>5️⃣ 效能與硬體實作簡化</strong></td>
+                            <td>若page table可跨頁，硬體必須處理跨page邊界，邏輯與記憶體取用會更複雜、速度更慢。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
                 <div class="table-container">
                     <table>
                         <thead>

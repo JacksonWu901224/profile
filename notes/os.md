@@ -60,7 +60,7 @@
 
 ## Real-Time system scheduling
 
-若有Priority Inversion,用Priorify Inheritance解決
+若有Priority Inversion,用Priority Inheritance解決
 
 - Hard real-time(preemptive kernel)
   - Rate-Monotonic scheduling

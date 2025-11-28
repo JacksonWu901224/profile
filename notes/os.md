@@ -6,7 +6,7 @@
 
 # CH4 Process Management, Thread Management
 
-## Process
+## <font color="blue">Process</font>
 
 ## process state diagram
 
@@ -68,7 +68,7 @@
 - Soft real-time(preemptive kernel)
   - 不提供aging
 
-## Threads
+## <font color="blue">Threads</font>
 
 - private
   - program counter

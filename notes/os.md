@@ -160,7 +160,7 @@
   - **Shared Memory**
   - **Message Passing**
 
-## Shared Memory
+## **Shared Memory**
 
 - Race Condition problem
   - several processes access and manipulate the same data concurrently and the outcome of the execution depends on the particular order in which the access takes place.
@@ -198,7 +198,7 @@
         - 非C.S. design
           - disable interrupt
 
-- peterson solution
+- **peterson solution**
 
     ```c
     Pi                              Pj
@@ -382,7 +382,45 @@
 
 - system 必須滿足確保processes make progress during their execution life cycle
 
-## Message Passing IPC
+## **Message Passing IPC**
+
+- **無須**共享相同的位址空間,在分散式系統中特別有用.
+- 兩個processes要溝通,步驟如下:
+  - 建立communication link
+  - messages 相互傳輸
+  - 傳輸完畢, release communication link
+- OS提供至少兩種system calls
+  - send(message)
+  - receive(message)
+- messages sent by a process can be either **fixed** or **variable** in size.
+
+- message passing
+  - direct communication
+    - symmetric
+      - 收送雙方皆須相互指名對方process ID才能建立通訊鏈結
+        - send(Q, message)
+        - receive(P, message)
+    - asymmetric(跟e-mail很像)
+      - 只有sender需指名recipient的process ID
+        - send(Q, message)
+        - receive(id, message)
+  - indirect communication
+    - 收送雙方是透過共享的mailbox來溝通, each mailbox有自己獨一無二的ID
+      - send(mailbox, message)
+      - receive(mailbox, message)
+- synchronization
+  - message passing 可以是blocking(synchronous) or nonblocking(asynchronous)
+    - Blocking send
+    - Nonblocking send
+    - Blocking receive
+    - Nonblocking receive
+  - 如果收送雙方皆是採用Blocking_send()即blocking_receive(),則此同步模式叫:rendezvous
+- Buffering(message queue's size)
+  - zero capacity
+    - also called rendezvous
+  - bounded capacity
+  - unbounded capacity
+    - the sender doesn't have to be blocked
 
 # CH7 Main Memory
 

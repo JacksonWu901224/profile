@@ -142,7 +142,247 @@
     - abort one process at a time until the deadlock cycle is eliminated(盲目地砍一個)
   - resource preemption
 
-# CH6
+# CH6 Process Synchronization, IPC(InterProcess Communication)
+
+- synchronization: process因某些事情之發生 or 不發生,而被迫停頓,要等其他process do something 之後,才可往下進行.
+
+- 執行中程式可有兩種型態:
+  - independent processes
+    - 我的結果不會影響你,你的結果不會影響我
+  - cooperation processes
+    - 有某種程度的資訊交換
+    - 允許process cooperation之理由
+      - information sharing
+      - computation speedup
+      - modularity
+
+- 2 fundamental models of IPC
+  - **Shared Memory**
+  - **Message Passing**
+
+## Shared Memory
+
+- Race Condition problem
+  - several processes access and manipulate the same data concurrently and the outcome of the execution depends on the particular order in which the access takes place.
+  - resolve race condition problem 2 strategy
+    - **disable interrupt**
+    - **critical section design**
+      - 每個process內,access shared data之程式碼片段稱為critical section
+      - c.s.須滿足3性質
+        - mutual exclusion
+        - progress
+        - bounded waiting
+      - critical section是要設計Entry section以及Exit section
+
+      ```c
+      while(true){
+               Entry section;
+               C.S.
+               Exit sectin;
+               R.S.   
+           }
+      ```
+
+      - 程式語言level
+        - monitor
+      - OS SW tools(sys. call)level
+        - mutex lock,semaphore
+      - 基礎
+        - C.S. design
+          - SW solution
+            - peterson solution
+          - HW support
+            - memory barriers
+            - test&set(&lock)
+            - compare&set(&lock,0,1)
+        - 非C.S. design
+          - disable interrupt
+
+- peterson solution
+
+    ```c
+    Pi                              Pj
+    while(true){                    while(true){
+      flag[i]=true;/*表明有意*/      flag[j]=true;/*表明有意*/
+      turn=j;/*禮讓對方*/            turn=i;/*禮讓對方*/ 
+      while(flag[j] && turn==j);    while(flag[i] && turn==i);
+      /*當對方有意且權杖在對方身上,則我等 */    /*當對方有意且權杖在對方身上,則我等 */
+      C.S.                           C.S.
+      flag[i]=false;/*手放下*/       flag[j]=false;/*手放下*/
+      R.S.                           R.S.
+    }                               }
+    ```
+
+- **memory barriers**
+
+    ```c
+    Pi
+    while(true){
+      turn=j;/*禮讓對方*/
+      memory_barrier();
+      flag[i]=true;/*表明有意*/
+      C.S.
+      flag[i]=false;/*手放下*/
+      R.S.
+    }
+    ```
+
+- **test&set(&lock),compare&set(&lock,0,1)**
+
+  - <font color="blue">是CPU特殊指令</font>
+
+    ```c
+    boolean test_and_set(boolean *target){
+      boolean ret=*target;
+      *target=false;
+      return ret;
+    }
+    ```
+
+    ```c
+    int CAS(int *value, int expected, int new_value){
+      int temp=*value;
+      if(*value==expected)
+        *value=new_value;
+      return temp;
+    }
+    ```
+
+  - test&set,CAS用於critical section problem
+  
+    ```c
+    while(true){
+      wairing[i]=true;
+      key=true;
+      while(waiting[i] && key)
+        key=test_and_set(&lock); or key=CAS(&lock,0,1);//決一死戰,誰先搶到,誰先win
+      waiting[i]=false;//Pi不用等了,可進入C.S.
+      C.S.
+      j=(i+1)%n;
+      while(j!=i && !waiging[j])//找出下一個想進入C.S.之processj
+        j=(j+1)%n;
+      if(j==i)//此時無人想進入C.S.
+        lock=false;//鑰匙掛高空,等人去搶
+      else//Pj像進入C.S.
+        waiting[j]=false;//Pj不用等了,可進入C.S.,此時lock為true
+      R.S.
+    }
+    ```
+
+- **mutex lock**
+
+    ```c
+      while(true){
+        acquire lock;
+        C.S.
+        release lock;
+        R.S.
+      }
+     ```
+
+  - a mutex lock透過boolean variable: available,用以指示the lock is available or not.
+  - 提供兩個atomic operations:
+    - acquire()
+
+      ```c
+      acquire(){
+        while(!available);//if lock被取走就卡
+        available=false;//lock被Pi取走
+      }
+      ```
+
+    - release()
+
+      ```c
+      release(){
+        available=true;
+      }
+      ```
+
+  - 利用cpu硬體指令完成mutex lock
+
+    ```c
+    typedef struct{
+      int available;//0->lock is available,1->lock is unavailable
+    }lock;
+
+    lock mutex;
+    //使用CAS製作acquire
+    void acquire(lock *mutex){
+      while(CAS(&mutex->available,0,1)!=0);
+      return;
+    }
+    //使用test_and_set製作acquire
+    void acquire(lock *mutex){
+      while(test_and_set(&mutex->available)!=0);
+      return;
+    }
+    void release(lock *mutex){
+      mutex->available=0;
+      return;
+    }
+    ```
+
+- **semaphore**
+  - semaphore is a data type based on int
+  - semaphore只能透過兩個atomic operation來存取
+    - wait() or P()
+
+      ```c
+      wait(s){
+        while(s<=0);
+        s--;
+      }
+      ```
+
+    - signal() or V()
+
+      ```cpp
+      signal(s){
+        s++;
+      }
+      ```
+
+  - 用於C.S. design
+  
+      ```c
+      semaphore mutex=1;
+      Pi
+      wait(mutex);
+      C.S.
+      signale(mutex);
+      R.S.
+      ```
+
+- **monitor**
+  - a monitor type is  a ADT(Abstract Data Type),想像成class,包含三部分
+    - 共享變數宣告
+    - a set of programmer-defined operations
+    - 初始區
+  - monitor本身已保證了互斥性質
+    - the monitor construct ensures that only **one** procss at a time is **active** within the monitor
+      - 如此保證了monitor內的shared variables不會發生race condition problem
+    - 代表programmer無需煩惱race condition problem,只需專心解決synchronization
+  - condition變數
+    - 為了讓programmer可以用monitor解決synchronization problem,需提供一種特殊形態變數,即condition type variables
+    - 宣告格式:
+  
+      ```c
+      condition x,y;
+      ```
+
+    - 此變數只有兩種operation提供呼叫:
+      - x.wait()
+        - 類似block() sys. call
+      - x.signal()
+        - 類似wakeup() sys. call
+        - default is FIFO Queue
+
+## liveness (是一個好性質,但沒考過)
+
+- system 必須滿足確保processes make progress during their execution life cycle
+
+## Message Passing IPC
 
 # CH7 Main Memory
 

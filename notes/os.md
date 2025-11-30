@@ -145,6 +145,12 @@
 # CH6 Process Synchronization, IPC(InterProcess Communication)
 
 - synchronization: process因某些事情之發生 or 不發生,而被迫停頓,要等其他process do something 之後,才可往下進行.
+  - Producer-Consumer problem
+  - Readers/Writers prblem
+    - First variation
+    - Second variation
+  - The Sleeping barber problem
+  - The dinning philosophers problem
 
 - 執行中程式可有兩種型態:
   - independent processes

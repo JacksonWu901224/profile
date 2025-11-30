@@ -1,8 +1,8 @@
-# CH1
+# CH1 OS system types
 
-# CH2
+# CH2 I/O operations, Hardware resource protection
 
-# CH3
+# CH3 System call, OS structures, Virtualization
 
 # CH4 Process Management, Thread Management
 

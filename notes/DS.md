@@ -6,7 +6,31 @@
 
 # CH5 Tree & Binary Tree
 
+- Tree
+- Binary Tree
+- Binary Search Tree
+- Heap
+- Thread Binary Tree
+
 # CH9 Advanced Tree
+
+- Double-Ended Priority Queue
+  - Min-Max Heap
+  - Deap
+  - SMMH
+- Extended Binary Tree
+  - E=I+2N
+  - Huffman Algorithm
+- AVL Tree
+- M-way search tree
+  - B Tree of order m
+  - B$^+$ Tree of order m
+- Red-Blcak tree
+- Optimal Binay Search Tree(OBST)
+- Splay Tree
+- Leftist Heap
+- Binomail Heap
+- Fibonacci Heap
 
 # CH7 Sort
 

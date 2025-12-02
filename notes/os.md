@@ -4,6 +4,63 @@
 
 # CH3 System call, OS structures, Virtualization
 
+- system call
+  - parameters passing of system call
+    - registers
+    - memory
+    - stack
+- mechanism
+  - how
+  - use time to be cpu protection
+- policy
+  - what
+  - determin MAX cpu time quantumn
+
+- Monolithic kernel
+  - Linux
+  - UNIX
+  - Solaris
+  - Windows
+- Microkernel
+  - Mach
+- Modules(loadable kernel modules(LKMs))
+  - Linux
+  - Solaris(先鋒)
+  - UNIX
+  - MacOS
+  - Windows
+- Hybrid system
+  - Linux
+  - Solaris
+  - Windows
+  - MacOS
+  - iOS
+  - Android
+
+- Virtual Machine
+  - Host
+  - Vitual Machine Manager(VMM)
+  - Guest
+  - different types
+    - type 2 use mode
+    - type 1 OS(kernel mode)
+    - type 0 HardWare
+  - implementation of VMMS
+    - Pure VM
+    - Paravirtualization
+    - Programming-environment virtualization
+      - Java Virtual Machine(JVM)
+    - Emulators
+    - Application containment
+      - container
+  - Cloud Computing
+    - Software as a Service(SaaS)
+      - office365, salesforce, gmail, google drive, dropbox,...
+    - Platform as a Service(PaaS)
+      - 金流API, 物流API, 地圖API,...
+    - Infrastructure as a Service(IaaS)
+      - AWS, Azure,...
+
 # CH4 Process Management, Thread Management
 
 ## <font color="blue">Process</font>

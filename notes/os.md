@@ -27,6 +27,14 @@
 7.I/O status information
 (8.Process ID)
 
+## scheduler 之種類
+
+- Long-Term scheduler
+  - Batch system採用
+  - Real-time system, Time-sharing system不採用
+- Medium-Term scheduler
+- Short-Term scheduler
+
 ## scheduling criteria
 
 - CPU utilization

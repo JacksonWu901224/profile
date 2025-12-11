@@ -2,6 +2,48 @@
 
 # CH2 I/O operations, Hardware resource protection
 
+```mermaid
+flowchart TD
+  %% 外層分 mode
+  subgraph UserMode["User Mode"]
+    direction TB
+    subgraph SW_U["Software"]
+      Start(["user program"])
+    end
+    %% User Mode 內沒有硬體節點
+  end
+
+  subgraph KernelMode["Kernel Mode"]
+    direction TB
+    subgraph SW_K["Software"]
+      A([kernel I/O subsystem])
+      B([device driver])
+    end
+    subgraph HW_K["Hardware"]
+      C([device controller])
+      End([device])
+    end
+  end
+
+  %% 流程箭頭
+  Start -->|I/O request| A
+  A -->|Pass I/O request, may suspend the user process| B
+  B -->|I/O commands, may suspend itself| C
+  C -->|Monitoring I/O operations| End
+  End -->|Perform real I/O operations| End
+
+```
+
+- I/O operatons
+  - Polling I/O
+  - Interrupted I/O
+  - DMA(Direct Memory Access)
+  - Nonblocking and Asynchronous I/O
+    - Blocking
+    - Synchronous
+    - Nonblocking
+    - Asynchronous
+
 # CH3 System call, OS structures, Virtualization
 
 - system call

@@ -36,13 +36,41 @@ flowchart TD
 
 - I/O operatons
   - Polling I/O
+    - **byte**-transfer
   - Interrupted I/O
+    - sense interrupt-request line **before** Instruction Fetch
+    - device controller raises an interrupt by asserting a signal on the interrupt-request line
   - DMA(Direct Memory Access)
+    - **block**-transfer
   - Nonblocking and Asynchronous I/O
-    - Blocking
+    - Blocking=Synchronous
+      - process suspended until I/O complete
     - Synchronous
     - Nonblocking
+      - I/O call returns as much as available
+      - returns quickly with count of bytes read or written
     - Asynchronous
+      - process runs while I/O executes
+      - I/O subsystem signals process when I/O complete
+
+- Hardware Resource Protection
+  - infrastructure
+    - Dual mode operation
+      - user mode
+      - kernel mode
+    - Privileged Instruction
+      - executed only in kernel mode
+        - e.g. the instr. to switch to kernle mode, I/O instr., disable interrupts, clear memory, modify the base/limit registers, modify the value of timer for cpu
+  - Hardware Resource Protection
+    - I/O protection
+      - purpose: 防止user process誤用I/O devices, 降低使用I/O devices複雜度
+      - mechanism: all I/O instr. are set as "privileged instr.", so they can be executed only in kernel mode
+    - Memory protection
+      - purpose: 防止user process非法存取其他process or kernel memory area
+      - mechanism: modify the base/limit registers must be privileged instruciton
+    - CPU protection
+      - purpose: we must ensure that the os maintains control over the CPU. We can't allow a user program to get stuck in an infinite loop or to fail to call system services and never return control to the os
+      - mechanism: modify the value of timer for cpu must be privileged instruciton
 
 # CH3 System call, OS structures, Virtualization
 

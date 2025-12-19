@@ -120,3 +120,24 @@
 ![110 台科](110台科.png)
 
 \<sol\>  A,D,H,I
+
+# 108 中正
+
+![108 中正](108中正.png)
+![108 中正](108中正ans.png)
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+# Spectral Decomposition/Eigen-decomposition
+
+![spectral-def](spectral-def.png)
+
+---
+![spectral-1](spectral-1.png)
+
+![spectral-2](spectral-2.png)

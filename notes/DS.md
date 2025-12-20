@@ -7,9 +7,82 @@
 # CH5 Tree & Binary Tree
 
 - Tree
+  - ancestor=predecessor
+  - descendent=successor
+  - tree化成binary tree, binary tree化成tree
+    - tree化成binary
+      - Leftmost-child-Next-Right-sibling
+  - Forest化成binary tree, binary tree化成Forest
+    - 皆針對Root做操作
 - Binary Tree
+  - ith level max node=$2^{i-1}$
+  - height h max node=$2^h-1$
+  - leaf num=$n_0$,degree-2=$n_2$, $n_0=n_2+1$
+  - <font color="red">不可</font>決定唯一binary tree
+    1. preorder+postorder
+    2. level-order+preorder
+    3. level-order+postorder
+    4. BST+inorder
+  - the number of different binary trees with n nodes
+    - Catalan number
+      - $\frac{1}{n+1}\binom{2n}{n}$
 - Binary Search Tree
+  - In a BST find i-th smallest data
+
+    ```c
+      struct Node {
+        Node* Lchild;
+        int data;
+        int Lsize;
+        Node* Rchild;
+      };
+
+      search(T:BST, i:int){//在T中找出i-th小之data
+        if(T!=Nil){
+          k=(T->Lsize)+1;//代表root是kth小的data
+          if(i==k)
+            return T->Data;
+          else if(i<k)
+            return serach(T->Lchild,i);//去左子樹找i-th小
+          else
+            return search(T->Rchild,i-k);//去右子樹找(i-k)th小
+        }
+      }
+    ```
+  
 - Heap
+  - build a heap with n nodes
+    - Top-Down
+      - $O(nlogn)$
+    - Bottom-Up
+      - $O(n)$
+  - Heapify[adjust(tree,i,n)]
+
+    ```c
+      void adjust(int tree[], int i, int n){
+        int j=2*i;
+        int x=tree[i];
+        while(j<=n){
+          if(j<n && tree[j]<tree[j+1])
+            j=j+1;
+          if(x>=tree[j])
+            break;
+          else{
+            tree[j/2]=tree[j];
+            j=2*j;
+          }
+        }
+        tree[j/2]=x;
+      }
+      void buildheap(int tree[], int n){
+        for(int i=n/2;i>=1;i--)
+          adjust(tree, i, n);
+      }
+      ```
+
+- Disjoin Sets
+  - Union
+  - Find
 - Thread Binary Tree
 
 # CH9 Advanced Tree

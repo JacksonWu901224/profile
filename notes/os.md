@@ -1,5 +1,56 @@
 # CH1 OS system types
 
+- OS
+  - 沒有一個很明確通用的正式定義
+  - 最接近的說法: "Everything a vendor ships when you order an operating system"
+  - Kernel definition: "The one program running at all times on the computer" is the kernel, part of the operating system
+  - everything else is either a **system program** or an **application program**
+    - system program: ships with the operation system, but not part of the kernel
+    - application program: all programs not associated with the operation system
+
+- os
+  - os user interface
+    - user interface to 人
+      - Command line-><font color="blue">MS-DOS,UNIX,Linus</font>
+      - GUI-><font color="blue">Mac OS,windows</font>
+      - Touch screen-><font color="blue">ios,Android</font>
+    - system call to applications
+  - kernel
+
+![view of os structure](osstructure.png)
+
+- what os roles
+  - 使用者關心的是方便使用電腦以及好的使用效能
+    - users want convenience, ease of use and good performance
+  - os是一個資源分配的管理者,希望他能有效運用硬體資源
+    - os is a resource aloocator making efficient use of HW
+  - os也負責指揮控制監督程式的執行,確保安全,防止意外或者故意的操作所造成的系統重大危害
+    - control program for managing execution of user programs for protection and security purpose
+  - 提供一個讓user program容易執行的環境
+    - provides many system calls to be used by the user process. such as I/O operation, process control and IPC,etc
+  
+- system types
+  - Multiprogramming
+  - Time-sharing(Multitasking)
+    - virtual memory
+    - spooling technique
+  - Multiprocessor(Tightly-Coupled system)
+    - Benifits
+      - Increased throughput
+      - Economy of scale
+      - Increased reliability
+    - ASMP(Asymmetric Multiprocessing)
+      - Master-Slave architecture
+    - SMP(Symmetric Multiprocessing)
+  - Distributed system(Loosely-Coupled system)
+    - Client-server model
+    - peer-to-peer model
+  - Real-time system
+    - Hard real-time system
+    - Soft real-time system
+  - Mobile computing
+  - Batch system
+
 # CH2 I/O operations, Hardware resource protection
 
 ```mermaid

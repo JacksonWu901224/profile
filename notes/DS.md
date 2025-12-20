@@ -60,19 +60,20 @@
 
     ```c
       void adjust(int tree[], int i, int n){
-        int j=2*i;
+        //調整以i node no.為root之子樹成為Heap
+        int j=2*i;//目前j是i之左子點No.
         int x=tree[i];
-        while(j<=n){
+        while(j<=n){//尚有兒子
           if(j<n && tree[j]<tree[j+1])
             j=j+1;
           if(x>=tree[j])
             break;
           else{
-            tree[j/2]=tree[j];
-            j=2*j;
+            tree[j/2]=tree[j];//上移至父點
+            j=2*j;//新的左子點位置
           }
         }
-        tree[j/2]=x;
+        tree[j/2]=x;//x置入正確格子中
       }
       void buildheap(int tree[], int n){
         for(int i=n/2;i>=1;i--)

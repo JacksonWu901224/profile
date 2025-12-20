@@ -11,11 +11,16 @@
 - os
   - os user interface
     - user interface to 人
-      - Command line-><font color="blue">MS-DOS,UNIX,Linus</font>
-      - GUI-><font color="blue">Mac OS,windows</font>
-      - Touch screen-><font color="blue">ios,Android</font>
+      - Command line
+        - <font color="blue">MS-DOS,UNIX,Linux</font>
+      - GUI
+        - <font color="blue">Mac OS,windows</font>
+      - Touch screen
+        - <font color="blue">ios,Android</font>
     - system call to applications
   - kernel
+
+A view of os structure
 
 ![view of os structure](osstructure.png)
 

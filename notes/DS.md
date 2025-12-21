@@ -157,25 +157,47 @@
 # CH6 Graph
 
 - DFS
+  - adjacency matrix: $O(V^2)$
+  - adjacency lists: $O(V+E)$
 - BFS
+  - adjacency matrix: $O(V^2)$
+  - adjacency lists: $O(V+E)$
 - Topological sort
+  - adjacency lists: $O(V+E)$
 
 - Minimum Spanning Tree
   - Kruskal's algorithm
+    - adjacency matrix: $O(ElogE)$
+    - adjacency lists : $O(ElogE)$
+      - compare to prim's: $\because E<<V^2 \therefore logE=O(logV), \therefore O(ElogV) $
   - Prim's algorithm
+    - adjacency matrix: $O(V^2)$
+    - binary heap+adjacency lists: $O(ElogV)$
+    - Fibonacci heap+adjacency lists: $O(E+VlogV)$
   - Sollin's algorithm
 
 - Shortest Path Length
   - single source to other destinaitons
     - Directed Acyclic Graph(DAG)
+      - adjacency lists: $O(V+E)$
     - Dijkstra algorithm
+      - adjacency matrix: $O(V^2)$
+      - binary heap+adjacency lists: $O(ElogV)$
+      - Fibonacci heap+adjacency lists: $O(E+VlogV)$
     - Bellman-Ford Algorithm
+      - adjacency matrix: $O(V^3)$
+      - adjacency lists: $O(VE)$
   - all pairs of vertex
     - Floyd-Warshall algorithm
+      - adjacency matrix: $O(V^3)$
     - Johnson's algorithm
+      - adjacency matrix: $O(V^2logV+VE)$
 
 - AOE network
 
 - Articulation Point
 - Biconnected Graph
+  - a connected undirected graph with no AP
 - Biconnected component
+  - $G^\prime$ is a subgraph of G, and $G^\prime$ is a biconnected graph
+  - $G^\prime$ is Maximum Component

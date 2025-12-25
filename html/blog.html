@@ -265,6 +265,57 @@
                     <hr>
                         <h4>scalability interoperability sustainability</h4>
                     <hr>
+                        <h4>Unmounted file system: 該檔案系統存在於裝置上,但目前沒有被接到系統的目錄樹中,因此作業系統與使用者都無法透過路徑存取它.</h4>
+                        <h4>Mounted: 檔案系統已經被接到作業系統的目錄樹中,可以透過路徑存取<br>
+                            e.g. CMD: MOUNTVOL<br>
+                                      C:/,D:/
+                        </h4>
+                        <h4>entitlement: 系統明確授予某個程式或使用者的「權限 / 能力」</h4>
+                        <h2 style="text-align:center;">Access Control</h2>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>類型</th>
+                                    <th>核心概念</th>
+                                    <th>典型例子</th>
+                                    <th>優點</th>
+                                    <th>缺點</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><strong>DAC (Discretionary Access Control)</strong></td>
+                                    <td>Owner decides</td>
+                                    <td>UNIX 檔案權限</td>
+                                    <td>易用</td>
+                                    <td>容易被濫用</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>MAC (Mandatory Access Control)</strong></td>
+                                    <td>系統強制 policy</td>
+                                    <td>SELinux, Bell-LaPadula</td>
+                                    <td>高安全</td>
+                                    <td>管理麻煩</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>RBAC (Role-Based Access Control)</strong></td>
+                                    <td>Role → Permission</td>
+                                    <td>大企業角色管理</td>
+                                    <td>易管理</td>
+                                    <td>角色設計難</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Rule / Capability-Based AC</strong></td>
+                                    <td>持有能力或符合規則</td>
+                                    <td>Process / App / Resource,Apple entitlements</td>
+                                    <td>精確控制</td>
+                                    <td>規則複雜</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    <hr>
                     <div class="table-container">
                         <table>
                             <thead>

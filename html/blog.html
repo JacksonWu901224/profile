@@ -469,6 +469,30 @@
                     </tbody>
                 </table>
             </div>
+            <pre style="margin: auto; width: fit-content;"><code>
+            #include &lt;stdio.h&gt;
+
+            int main() {
+                char s[] = "01234";
+                char *p = s;
+
+                printf("%c\n", *p++);
+                printf("%c\n", *++p);
+                printf("%c\n", *(++p));
+                printf("%c\n", *(p++));
+                printf("%c\n", (*p)++);
+
+                return 0;
+            }
+            output:
+            0
+            2
+            3
+            3
+            4
+
+            </code></pre>
+
         </section>
     <script src="../javascript/script.js"></script>
     </body>

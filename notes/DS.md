@@ -4,6 +4,129 @@
 
 # CH3 Stack & Queue
 
+- stack
+  - stack application
+    - parsing context-free languages
+    - evaluating arithmetic expressions(infix, postfix, prefix)
+    - function call management
+    - recursion removal/recursive call
+    - traversing tree(preorder, inorder, postorder)
+    - DFS graph traversal
+    - eight queen problem
+    - maze problem
+    - reverse output
+    - 客人取盤子行為
+  - stack implementation
+    - array
+    - linked list
+    - two queues
+  - stack permutations
+    - $\frac{1}{n+1}\binom{2n}{n}$
+    - 與下列問題同義
+      - the number of binary tree structures with n nodes
+      - the number of valid parentheses wih n "("and")"
+      - the number of matrix multiply chain with n+1 matrix($\because$ 有n個*)
+      - the number of train output order with n trains in the gateway
+  - Infix to Postfix
+
+    ```c
+      InfixtoPostfix(Infix){
+        while(Infix has not been scanned over){
+          x=NextToken(Infix);
+          if(x is operand)//x是operand
+            print(x);
+          else{//x是operator
+            if(x==')'){
+              while(stack.top()!='('){
+                y=stack.top();
+                stack.pop();
+                print(y);
+              }
+            }
+            else{
+              if(precedence(x)>precedence(stack.top()))
+                stack.push(x);
+              else{
+                while(precedence(x)<=precedence(stack.top())){
+                  y=stack.top();
+                  stack.pop();
+                  print(y);
+                }
+                stack.push(x);
+              }
+            }
+          }
+        }
+        while(!stack.empty()){//清空stack
+          y=stack.top();
+          stack.pop();
+          print(y);
+        }
+      }
+    ```
+
+  - Postfix求值
+  
+    ```c
+      Evaluate(Postfix){
+        whlie(Postfix has not been scanned over){
+          x=NextToken(Postfix);
+          if(x is oeprand)
+            stack.push(x);
+          else{//x is operator
+            right_operand=stack.pop();
+            left_operand=stack.pop();
+            stack.push(left_operand opeartor right_operand);//依operator作運算,放入stack
+          }
+        }
+        result=stack.top();
+        stack.pop();
+        return result;
+      }
+    ```
+
+  - check for balanced brackets(){}[]
+  
+    ```c
+      bool judge(s:string){
+        while(s has not been scanned over){
+          x=NextToken(s);
+          if(x=='('||x=='['||x=='{')
+            stack.push(x);
+          else{
+            if(stack.isempty())
+              return false;
+            else{
+              if(x==')'){
+                if(stack.top()!='(')
+                  return false;
+              }
+              if(x==']'){
+                if(stack.top()!='[')
+                  return false;
+              }
+              if(x=='}'){
+                if(stack.top()!='{')
+                  return false;
+              }
+              stack.pop();
+            }
+          }
+        }
+        if(stack.isempty())
+          return true;
+        return false;
+      }
+    ```
+
+- queue
+  - queue implementaion
+    - circular array with no tag -> n-1
+    - circular array with tag -> n
+    - single linked list
+    - circular linked list
+    - two stacks
+
 # CH5 Tree & Binary Tree
 
 - Tree

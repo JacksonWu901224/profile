@@ -1,5 +1,107 @@
 # CH1 Time Complexity
 
+- recurisve
+  - Factorial
+  - Fibonacci Number
+    - \(
+        F_n =
+        \begin{cases}
+        0, & \text{if } n = 0 \\[6pt]
+        1, & \text{if } n = 1 \\[6pt]
+        F_{n-1} + F_{n-2}, & \text{if } n \ge 2
+        \end{cases}
+      \)
+    - the number of recursive calls grows exponentially with n is $1.41^n<F_n<2^n$
+    - use DP skill need $O(n)$
+  - Binomial Coefficient
+    - \(
+        \binom{n}{m} =
+        \begin{cases}
+        1, & \text{if } n = m \text{ or } m = 0 \\[6pt]
+        \binom{n-1}{m} + \binom{n-1}{m-1}, & \text{otherwise}
+        \end{cases}
+      \)
+    - use DP skill need $O(nk)$
+  - GCD
+    - \(
+        \mathrm{GCD}(A, B) =
+        \begin{cases}
+        A, & \text{if } A \bmod B = 0 \\[6pt]
+        \mathrm{GCD}(B, A \bmod B), &  \text{otherwise}
+        \end{cases}
+      \)
+  - Ackerman function
+    - \(
+        A(m, n) =
+        \begin{cases}
+        n + 1, & \text{if } m = 0 \\[6pt]
+        A(m - 1, 1), & \text{if } n = 0 \\[6pt]
+        A(m - 1, A(m, n - 1)), & \text{otherwise}
+        \end{cases}
+      \)
+  - Tower of Hanoi $O(2^n)$
+    - \(
+        T(n) =
+        \begin{cases}
+        1, & \text{if } n = 1 \\[6pt]
+        2T(n - 1) + 1, & \text{if } n \ge 2
+        \end{cases}
+      \)
+  - permutation: $O(n!*n)$
+
+    ```c
+      void swap(char *a, char *b){
+        char temp=*a;
+        *a=*b;
+        *b=temp;
+      }
+      void perm(char *list, int i, int n){
+          int j, temp;
+          if(i==n){
+            for(j=0;j<n;j++)
+              printf("%c", list[j]);
+            printf("\n");
+          }
+          else{
+            for(j=i;j<n;j++){
+              swap(&list[i], &list[j]);//list[j]當head
+              perm(list, i+1, n);//後面(i+1)~n permutation
+              swap(&list[i], &list[j]);//還原
+            }
+          }
+      }
+      int main(){
+          char list[3]={"abc"};
+          perm(list,0,3);
+          return 0;
+      }
+      output:
+      abc
+      acb
+      bac
+      bca
+      cba
+      cab
+      ```
+
+- basic math
+  - \(\sum_{i=1}^{n} i^2=\frac{n(n+1)(2n+1)}{6}\)
+  - \(\sum_{i=1}^{n} i^d \approx n^{d+1}, d\ge0\)
+  - \(\sum_{i=1}^{n} \frac{1}{i} = \log n\)
+  - \(n! \le n^n\)
+    - \(\lg(n!) = \Theta(n \log n)\)
+  - \(\frac {n}{2} ^ \frac {n}{2} \le n!\)
+  - Stirling's Formula
+    - \(n! = \sqrt{2 \pi n} \left(\frac{n}{e}\right)^n \left(1 + \Theta\left(\frac{1}{n}\right)\right) \approx n^{\,(n + \frac{1}{2})} \times e^{-n}\)
+  - \((\log n)^b = o(n^a), \quad a > 0\)
+    - e.g. \((\log n)^{100} < n^{0.0001}\)
+  - \(\log^*(\log n) = \log^* n - 1\)
+
+- Master Theorem
+  - $T(n)=aT( \frac {n}{b})+f(n)$
+- extended Master Theorem
+  - $T(n)=aT( \frac {n}{b})+nlgn$
+
 # CH2 CH4 Array & Linked Lisd
 
 # CH3 Stack & Queue

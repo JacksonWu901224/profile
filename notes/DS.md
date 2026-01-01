@@ -48,6 +48,44 @@
         2T(n - 1) + 1, & \text{if } n \ge 2
         \end{cases}
       \)
+  - recursive
+    - Factorial
+    - Fibonacci Number
+      - F_n =
+        <ul>
+          <li>0, if n = 0</li>
+          <li>1, if n = 1</li>
+          <li>F_{n-1} + F_{n-2}, if n ≥ 2</li>
+        </ul>
+      - the number of recursive calls grows exponentially with n: 1.41^n < F_n < 2^n
+      - use DP skill need O(n)
+    - Binomial Coefficient
+      - C(n, m) =
+        <ul>
+          <li>1, if n = m or m = 0</li>
+          <li>C(n-1, m) + C(n-1, m-1), otherwise</li>
+        </ul>
+      - use DP skill need O(nk)
+    - GCD
+      - GCD(A, B) =
+        <ul>
+          <li>A, if A mod B = 0</li>
+          <li>GCD(B, A mod B), otherwise</li>
+        </ul>
+    - Ackerman function
+      - A(m, n) =
+        <ul>
+          <li>n + 1, if m = 0</li>
+          <li>A(m - 1, 1), if n = 0</li>
+          <li>A(m - 1, A(m, n - 1)), otherwise</li>
+        </ul>
+    - Tower of Hanoi O(2^n)
+      - T(n) =
+        <ul>
+          <li>1, if n = 1</li>
+          <li>2T(n-1) + 1, if n ≥ 2</li>
+        </ul>
+
   - permutation: $O(n!*n)$
 
     ```c

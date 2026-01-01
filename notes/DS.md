@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD033 -->
 # CH1 Time Complexity
 
 - recurisve
@@ -95,6 +96,7 @@
     - \(n! = \sqrt{2 \pi n} \left(\frac{n}{e}\right)^n \left(1 + \Theta\left(\frac{1}{n}\right)\right) \approx n^{\,(n + \frac{1}{2})} \times e^{-n}\)
   - \((\log n)^b = o(n^a), \quad a > 0\)
     - e.g. \((\log n)^{100} < n^{0.0001}\)
+    - e.g. (log n)<sup>100</sup> &lt; n<sup>0.0001</sup>
   - \(\log^*(\log n) = \log^* n - 1\)
 
 - Master Theorem

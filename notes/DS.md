@@ -1,3 +1,6 @@
+<!-- markdownlint-disable MD007 -->
+<!-- markdownlint-disable MD005 -->
+
 # CH1 Time Complexity
 
 - recurisve
@@ -47,6 +50,13 @@
         2T(n - 1) + 1, & \text{if } n \ge 2
         \end{cases}
       \)
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
   - permutation: $O(n!*n)$
 
     ```c
@@ -84,6 +94,12 @@
       cab
       ```
 
+<br>
+<br>
+<br>
+<br>
+<br>
+
 - basic math
   - \(\sum_{i=1}^{n} i^2=\frac{n(n+1)(2n+1)}{6}\)
   - \(\sum_{i=1}^{n} i^d \approx n^{d+1}, d\ge0\)
@@ -102,7 +118,149 @@
 - extended Master Theorem
   - $T(n)=aT( \frac {n}{b})+nlgn$
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 # CH2 CH4 Array & Linked Lisd
+
+- linked list
+  - invert linked list
+
+    ```c
+      typedef struct Node {
+      int value;
+      struct Node *next;
+      } Node;
+
+      Node* invert(Node* head) {
+          Node* previous=NULL;
+          Node* current=NULL;
+          Node* nextNode=head;
+
+          while(nextNode!=NULL) {
+              previous=current;// previous 前進
+              current=nextNode;// current 前進
+              nextNode=nextNode->next;// 暫存下一個節點
+              current->next=previous;// 反轉指標
+              
+          }
+          head=current;
+          return head;  // 新的頭節點
+      }
+      int main()
+      {
+          Node *head = (Node*)malloc(sizeof(Node));
+          Node *dummy= (Node*)malloc(sizeof(Node));
+          head->value=1;
+          dummy=head;
+          for(int i=2;i<4;i++){
+              Node *temp=(Node*)malloc(sizeof(Node));
+              temp->value=i;
+              dummy->next=temp;
+              dummy=temp;
+          }
+          dummy=head;
+          printf("before invert: ");
+          while(dummy!=NULL){
+              printf("%d", dummy->value);
+              dummy=dummy->next;
+              if(dummy!=NULL)
+                  printf("->");
+          }
+          printf("\n");
+          dummy=head;
+          head=invert(dummy);
+          dummy=head;
+          printf("after invert: ");
+          while(dummy!=NULL){
+              printf("%d", dummy->value);
+              dummy=dummy->next;
+              if(dummy!=NULL)
+                  printf("->");
+          }
+          return 0;
+      }
+      output:
+      before invert: 1->2->3
+      after invert: 3->2->1
+    ```
+
+  - Insert a node t after x node
+    - doubly linked list(change 4 pointers)
+
+      ```c
+        node* insert(node *head, node *x, node *t){
+          t->prev=x;
+          t->next=x->next;
+          x->next->prev=t;
+          x->next=t;
+          return head;
+        }
+      ```
+
+    - singly linked list(change 2 pointers)
+
+      ```c
+        node* insert(node *head, node *x, node *t){
+          t->next=x->next;
+          x->next=t;
+          return head;
+        }
+      ```
+
+<br>
+<br>
+<br>
+
+  - Delete a node t
+    - doubly linked list(change 2 pointers)
+
+      ```c
+        node* delete(node *head, node *t){
+          t->prev->next=t->next;
+          t->next->prev=t->prev;
+          free(t);
+          return head;
+        }
+      ```
+
+    - singly linked list delete node t after node x(change 1 pointers)
+
+      ```c
+        node* delete(node *head, node *x){
+          node *t=x->next;
+          x->next=t->next;
+          free(t);
+          return head;
+        }
+      ```
+
+  - Generalize list
+    - 像集合論
+    - e.g.
+      - A=(a,(b,c))=>|A|=2
+      - B=(A,A,())=>|B|=3 表達出sharing
+      - C=(a,C)=>|C|=2 表達出recursion
+  - 多項式之表示
+    - array
+    - linked list
+  - spare matrix之表示
+    - array
+    - doubly linked list
+
+<br>
+<br>
+<br>
+<br>
+<br>
 
 # CH3 Stack & Queue
 
@@ -129,6 +287,17 @@
       - the number of valid parentheses wih n "("and")"
       - the number of matrix multiply chain with n+1 matrix($\because$ 有n個*)
       - the number of train output order with n trains in the gateway
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
   - Infix to Postfix
 
     ```c
@@ -167,6 +336,11 @@
       }
     ```
 
+<br>
+<br>
+<br>
+<br>
+
   - Postfix求值
   
     ```c
@@ -186,6 +360,26 @@
         return result;
       }
     ```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
   - check for balanced brackets(){}[]
   
@@ -251,6 +445,20 @@
   - the number of different binary trees with n nodes
     - Catalan number
       - $\frac{1}{n+1}\binom{2n}{n}$
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 - Binary Search Tree
   - In a BST find i-th smallest data
 
@@ -274,7 +482,24 @@
         }
       }
     ```
-  
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 - Heap
   - build a heap with n nodes
     - Top-Down
@@ -311,6 +536,9 @@
   - Find
 - Thread Binary Tree
 
+<br>
+<br>
+
 # CH9 Advanced Tree
 
 - Double-Ended Priority Queue
@@ -330,6 +558,20 @@
 - Leftist Heap
 - Binomail Heap
 - Fibonacci Heap
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 # CH7 Sort
 
@@ -352,12 +594,28 @@
     - MSD Radix sort=Bucket sort
     - Counting sort
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 # CH8 Hashing
 
 - Collision
 - Overflow
 - Identifier Density
-- Loading Density
+  - \(\frac{n}{T}\), n:存入hash table之資料總數,T:變數總數
+- Loading Density(\(\alpha\))
+  - \(\frac{n}{b*s}\), n:存入hash table之資料總數,b:Bucket數,s:Slot數
 - Hashing 優點
 
 - hashing function design
@@ -378,6 +636,13 @@
   - Double Hashing
   - Chaining
   - Rehashing
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 # CH6 Graph
 

@@ -56,6 +56,20 @@ A view of os structure
   - Mobile computing
   - Batch system
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 # CH2 I/O operations, Hardware resource protection
 
 ```mermaid
@@ -128,6 +142,17 @@ flowchart TD
       - purpose: we must ensure that the os maintains control over the CPU. We can't allow a user program to get stuck in an infinite loop or to fail to call system services and never return control to the os
       - mechanism: modify the value of timer for cpu must be privileged instruciton
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 # CH3 System call, OS structures, Virtualization
 
 - system call
@@ -187,6 +212,31 @@ flowchart TD
     - Infrastructure as a Service(IaaS)
       - AWS, Azure,...
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 # CH4 Process Management, Thread Management
 
 ## <font color="blue">Process</font>
@@ -201,13 +251,13 @@ flowchart TD
 
 ## PCB
 
-1.Pocess state
-2.Program counter
-3.CPU registers
-4.CPU-scheduling information
-5.Memory-management information
-6.Accounting information
-7.I/O status information
+1.Pocess state  
+2.Program counter  
+3.CPU registers  
+4.CPU-scheduling information  
+5.Memory-management information  
+6.Accounting information  
+7.I/O status information  
 (8.Process ID)
 
 ## scheduler 之種類
@@ -300,6 +350,32 @@ flowchart TD
   - Run on UNIX
   - Can't run on windows os
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 # CH5 Deadlock Management
 
 - necessary conditions
@@ -332,6 +408,12 @@ flowchart TD
     - abort all deadlocked processes
     - abort one process at a time until the deadlock cycle is eliminated(盲目地砍一個)
   - resource preemption
+
+<br>
+<br>
+<br>
+<br>
+<br>
 
 # CH6 Process Synchronization, IPC(InterProcess Communication)
 
@@ -645,6 +727,20 @@ flowchart TD
   - Base and Limit
 - Paged Segment
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 # CH8 Virtual Memory
 
 - 實現Virtual Memory 技術: Demand Paging
@@ -674,7 +770,20 @@ flowchart TD
 - Allocation Kernel Memory
   - Buddy system
   - Slab allocation(has no internel,externel fragmentation)
-  
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 # CH9 Massive Storage System
 
 ## Hard Disk

@@ -59,6 +59,86 @@
 ![105 師大](105師大ans-1.png)
 ![105 師大](105師大ans-2.png)
 
+# 106 臺北
+
+![106 臺北](106臺北.png)
+
+(a) Nullspace of $M$
+
+The nullspace $N(M)$ is the set of all vectors $\mathbf{x}$ such that $M\mathbf{x} = \mathbf{0}$.
+
+$$\begin{bmatrix} 1 & 1 & 0 \\ 0 & 1 & 1 \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \end{bmatrix}$$
+
+$x_1 + x_2 = 0 \implies x_1 = -x_2$
+
+$x_2 + x_3 = 0 \implies x_3 = -x_2$
+
+Let $x_2 = c$ (free variable). Then $\mathbf{x} = \begin{bmatrix} -c \\ c \\ -c \end{bmatrix} = c \begin{bmatrix} 1 \\ -1 \\ 1 \end{bmatrix}$.
+
+The nullspace is the span of the vector $\begin{bmatrix} 1 & -1 & 1 \end{bmatrix}^T$.
+
+(b) Compute $M^T M$ and $MM^T$
+
+$$M^T = \begin{bmatrix} 1 & 0 \\ 1 & 1 \\ 0 & 1 \end{bmatrix}$$
+
+$M^T M$ ($3 \times 3$):
+
+$$\begin{bmatrix} 1 & 0 \\ 1 & 1 \\ 0 & 1 \end{bmatrix} \begin{bmatrix} 1 & 1 & 0 \\ 0 & 1 & 1 \end{bmatrix} = \begin{bmatrix} 1 & 1 & 0 \\ 1 & 2 & 1 \\ 0 & 1 & 1 \end{bmatrix}$$
+
+$MM^T$ ($2 \times 2$):
+
+$$\begin{bmatrix} 1 & 1 & 0 \\ 0 & 1 & 1 \end{bmatrix} \begin{bmatrix} 1 & 0 \\ 1 & 1 \\ 0 & 1 \end{bmatrix} = \begin{bmatrix} 2 & 1 \\ 1 & 2 \end{bmatrix}$$
+
+(c) Is $M^T M$ similar to $MM^T$?
+
+No. Similar matrices must have the same dimensions. $M^T M$ is a $3 \times 3$ matrix, while $MM^T$ is a $2 \times 2$ matrix. Therefore, they cannot be similar. However, they do share the same non-zero eigenvalues.
+
+(d) Eigenvalues and Eigenvectors of $M^T M$
+
+To find the eigenvalues $\lambda$, we solve $\det(M^T M - \lambda I) = 0$:
+
+$$\begin{vmatrix} 1-\lambda & 1 & 0 \\ 1 & 2-\lambda & 1 \\ 0 & 1 & 1-\lambda \end{vmatrix} = 0$$
+
+Expanding along the first row:$(1-\lambda)[(2-\lambda)(1-\lambda) - 1] - 1(1-\lambda) = 0$$(1-\lambda)[\lambda^2 - 3\lambda + 1] - (1-\lambda) = 0$$(1-\lambda)(\lambda^2 - 3\lambda) = 0 \implies -\lambda(\lambda-1)(\lambda-3) = 0$
+
+Eigenvalues: $\lambda_1 = 3, \lambda_2 = 1, \lambda_3 = 0$.
+
+Eigenvectors:
+
+For $\lambda_1 = 3$: $\mathbf{v}_1 = \begin{bmatrix} 1 & 2 & 1 \end{bmatrix}^T$ (normalized: $\frac{1}{\sqrt{6}}\begin{bmatrix} 1 & 2 & 1 \end{bmatrix}^T$)
+
+For $\lambda_2 = 1$: $\mathbf{v}_2 = \begin{bmatrix} 1 & 0 & -1 \end{bmatrix}^T$ (normalized: $\frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 0 & -1 \end{bmatrix}^T$)
+
+For $\lambda_3 = 0$: $\mathbf{v}_3 = \begin{bmatrix} 1 & -1 & 1 \end{bmatrix}^T$ (normalized: $\frac{1}{\sqrt{3}}\begin{bmatrix} 1 & -1 & 1 \end{bmatrix}^T$)
+
+(e) Diagonalize $M^T M$
+
+Since $M^T M$ is symmetric, it is diagonalized by $M^T M = V \Lambda V^T$, where $V$ is the orthogonal matrix of eigenvectors and $\Lambda$ is the diagonal matrix of eigenvalues.
+
+$$V = \begin{bmatrix} 1/\sqrt{6} & 1/\sqrt{2} & 1/\sqrt{3} \\ 2/\sqrt{6} & 0 & -1/\sqrt{3} \\ 1/\sqrt{6} & -1/\sqrt{2} & 1/\sqrt{3} \end{bmatrix}, \quad \Lambda = \begin{bmatrix} 3 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{bmatrix}$$
+
+(f) Singular Value Decomposition (SVD) of $M$
+
+The SVD is $M = U \Sigma V^T$.
+
+$\Sigma$: Square roots of non-zero eigenvalues of $M^T M$.$\sigma_1 = \sqrt{3}, \sigma_2 = \sqrt{1}$. Thus, $\Sigma = \begin{bmatrix} \sqrt{3} & 0 & 0 \\ 0 & 1 & 0 \end{bmatrix}$.
+
+$V$: The eigenvectors of $M^T M$ found in part (d).
+
+$U$: Found via $u_i = \frac{1}{\sigma_i}Mv_i$.
+
+$u_1 = \frac{1}{\sqrt{3}} \begin{bmatrix} 1 & 1 & 0 \\ 0 & 1 & 1 \end{bmatrix} \begin{bmatrix} 1/\sqrt{6} \\ 2/\sqrt{6} \\ 1/\sqrt{6} \end{bmatrix} = \begin{bmatrix} 1/\sqrt{2} \\ 1/\sqrt{2} \end{bmatrix}$
+
+$u_2 = \frac{1}{1} \begin{bmatrix} 1 & 1 & 0 \\ 0 & 1 & 1 \end{bmatrix} \begin{bmatrix} 1/\sqrt{2} \\ 0 \\ -1/\sqrt{2} \end{bmatrix} = \begin{bmatrix} 1/\sqrt{2} \\ -1/\sqrt{2} \end{bmatrix}$
+
+Result: $M = \begin{bmatrix} 1/\sqrt{2} & 1/\sqrt{2} \\ 1/\sqrt{2} & -1/\sqrt{2} \end{bmatrix} \begin{bmatrix} \sqrt{3} & 0 & 0 \\ 0 & 1 & 0 \end{bmatrix} \begin{bmatrix} 1/\sqrt{6} & 2/\sqrt{6} & 1/\sqrt{6} \\ 1/\sqrt{2} & 0 & -1/\sqrt{2} \\ 1/\sqrt{3} & -1/\sqrt{3} & 1/\sqrt{3} \end{bmatrix}^T$
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
 # 108 交大
 
 ![108 交大](108交大.png)

@@ -531,7 +531,7 @@
       }
       ```
 
-- Disjoin Sets
+- Disjoint Sets
   - Union
   - Find
 - Thread Binary Tree

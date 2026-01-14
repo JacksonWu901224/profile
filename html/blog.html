@@ -494,7 +494,35 @@
             4
 
             </code></pre>
-
+            <div class="table-container">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>特性</th>
+                                <th>觸發方式</th>
+                                <th>安全性</th>
+                                <th>典型範例</th>
+                                <th>主要功能</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><strong>Promotion (提升)</strong></td>
+                                <td>編譯器自動執行<strong>(Implicit)</strong></td>
+                                <td><strong>高</strong>(通常從小空間轉大空間，不遺失資料)</td>
+                                <td>char \(\rightarrow\) int or float \(\rightarrow\) double</td>
+                                <td>確保算術運算能順利進行（對齊型別）</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cast (強制轉型)</strong></td>
+                                <td>程式設計師手動撰寫 <strong>(Explicit)</strong></td>
+                                <td><strong>中/低</strong>(可能導致精度遺失、截斷或溢位)</td>
+                                <td>(double)5/2 or (int)3.14</td>
+                                <td>改變變數的解讀方式或強制改變運算行為</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
         </section>
     <script src="../javascript/script.js"></script>
     </body>

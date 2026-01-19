@@ -236,6 +236,54 @@
                         <span style="display: inline-block; text-align: left;white-space: pre;"><h3>(a)\(onto: \forall \text{y} \in \text{Y}, &exist; \text{x} \in \text{X } \text{s.t.} \text{ f(x)=y}\)          (b)\(1-1: f(x_1)=f(x_2) \implies x_1=x_2\)</h3></span>
                         <img src="../photo/properties-numbers.png">
                         <img src="../photo/precision&accuracy.png" width="50%">
+                        <h4 style="color: darkblue;">n件相異物不允許重複取r件排列</h4>
+                        <div>\[
+                            P^n_r = \frac{n!}{(n-r)!}
+                        \]</div>
+                        <h4 style="color: darkblue;">n件相異物允許重複取r件排列</h4>
+                        <div>\[
+                            n^r
+                        \]</div>
+                        <h4 style="color: darkblue;">n件相異物不允許重複取r件組合</h4>
+                        <div>\[
+                            C^n_r = \binom{n}{r}  = \frac{P^n_r}{r!} = \frac{n!}{r!(n-r)!}
+                        \]</div>
+                        <h4 style="color: darkblue;">n件相異物允許重複取r件組合</h4>
+                        <div>\[
+                            C^{n+r-1}_r = H^n_r 
+                        \]</div>
+                        <div>\[
+                            x_1+x_2+x_3+...+x_n=r,\forall x_i>=0
+                        \]</div>
+                        <h4 style="color: darkblue;">m個相異物放至n個相異箱子,允許空箱</h4>
+                        <div>\[
+                            n^m
+                        \]</div>
+                        <h4 style="color: darkblue;">m個相異物放至n個相異箱子,一個箱子至多放一物</h4>
+                        <div>\[
+                            \text{1-1}(m,n) = P^n_m
+                        \]</div>
+                        <h4 style="color: darkblue;">m個相異物放至n個相異箱子,不允許空箱(排容)</h4>
+                        <div>\[
+                            \text{onto}(m,n) = \sum_{i=0}^{n} (-1)^i \binom{n}{i} (n-i)^m = \text{s}(m,n) \times n!
+                        \]</div>
+                        <h4 style="color: darkblue;">m個相異物放至n個相同箱子,不允許空箱</h4>
+                        <div>\[
+                            \text{s}(m,n) = \frac{\text{onto}(m,n)}{n!}  \text{(stirling number of 2nd kind)}
+                        \]</div>
+                        <div>\[
+                            \text{s}(m,n) = \text{s}(m-1,n-1)+n \times \text{s}(m-1,n)
+                        \]</div>
+                        <h4 style="color: darkblue;">m個相異物放至n個相同箱子,允許空箱</h4>
+                        <div>\[
+                            \text{s}(m,n)+\text{s}(m,n-1)+\text{s}(m,n-2)+...\text{s}(m,1)
+                        \]</div>
+                        <div style="display: inline-block; text-align: left;">
+                            <h4>相同球->相異箱  整數解</h4>
+                            <h4>相異物->相異箱  函數,onto</h4>
+                            <h4>相異物->相同箱  stirling s(m,n)</h4>
+                            <h4>相同球->相同箱 整數分割->無解</h4>
+                        </div>
                     <hr>
                         <h4>Different types of distances used in ML</h4>
                         <p><b>Minkowski distance:</b></p>

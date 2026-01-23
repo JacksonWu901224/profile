@@ -21,6 +21,39 @@
                 <hr>
                     <img src="../photo/pagetabletlb.png" width="70%">
                 <hr>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>scaling</th>
+                            <th>main question</th>
+                            <th>resource allocation</th>
+                            <th>ideal state</th>
+                            <th>math model</th>
+                            <th>main challenge</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><strong>Strong Scaling</strong></td>
+                            <td>「增加處理器能讓這件事快多少？」</td>
+                            <td>總量固定，處理器越多，每個分到的越少</td>
+                            <td>\(Speedup = N\) (處理器數量)</td>
+                            <td>Amdahl's Law<p style="font-size: 25px;">\(Speedup = \frac{1}{s + \frac{1-s}{N}}\)</p></td>
+                            <td>Communication Overhead,導致效率邊際遞減</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Weak Scaling</strong></td>
+                            <td>「增加處理器能讓我多做多少事？」</td>
+                            <td>人均固定，處理器越多，總量隨之膨脹</td>
+                            <td>\(Efficiency = 100\%\)</td>
+                            <td>Gustafson's Law<p style="font-size: 25px;">\(speedup=s+(1-s) \times N\)</p></td>
+                            <td>Memory Bandwidth & Global Synchronization</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <hr>
                 <h2 style="text-align:center;">Multilevel paging: 假設每個 page table 剛好佔一個 page</h2>
                 <h3 style="text-align:center;text-decoration: underline;">「每個 page table 剛好佔一個 page」的設計，使得記憶體配置、位址切割、硬體查表與效能實作都能保持規則、對齊、且高效。</h3>
                 <div class="table-container">

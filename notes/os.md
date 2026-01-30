@@ -693,7 +693,7 @@ flowchart TD
     - Nonblocking send
     - Blocking receive
     - Nonblocking receive
-  - 如果收送雙方皆是採用Blocking_send()即blocking_receive(),則此同步模式叫:rendezvous
+  - 如果收送雙方皆是採用Blocking_send()及blocking_receive(),則此同步模式叫:rendezvous
 - Buffering(message queue's size)
   - zero capacity
     - also called rendezvous
@@ -744,8 +744,8 @@ flowchart TD
 # CH8 Virtual Memory
 
 - 實現Virtual Memory 技術: Demand Paging
-  -pure demand paging
-  -prepaging
+  - pure demand paging
+  - prepaging
 
 ## Page Replacement Algorithm(沒有最差，只有最佳)
 

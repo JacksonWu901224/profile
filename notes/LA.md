@@ -107,7 +107,7 @@ Eigenvectors:
 
 For $\lambda_1 = 3$: $\mathbf{v}_1 = \begin{bmatrix} 1 & 2 & 1 \end{bmatrix}^T$ (normalized: $\frac{1}{\sqrt{6}}\begin{bmatrix} 1 & 2 & 1 \end{bmatrix}^T$)
 
-For $\lambda_2 = 1$: $\mathbf{v}_2 = \begin{bmatrix} 1 & 0 & -1 \end{bmatrix}^T$ (normalized: $\frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 0 & -1 \end{bmatrix}^T$)
+For $\lambda_2 = 1$: $\mathbf{v}_2 = \begin{bmatrix} -1 & 0 & 1 \end{bmatrix}^T$ (normalized: $\frac{1}{\sqrt{2}}\begin{bmatrix} -1 & 0 & 1 \end{bmatrix}^T$)
 
 For $\lambda_3 = 0$: $\mathbf{v}_3 = \begin{bmatrix} 1 & -1 & 1 \end{bmatrix}^T$ (normalized: $\frac{1}{\sqrt{3}}\begin{bmatrix} 1 & -1 & 1 \end{bmatrix}^T$)
 
@@ -115,15 +115,19 @@ For $\lambda_3 = 0$: $\mathbf{v}_3 = \begin{bmatrix} 1 & -1 & 1 \end{bmatrix}^T$
 
 Since $M^T M$ is symmetric, it is diagonalized by $M^T M = V \Lambda V^T$, where $V$ is the orthogonal matrix of eigenvectors and $\Lambda$ is the diagonal matrix of eigenvalues.
 
-$$V = \begin{bmatrix} 1/\sqrt{6} & 1/\sqrt{2} & 1/\sqrt{3} \\ 2/\sqrt{6} & 0 & -1/\sqrt{3} \\ 1/\sqrt{6} & -1/\sqrt{2} & 1/\sqrt{3} \end{bmatrix}, \quad \Lambda = \begin{bmatrix} 3 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{bmatrix}$$
+$$V = \begin{bmatrix} 1/\sqrt{6} & -1/\sqrt{2} & 1/\sqrt{3} \\ 2/\sqrt{6} & 0 & -1/\sqrt{3} \\ 1/\sqrt{6} & 1/\sqrt{2} & 1/\sqrt{3} \end{bmatrix}, \quad \Lambda = \begin{bmatrix} 3 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{bmatrix}$$
 
 (f) Singular Value Decomposition (SVD) of $M$
 
-The SVD is $M = U \Sigma V^T$.
+The SVD is $A_{2 \times 3} = U_{2 \times 2} \Sigma_{2 \times 3} V^T_{3 \times 3}$.
+
+$U = [\underbrace{\mathbf{u_1} \dots \mathbf{u_r}}_{R(A)} | \underbrace{\mathbf{u_{r+1}} \dots \mathbf{u_m}}_{N(A^T)}] ,V = [\underbrace{\mathbf{v_1} \dots \mathbf{v_r}}_{R(A^T)} | \underbrace{\mathbf{v_{r+1}} \dots \mathbf{v_n}}_{N(A)}]$
 
 $\Sigma$: Square roots of non-zero eigenvalues of $M^T M$.$\sigma_1 = \sqrt{3}, \sigma_2 = \sqrt{1}$. Thus, $\Sigma = \begin{bmatrix} \sqrt{3} & 0 & 0 \\ 0 & 1 & 0 \end{bmatrix}$.
 
 $V$: The eigenvectors of $M^T M$ found in part (d).
+
+$v_3=N(A)=ker\begin{bmatrix} 1 & 1 & 0 \\ 0 & 1 & 1 \end{bmatrix}=\begin{bmatrix} 1 \\ -1 \\ 1 \end{bmatrix}$
 
 $U$: Found via $u_i = \frac{1}{\sigma_i}Mv_i$.
 
@@ -131,7 +135,7 @@ $u_1 = \frac{1}{\sqrt{3}} \begin{bmatrix} 1 & 1 & 0 \\ 0 & 1 & 1 \end{bmatrix} \
 
 $u_2 = \frac{1}{1} \begin{bmatrix} 1 & 1 & 0 \\ 0 & 1 & 1 \end{bmatrix} \begin{bmatrix} 1/\sqrt{2} \\ 0 \\ -1/\sqrt{2} \end{bmatrix} = \begin{bmatrix} 1/\sqrt{2} \\ -1/\sqrt{2} \end{bmatrix}$
 
-Result: $M = \begin{bmatrix} 1/\sqrt{2} & 1/\sqrt{2} \\ 1/\sqrt{2} & -1/\sqrt{2} \end{bmatrix} \begin{bmatrix} \sqrt{3} & 0 & 0 \\ 0 & 1 & 0 \end{bmatrix} \begin{bmatrix} 1/\sqrt{6} & 2/\sqrt{6} & 1/\sqrt{6} \\ 1/\sqrt{2} & 0 & -1/\sqrt{2} \\ 1/\sqrt{3} & -1/\sqrt{3} & 1/\sqrt{3} \end{bmatrix}^T$
+Result: $M = \begin{bmatrix} 1/\sqrt{2} & -1/\sqrt{2} \\ 1/\sqrt{2} & 1/\sqrt{2} \end{bmatrix} \begin{bmatrix} \sqrt{3} & 0 & 0 \\ 0 & 1 & 0 \end{bmatrix} \begin{bmatrix} 1/\sqrt{6} & -1/\sqrt{2} & 1/\sqrt{3} \\ 2/\sqrt{6} & 0 & -1/\sqrt{3} \\ 1/\sqrt{6} & 1/\sqrt{2} & 1/\sqrt{3} \end{bmatrix}^T$
 
 <br>
 <br>

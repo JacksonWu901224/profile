@@ -39,6 +39,32 @@
 ![108 中央](108中央ans-1.png)
 ![108 中央](108中央ans-2.png)
 
+# 107 臺北
+
+![107 臺北](107臺北.png)
+
+$R^{-1}_{12}R^{-1}_{23}A=U$
+
+$\begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & -1 & 1 \end{bmatrix} \begin{bmatrix} 1 & 0 & 0 \\ -1 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} \begin{bmatrix} 5 & 5 & 0 \\ 5 & 7 & 2 \\ 0 & 2 & 9 \end{bmatrix} = \begin{bmatrix} 5 & 5 & 0 \\ 0 & 2 & 2 \\ 0 & 0 & 7 \end{bmatrix}$
+
+$A=R^{1}_{23}R^{1}_{12}U=LU$
+
+$L = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 1 & 1 \end{bmatrix}\begin{bmatrix} 1 & 0 & 0 \\ 1 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} = \begin{bmatrix} 1 & 0 & 0 \\ 1 & 1 & 0 \\ 0 & 1 & 1 \end{bmatrix}$
+
+$A=LDL^T$
+
+$A= \begin{bmatrix} 1 & 0 & 0 \\ 1 & 1 & 0 \\ 0 & 1 & 1 \end{bmatrix}\begin{bmatrix} 5 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 7 \end{bmatrix}\begin{bmatrix} 1 & 1 & 0 \\ 0 & 1 & 1 \\ 0 & 0 & 1 \end{bmatrix}$
+
+more
+
+$A=L\sqrt{D}\sqrt{D}L^T$
+
+$A= \begin{bmatrix} 1 & 0 & 0 \\ 1 & 1 & 0 \\ 0 & 1 & 1 \end{bmatrix}\begin{bmatrix} \sqrt{5} & 0 & 0 \\ 0 & \sqrt{2} & 0 \\ 0 & 0 & \sqrt{7} \end{bmatrix}\begin{bmatrix} \sqrt{5} & 0 & 0 \\ 0 & \sqrt{2} & 0 \\ 0 & 0 & \sqrt{7} \end{bmatrix}\begin{bmatrix} 1 & 1 & 0 \\ 0 & 1 & 1 \\ 0 & 0 & 1 \end{bmatrix}$
+
+$A=LL^T$
+
+$A= \begin{bmatrix} \sqrt{5} & 0 & 0 \\ \sqrt{5} & \sqrt{2} & 0 \\ 0 & \sqrt{2} & \sqrt{7} \end{bmatrix} \begin{bmatrix} \sqrt{5} & \sqrt{5} & 0 \\ 0 & \sqrt{2} & \sqrt{2} \\ 0 & 0 & \sqrt{7} \end{bmatrix}$
+
 # 107 中正
 
 ![107 中正](107中正.png)

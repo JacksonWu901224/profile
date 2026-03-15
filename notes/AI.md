@@ -1,3 +1,14 @@
+<!-- markdownlint-disable MD033 -->
+
+# Definition: Generative AI
+
+## 讓computer學會產生<u>複雜</u>而<u>有結構</u>的物件
+
+- 複雜 : 無限可能
+- 有結構 : 由有限的<u>基本單位</u>(toekn)所構成
+
+---
+
 # Machine Learning
 
 ## 1. prepare data

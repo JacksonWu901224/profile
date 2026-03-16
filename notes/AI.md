@@ -1,11 +1,47 @@
 <!-- markdownlint-disable MD033 -->
 
+# AI outline graph
+
+```mermaid
+flowchart LR
+    subgraph A ["AI"]
+        subgraph B ["machine learning"]
+            C(("deep learning
+             (many layers)
+             (neural nerwork)"))
+        end
+    end
+
+    %% 顏色設定：由深到淺增加層次感
+    style A fill:#4a90e2,stroke:#003366,color:#fff, font-family:Arial,font-weight:bold
+    style B fill:#8db5f8,stroke:#005ce6, font-family:Arial,font-weight:bold
+    style C fill:#dae8fc,stroke:#005ce6, font-family:Arial,font-weight:bold
+```
+
+---
+
 # Definition: Generative AI
 
 ## 讓computer學會產生<u>複雜</u>而<u>有結構</u>的物件
 
 - 複雜 : 無限可能
 - 有結構 : 由有限的<u>基本單位</u>(toekn)所構成
+
+---
+
+# Retrieval Augmented Generation(RAG)
+
+---
+
+# Context Engineering的核心目標
+
+- 避免塞爆Context(把需要的放進去,不需要的清出來)
+
+- 常用招數
+  - Select
+    - 挑選需要的內容, e.g. RAG, Tool RAG, Memory RAG
+  - Compress
+  - Multi-Agent
 
 ---
 

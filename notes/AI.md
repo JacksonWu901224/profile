@@ -3,19 +3,29 @@
 # AI outline graph
 
 ```mermaid
-flowchart LR
-    subgraph A ["AI"]
-        subgraph B ["machine learning"]
-            C(("deep learning
-             (many layers)
-             (neural nerwork)"))
+flowchart TD
+    subgraph AI ["Artificial Intelligence"]
+        direction TB
+        subgraph ML ["Machine Learning"]
+            direction TB
+            subgraph NN ["Neural Networks"]
+                direction TB
+                subgraph DL ["Deep Learning (Multiple Layers)"]
+                    direction TB
+                    subgraph GenAI ["Generative AI"]
+                        LLM(("Large Language Models </br>(LLMs)"))
+                    end
+                end
+            end
         end
     end
 
-    %% 顏色設定：由深到淺增加層次感
-    style A fill:#4a90e2,stroke:#003366,color:#fff, font-family:Arial,font-weight:bold
-    style B fill:#8db5f8,stroke:#005ce6, font-family:Arial,font-weight:bold
-    style C fill:#dae8fc,stroke:#005ce6, font-family:Arial,font-weight:bold
+    %% Styles for clarity
+    style AI fill:#4a90e2,stroke:#003366,color:#fff
+    style ML fill:#8db5f8,stroke:#005ce6
+    style NN fill:#b3d1ff,stroke:#005ce6
+    style DL fill:#dae8fc,stroke:#005ce6
+    style GenAI fill:#f5faff,stroke:#005ce6
 ```
 
 ---

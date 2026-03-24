@@ -59,6 +59,7 @@ flowchart TD
 
 # Machine Learning
 
+![mlthreephases](mlthreephases.png)
 ## 1. prepare data
 
 - split to <font color="blue">train data</font> & <font color="blue">test data</font>

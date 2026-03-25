@@ -3,7 +3,6 @@
 body {
 	margin: 0px;
 	padding: 0px;
-	background: url("../images/bg_dark_green.png");  
 	background-color: inherit;
 	font-size: 16px; 
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
@@ -45,7 +44,7 @@ a:active {
 .clear	{
 	float: none;
 	clear: both;
-	margin: 20px 0px 20px 0px;
+	margin: 3px 0px 3px 0px;
 }
 /* Header 
 --------------------------------------------------- */
@@ -133,7 +132,7 @@ h2	{
 dl	{
 	margin: 0px 50px 0px 0px;
 }
-dt	{
+dt	{	
 	float: left;
 	width: 200px;
 	font-size: 20px;
@@ -180,13 +179,13 @@ p.summary	{
 #skills ul.list1	{	
 	float: left;
 	list-style: none;
-	margin: 0px 0px 0px -40px;
+	margin: 0px 0px 0px -65px;
 	width: 220px;
 }
 #skills ul.list2	{	
 	float: left;
 	list-style: none;
-	margin: 0px 0px 0px 0px;
+	margin: 0px 0px 0px -100px;
 	width: 220px;
 }
 #skills li {

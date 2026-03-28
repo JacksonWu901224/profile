@@ -32,12 +32,14 @@ flowchart TD
 
 # Definition: Generative AI
 
-## 讓computer學會產生<u>複雜</u>而<u>有結構</u>的物件
+## 讓computer學會產生<u>複雜</u>而<u>有結構</u>的物件, 就是<font color="blue">Classification</font>, 因為Generative AI就是給一個未完成的句子, 去猜接下來接哪一個token
 
 - 複雜 : 無限可能
 - 有結構 : 由有限的<u>基本單位</u>(toekn)所構成
-
-## 就是Classification, 因為Generative AI就是給一個未完成的句子, 去猜接下來接哪一個token
+- 基本單位(token) : 
+  - 影像 : 是由<font color="blue">像素</font>構成的. 每個像素又由RGB三個子像素組成,而每個子像素的可能值範圍為0-255. 影像只考慮兩個維度: width, height
+  - 聲音訊號 : 是由<font color="blue">取樣點</font>構成的. 遠看是聲音訊號,拉進後則可以看到一個一個的取樣點.一秒鐘有多少取樣點,取決於取樣率(sampling rate);比如, 16kHz的取樣率意味著一秒鐘有16000個取樣點. 而每個取樣點有多少種可能的數值,則取決於取樣解析度(bit resolution);常見的16-bit解析度有65,536種可能的數值
+  - 影片 : 就是<font color="blue">一連串的圖片</font>, 每一張圖片又叫<font color="blue">Frame</font>. 需考慮三個維度: width, height, time
 
 ---
 

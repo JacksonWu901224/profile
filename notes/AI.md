@@ -62,6 +62,9 @@ flowchart TD
 # Machine Learning
 
 ![mlthreephases](mlthreephases.png)
+
+## 0. ML三步驟
+![mlthreesteps](mlthreesteps.png)
 ## 1. prepare data
 
 - split to <font color="blue">train data</font> & <font color="blue">test data</font>
@@ -72,6 +75,7 @@ flowchart TD
   - <font color="green">Simple Linear Regression</font>
     - $y = \beta_0 + \beta_1x + \epsilon$
       - 其中 $\beta_0$ 為截距，$\beta_1$ 為斜率，$\epsilon$ 為隨機誤差。
+      - **$y, x$** is <font color="blue">feature</font>.**$\beta1$** is <font color="blue">weight</font>.**$\beta0$** is <font color="blue">bias</font>
   - <font color="green">Multiple Linear Regression</font>
     - $y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \dots + \beta_nx_n + \epsilon$
   -  <font color="green">Piecewise Linear Curves</font>
@@ -80,6 +84,8 @@ flowchart TD
     - $P(y=1|x) = \frac{1}{1 + e^{-(\beta_0 + \beta_1x_1 + \dots + \beta_nx_n)}}$
   <br>
   ![sigmoid function](Sigmoid-Activation-Function.png)
+  - <font color="green">Structured Learning</font>
+    - **create** something with structure(e.g. image, document)
 
 ## 3. set Cost function/Loss function
 
@@ -88,6 +94,17 @@ flowchart TD
     - $n$ : 訓練資料的總數 (Train Data Size / Batch Size).
     - $y_i$ : 第 $i$ 筆資料的真實標籤 (Ground Truth).
     - $\hat{y}_i$ : 模型對第 $i$ 筆資料的預測值 (Prediction)。
+- Mean Absolute Error, MAE
+  - $MAE = \frac{1}{n} \sum_{i=1}^{n} \left|(y_i - \hat{y}_i)\right|$
+    - $n$ : 訓練資料的總數 (Train Data Size / Batch Size).
+    - $y_i$ : 第 $i$ 筆資料的真實標籤 (Ground Truth).
+    - $\hat{y}_i$ : 模型對第 $i$ 筆資料的預測值 (Prediction)。
+- Cross-Entropy
+  - if $y, \hat{y}$ are both probability distributions
+  - $ Cross-Entropy=H(y, \hat{y}) = -\sum_{i=1}^{c} y_i \log(\hat{y}_i)$
+    - $c$: The total number of classes or categories.
+    - $y_i$: The probability of the $i$-th class in the true distribution (often a <font color="blue">one-hot encoded</font> vector where only one $y_i = 1$ and others are $0$).
+    - $\hat{y}_i$: The probability of the $i$-th class predicted by the model (usually the output of a <font color="blue">Softmax function</font>($0 \le \hat{y}_i \le 1$ and $\sum \hat{y}_i = 1$.)).
 
 ## 4. set optimizer
 

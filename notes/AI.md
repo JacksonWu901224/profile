@@ -80,12 +80,25 @@ flowchart TD
     - $y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \dots + \beta_nx_n + \epsilon$
   -  <font color="green">Piecewise Linear Curves</font>
 ![piecewise linear curves](piecewiselinearcurves.png)
-  - <font color="green">Logistic Regression</font>(分類問題, classification)
-    - $P(y=1|x) = \frac{1}{1 + e^{-(\beta_0 + \beta_1x_1 + \dots + \beta_nx_n)}}$
+  - <font color="green">Classification</font>
+    - <font color="green">Binary Classification</font>(Sigmoid=Logistic Function)
+      - $P(y=1|x) = \frac{1}{1 + e^{-(\beta_0 + \beta_1x_1 + \dots + \beta_nx_n)}}$
   <br>
   ![sigmoid function](Sigmoid-Activation-Function.png)
+    - <font color="green">Multi-class Classification</font>(Softmax)
+  ![softmax](softmax.png)
   - <font color="green">Structured Learning</font>
     - **create** something with structure(e.g. image, document)
+
+### compare regression and classification
+
+![compare regression and classification](compare.png)
+
+- $\sigma$ is called **activation function**
+  - Regression
+    - $\sigma$ is Relu
+  - Classification
+    - $\sigma$ is sigmoid/softmax
 
 ## 3. set Cost function/Loss function
 
@@ -99,10 +112,11 @@ flowchart TD
     - $n$ : 訓練資料的總數 (Train Data Size / Batch Size).
     - $y_i$ : 第 $i$ 筆資料的真實標籤 (Ground Truth).
     - $\hat{y}_i$ : 模型對第 $i$ 筆資料的預測值 (Prediction)。
-- Cross-Entropy
+- Cross-Entropy(classification)
   - if $y, \hat{y}$ are both probability distributions
   - $ Cross-Entropy=H(y, \hat{y}) = -\sum_{i=1}^{c} y_i \log(\hat{y}_i)$
     - $c$: The total number of classes or categories.
+    - **Minimizing cross-entropy** is equivalent to **maximizing likelihood**
     - $y_i$: The probability of the $i$-th class in the true distribution (often a <font color="blue">one-hot encoded</font> vector where only one $y_i = 1$ and others are $0$).
     - $\hat{y}_i$: The probability of the $i$-th class predicted by the model (usually the output of a <font color="blue">Softmax function</font>($0 \le \hat{y}_i \le 1$ and $\sum \hat{y}_i = 1$.)).
 
@@ -142,6 +156,10 @@ flowchart TD
 - Initialization
   - <font color="green">Kaiming Initialization</font>
 - **<font color="blue">Use gradient descent to train the model, accelerating convergence to the minimum loss and yielding the optimal model(Find the best $\beta_0, \beta_1, \beta_2, \beta_3,...., \epsilon$).</font>**
+
+- general guide
+
+![general guide](generalguide.png)
 
 ## 6. use validation data to validate your model
 

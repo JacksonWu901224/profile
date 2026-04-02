@@ -143,11 +143,16 @@ flowchart TD
   - 也可以用<font color="green">Learning Rate Scheduling</font>來調整learning rate
 ![Learning Rate Scheduling](learningratescheduling.png)
     - warp up : 給optimizer探索地形的機會, 因為剛進入一個新地圖, 不知道地圖有什麼, 設定一個大的learning rate, 讓參數亂跑, 可以大概知道地圖長什麼樣
-  - Feature Scaling
+  - Feature Scaling(夷平error surface)
+  ![feature scaling](featurescaling.png)
     - accelerate gradient descent
   ![feature scaling](feature_scaling.webp)
     - Normalization
       - Batch Normalization
+  ![batch normalization](batchnormalization.png)
+        - $\gamma$, $\beta$ are another network parameters, 另外再被learned出來的;因為normalization完後,$\tilde{z}^1,\tilde{z}^2,\tilde{z}^3,...$之平均為0, 可能會對模型產生限制,所以加上$\gamma$, $\beta$
+        - $\gamma$ initialize to $[1, 1, \dots, 1]^T$
+        - $\beta$ initialize to $[0, 0, \dots, 0]^T$
       - Layer Normalization
     - Standardizatoin
 
@@ -161,11 +166,11 @@ flowchart TD
 
 ![general guide](generalguide.png)
 
-## 6. use validation data to validate your model
+## 6. use validation data to evaluate your model
 
 - be aware of <font color="blue">overfitting</font>
 
-## 7. use test data to test your model
+## 7. use test data to test/inference your model
 
 - public test data
   - be aware of <font color="blue">overfitting</font>

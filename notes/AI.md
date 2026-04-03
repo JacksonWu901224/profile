@@ -67,7 +67,13 @@ flowchart TD
 ![mlthreesteps](mlthreesteps.png)
 ## 1. prepare data
 
-- split to <font color="blue">train data</font> & <font color="blue">test data</font>
+- split data into
+  1. training data &ensp;&emsp;&emsp; 98%
+  2. validation data &emsp;&emsp; 1%
+  3. public test data &emsp; 0.5%
+  4. private test data&emsp; 0.5%
+
+![data spliting](dataspliting.png)
 
 ## 2. set a model
 

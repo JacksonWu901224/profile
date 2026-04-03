@@ -12,23 +12,54 @@ flowchart TD
                 direction TB
                 subgraph DL ["Deep Learning (Multiple Layers)"]
                     direction TB
-                    subgraph GenAI ["Generative AI"]
-                        LLM(("Large Language Models </br>(LLMs)"))
+
+                    %% NLP Path
+                    subgraph NLP_Domain ["Natural Language Processing (NLP)"]
+                        subgraph RNN_Sub ["Recurrent Models"]
+                            RNN["RNN"] --引入Gating Unit--> LSTM["LSTM"]
+                        end
+                        subgraph AB[Attention-Based]
+                          TF["Transformer"]
+                        end
                     end
+
+                    %% CV Path
+                    subgraph CV_Domain ["Computer Vision (CV)"]
+                        CNN["CNN (Convolutional)"]
+                    end
+
+                    subgraph GenAI ["Generative AI"]
+                        direction TB
+                        LLM(("Large Language Models"))
+                        GAN["GAN (Generative Adversarial Network)"]
+                        DM["Diffusion Models"]
+                    end
+                    
+                    %% Connections
+                    RNN_Sub -.拋棄了遞歸架構，改用注意力機制.-> TF
+                    TF --基礎架構--> LLM
+                    TF -.DiT (Diffusion Transformer).-> DM
+                    CNN --Spatial Representation Architecture--> GAN
+                    CNN -.U-Net Backbone,特徵提取與重建.-> DM
+                    AE["Autoencoder"] -.Latent Space Compression,壓縮至潛在空間.-> DM
                 end
             end
         end
     end
 
-    %% Styles for clarity
+    %% 註解說明
+    Note["註：本圖側重於深度學習演進路徑"]
+    Note --- AI
+
+    %% Styles
     style AI fill:#4a90e2,stroke:#003366,color:#fff
     style ML fill:#8db5f8,stroke:#005ce6
     style NN fill:#b3d1ff,stroke:#005ce6
     style DL fill:#dae8fc,stroke:#005ce6
     style GenAI fill:#f5faff,stroke:#005ce6
+    style NLP_Domain fill:#e1f5fe,stroke:#01579b,stroke-dasharray: 5 5
+    style CV_Domain fill:#f3e5f5,stroke:#4a148c,stroke-dasharray: 5 5
 ```
-
----
 
 # Definition: Generative AI
 
@@ -41,11 +72,7 @@ flowchart TD
   - 聲音訊號 : 是由<font color="blue">取樣點</font>構成的. 遠看是聲音訊號,拉進後則可以看到一個一個的取樣點.一秒鐘有多少取樣點,取決於取樣率(sampling rate);比如, 16kHz的取樣率意味著一秒鐘有16000個取樣點. 而每個取樣點有多少種可能的數值,則取決於取樣解析度(bit resolution);常見的16-bit解析度有65,536種可能的數值
   - 影片 : 就是<font color="blue">一連串的圖片</font>, 每一張圖片又叫<font color="blue">Frame</font>. 需考慮三個維度: width, height, time
 
----
-
 # Retrieval Augmented Generation(RAG)
-
----
 
 # Context Engineering的核心目標
 
@@ -57,8 +84,6 @@ flowchart TD
   - Compress
   - Multi-Agent
 
----
-
 # Machine Learning
 
 ![mlthreephases](mlthreephases.png)
@@ -67,11 +92,11 @@ flowchart TD
 ![mlthreesteps](mlthreesteps.png)
 ## 1. prepare data
 
-- split data into
-  1. training data &ensp;&emsp;&emsp; 98%
-  2. validation data &emsp;&emsp; 1%
-  3. public test data &emsp; 0.5%
-  4. private test data&emsp; 0.5%
+- split data into  
+  i. **training data** &ensp;&emsp;&emsp; 98%  
+  ii. **validation data** &emsp;&emsp; 1%  
+  iii. **public test data** &emsp;0.5%  
+  iv. **private test data**&emsp;0.5%
 
 ![data spliting](dataspliting.png)
 

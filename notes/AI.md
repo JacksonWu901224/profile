@@ -130,6 +130,8 @@ flowchart TD
     - $\sigma$ is Relu
   - Classification
     - $\sigma$ is sigmoid/softmax
+- $\sigma(\mathbf{b} + \mathbf{W}\mathbf{x})$ is a **<font color="blue">neuron</font>**
+- $f(\mathbf{x}) = b + \mathbf{c}^T \sigma(\mathbf{b} + \mathbf{W}\mathbf{x})$ is **<font color="blue">1-Hidden Layer Neural Network</font>**
 
 ## 3. set Cost function/Loss function
 
@@ -155,8 +157,8 @@ flowchart TD
 
 - <font color="green">Gradient Descent(Vanilla Gradient Descent)</font>
   - $ \theta ^ {t+1} = \theta ^ {t} - \eta \cdot \nabla L(\theta ^ {t})$
-    - $\nabla L(w)$ 代表損失函數 $L$ 在當前參數 $w$ 位置的「斜率」或「坡度」
-    - $\eta$ : The Learning Rate
+    - $\nabla L(\theta ^ {t})$ 代表損失函數 $L$ 在當前參數 $\theta ^ {t}$ 位置的「斜率」或「坡度」
+    - $\eta$(Eta) : The Learning Rate
   - 問題 : 只根據當下算出來的$g^t$來決定方向
     - 解法 : Gradient Descent + Optimizer
       - 根據$g^0,g^1,g^2,...,g^t$一起來決定方向(調整learning rate)

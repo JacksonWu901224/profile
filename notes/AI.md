@@ -208,3 +208,26 @@ flowchart TD
 - public test data
   - be aware of <font color="blue">overfitting</font>
 - private test data
+
+# Convolutional Neural Networks, CNN
+
+<img src="cnn-1.png" width="50%">
+
+**channel** : R, G, B
+
+![cnn benefit](cnn-2.png)
+不需Fully Connected Network, weight太龐大了, 用Receptive Field
+
+鳥嘴可能在任何地方, 所以可以parameters sharing, called **Filter**
+
+## The Whole CNN
+
+![cnn whole picture](cnn-3.png)
+
+**Pooling** :  
+e.g. 把奇數rows, columns拿掉, 讓圖變小
+
+<img src="cnn-4.png" width="50%">
+
+**Flatten** :  
+把matrix變成column

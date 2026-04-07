@@ -231,3 +231,41 @@ e.g. 把奇數rows, columns拿掉, 讓圖變小
 
 **Flatten** :  
 把matrix變成column
+
+# Self-Attention
+
+![input is a set of vectors](selfattention-1.png)
+
+e.g. 文字處理, 聲音訊號(取一個範圍called window(通常為25ms), 描述成一個vector called frame, 為了描述一整段聲音訊號, 每次都把window往右移10ms, 取各個window's frame), graph(consider each **node** as a vector)
+
+![output-1](output-1.png)
+e.g. POS tagging,...
+![output-2](output-2.png)
+e.g. sentiment analysis,...
+![output-3](output-3.png)
+e.g. translation, speech recognition,...
+
+![self-attention-1](selfattention-2.png)
+現今self-attention最常用的是<u>**Dot-Product**</u>, 也用在<u>**Transformer**</u>上
+![self-attention-2](selfattention-3.png)
+![self-attention-3](selfattention-4.png)
+![self-attention-4](selfattention-5.png)
+![self-attention-5](selfattention-6.png)
+![self-attention-6](selfattention-7.png)
+$W^q,W^k,W^v$是被learned出來的
+
+![self-attention-7](selfattention-8.png)
+![self-attention-8](selfattention-9.png)
+## Fianl Self-Attention
+![self-attention-9](selfattention-10.png)
+
+## 進階版 Self-Attention: Multi-head Self-Attention 
+![Multi-head Self-Attention](multiheadselfattention-1.png)
+![Multi-head Self-Attention](multiheadselfattention-2.png)
+![Multi-head Self-Attention](multiheadselfattention-3.png)
+
+--- 
+
+## Self-Attention 少了位置資訊, 所以可以加上Positional Encoding
+
+<img src="positionalencoding.png" width="45%">

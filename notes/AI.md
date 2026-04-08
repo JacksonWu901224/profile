@@ -245,27 +245,99 @@ e.g. sentiment analysis,...
 ![output-3](output-3.png)
 e.g. translation, speech recognition,...
 
-![self-attention-1](selfattention-2.png)
+<img src="selfattention-2.png" width="85%">
+
 現今self-attention最常用的是<u>**Dot-Product**</u>, 也用在<u>**Transformer**</u>上
-![self-attention-2](selfattention-3.png)
-![self-attention-3](selfattention-4.png)
-![self-attention-4](selfattention-5.png)
-![self-attention-5](selfattention-6.png)
-![self-attention-6](selfattention-7.png)
+<img src="selfattention-3.png" width="85%">
+<img src="selfattention-4.png" width="85%">
+<img src="selfattention-5.png" width="85%">
+<img src="selfattention-6.png" width="85%">
+<img src="selfattention-7.png" width="85%">
+
 $W^q,W^k,W^v$是被learned出來的
 
-![self-attention-7](selfattention-8.png)
-![self-attention-8](selfattention-9.png)
+<img src="selfattention-8.png" width="85%">
+<img src="selfattention-9.png" width="85%">
+
 ## Fianl Self-Attention
-![self-attention-9](selfattention-10.png)
+<img src="selfattention-10.png" width="85%">
 
 ## 進階版 Self-Attention: Multi-head Self-Attention 
-![Multi-head Self-Attention](multiheadselfattention-1.png)
-![Multi-head Self-Attention](multiheadselfattention-2.png)
-![Multi-head Self-Attention](multiheadselfattention-3.png)
-
+<img src="multiheadselfattention-1.png" width="85%">
+<img src="multiheadselfattention-2.png" width="85%">
+<img src="multiheadselfattention-3.png" width="85%">
 --- 
 
 ## Self-Attention 少了位置資訊, 所以可以加上Positional Encoding
 
 <img src="positionalencoding.png" width="45%">
+
+# seq2seq
+
+e.g. speech recognition, machine translation, speech translation, chatbot, syntactic parsing, Multi-label classification(an object can belong to multiple classes), object detection,...
+
+```mermaid
+flowchart LR
+subgraph ModelTasks [Key Concept: Output length is determined by model]
+    direction LR
+    A([一段聲音]) -- speech recognition --> B[/辨識出的文字/]
+    C([一個語言句子]) -- machine translation --> D[/另一個語言句子/]
+    E([一段聲音]) -- speech translation --> F[/翻譯出的文字/]
+    G([input]) -- chatbot --> H[/response/]
+  end
+```
+
+```mermaid
+flowchart LR
+    %% 定義配色方案
+    classDef io fill:#fff4dd,stroke:#d4a017,stroke-width:2px;
+    classDef core fill:#e1f5fe,stroke:#01579b,stroke-width:2px,color:#01579b;
+
+    subgraph seq2seq [Seq2Seq model architecture]
+        direction LR
+        style seq2seq fill:#fdfdfd,stroke:#999,stroke-dasharray: 5 5
+
+        %% 節點定義 - 使用引號包裹文字以避免解析錯誤
+        A(["Input sequence"])
+        B(Encoder)
+        C(Decoder)
+        D(["Output sequence"])
+
+        %% 連線
+        A ==> B
+        B ==>|Context Vector| C
+        C ==> D
+    end
+
+    %% 應用樣式
+    class A,D io
+    class B,C core
+```
+
+## seq2seq encoder
+<img src="seq2seqencoder.png" width="75%">
+
+一個Block在做的事情是好幾個layer在做的事情
+
+## 原始Transformer encoder
+<img src="transformerencoder.png" width="70%">
+<img src="realtransformerencoder.png" width="25%">
+
+## Transformer decoder - Autoregressive decoder(最常見)
+
+<img src="transformerdecoder-1.png" width="85%">
+<img src="transformerdecoder-2.png" width="85%">
+<img src="transformerdecoder-3.png" width="65%">
+<img src="transformerdecoder-4.png" width="25%">
+
+### masked Self-Attention
+
+<img src="maskedselfattention-1.png" width="75%">
+<img src="maskedselfattention-2.png" width="75%">
+
+### Cross attention
+
+<img src="crossattention.png" width="65%">
+
+<img src="crossattention-1.png" width="45%">
+<img src="crossattention-1.png" width="45%">

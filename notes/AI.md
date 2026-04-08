@@ -341,3 +341,7 @@ flowchart LR
 
 <img src="crossattention-1.png" width="45%">
 <img src="crossattention-1.png" width="45%">
+
+## Train
+
+<img src="transformertraining.png" width="90%">

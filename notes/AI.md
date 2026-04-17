@@ -72,6 +72,10 @@ flowchart TD
   - 聲音訊號 : 是由<font color="blue">取樣點</font>構成的. 遠看是聲音訊號,拉進後則可以看到一個一個的取樣點.一秒鐘有多少取樣點,取決於取樣率(sampling rate);比如, 16kHz的取樣率意味著一秒鐘有16000個取樣點. 而每個取樣點有多少種可能的數值,則取決於取樣解析度(bit resolution);常見的16-bit解析度有65,536種可能的數值
   - 影片 : 就是<font color="blue">一連串的圖片</font>, 每一張圖片又叫<font color="blue">Frame</font>. 需考慮三個維度: width, height, time
 
+## Scaling-Laws
+
+![scaling-law](scaling-law.png)
+
 # Retrieval Augmented Generation(RAG)
 
 # Context Engineering的核心目標
@@ -107,6 +111,7 @@ flowchart TD
     - $y = \beta_0 + \beta_1x + \epsilon$
       - 其中 $\beta_0$ 為截距，$\beta_1$ 為斜率，$\epsilon$ 為隨機誤差。
       - **$y, x$** is <font color="blue">feature</font>.**$\beta1$** is <font color="blue">weight</font>.**$\beta0$** is <font color="blue">bias</font>
+      - **$\text{Parameters} = \text{Weights} + \text{Biases}$**
   - <font color="green">Multiple Linear Regression</font>
     - $y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \dots + \beta_nx_n + \epsilon$
   -  <font color="green">Piecewise Linear Curves</font>

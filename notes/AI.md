@@ -76,6 +76,8 @@ flowchart TD
 
 ![scaling-law](scaling-law.png)
 
+Dataset Size 通常指的就是經過 Tokenization 後產生的 Tokens 總數。
+
 # Retrieval Augmented Generation(RAG)
 
 # Context Engineering的核心目標

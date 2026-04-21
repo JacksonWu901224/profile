@@ -352,3 +352,27 @@ flowchart LR
 ## Train
 
 <img src="transformertraining.png" width="90%">
+
+# BERT
+
+BERT一般用在自然語言處理上,當然語音與圖片也可當作seq2seq處理
+
+<img src="bert.png" width="80%">
+
+HOW TO TRAIN BERT?(有兩個任務要學)(it is **Unsupervised**)
+<img src="howtotrainbert-1.png" width="80%">
+<img src="howtotrainbert-2.png" width="80%">
+
+sentence1與sentence2是否相接
+
+所以BERT學會做填空題, 那要如何使用BERT?  
+BERT就像是幹細胞
+
+<img src="howtousebert.png" width="80%">
+
+they are **Semi-Supervised**
+
+<img src="howtousebertcase1.png" width="45%">
+<img src="howtousebertcase2.png" width="45%">
+<img src="howtousebertcase3.png" width="45%">
+<img src="howtousebertcase4.png" width="45%">

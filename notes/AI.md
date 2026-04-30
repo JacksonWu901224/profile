@@ -355,6 +355,7 @@ flowchart LR
 
 # BERT
 
+BERT is a self-supervised learning(learn from **unlabeled** data), ChatGPT, Gemini, Claude, Llama, and Grok are also self-supervised learning  
 BERT一般用在自然語言處理上,當然語音與圖片也可當作seq2seq處理
 
 <img src="bert.png" width="80%">

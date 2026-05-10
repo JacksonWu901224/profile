@@ -139,19 +139,12 @@ strong{
     }
 
     table{
-        width: 96%;
-        min-width: 620px;
-        border-radius: 18px;
+        min-width: unset;
+        width: 100%;
     }
 
-    th{
-        font-size: 0.78rem;
-        padding: 10px 8px;
-    }
-
-    td{
-        font-size: 0.76rem;
-        padding: 10px 8px;
-        line-height: 1.5;
+    th, td{
+        font-size: 0.7rem;
+        padding: 8px 6px;
     }
 }

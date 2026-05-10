@@ -1,7 +1,10 @@
 // 切換側邊選單的顯示和隱藏
-function toggleMenu() {
+function toggleMenu(event) {
+    event.stopPropagation();
+
     const sidebar = document.getElementById("sidebar");
     const main = document.getElementById("main-content");
+
     sidebar.classList.toggle("open");
     main.classList.toggle("shift");
 }
@@ -10,35 +13,19 @@ function toggleNotes() {
     const notesList = document.getElementById("notes-list");
     const arrow = document.getElementById("notes-arrow");
 
-    const isOpen = notesList.style.display === "block";
-    notesList.style.display = isOpen ? "none" : "block";
-    arrow.textContent = isOpen ? "▼" : "▲";
+    const isOpen = notesList.classList.toggle("open");
+    arrow.textContent = isOpen ? "▲" : "▼";
 }
 // 當點擊頁面其他區域時，關閉側邊選單
-window.onclick = function(event) {
-    var sidebar = document.getElementById("sidebar");
-    var mainContent = document.getElementById("main-content");
-    if (!event.target.closest('#sidebar') && !event.target.closest('.menu-button')) {
-        if (sidebar.style.width == "150px") {
-            sidebar.style.width = "0"; // 隱藏
-            mainContent.style.marginLeft = "0";
-        }
-    }
-}
+window.addEventListener("click", function (event) {
+    const sidebar = document.getElementById("sidebar");
+    const menuBtn = document.querySelector(".menu-button");
+    const main = document.getElementById("main-content");
 
-// 針對觸控設備，使用 touchstart 事件來捕捉觸摸
-window.addEventListener('touchstart', function(event) {
-    var sidebar = document.getElementById("sidebar");
-    var mainContent = document.getElementById("main-content");
+    if (!sidebar.classList.contains("open")) return;
 
-    // 如果點擊的位置不是側邊選單或側邊選單的鏈接
-    if (!event.target.closest('#sidebar') && 
-        !event.target.closest('.menu-button')) {
+    if (sidebar.contains(event.target) || menuBtn.contains(event.target)) return;
 
-        // 如果側邊選單是開啟的，點擊其他地方時關閉側邊選單
-        if (sidebar.style.width == "150px") {
-            sidebar.style.width = "0"; // 隱藏
-            mainContent.style.marginLeft = "0"; // 恢復原來的位置
-        }
-    }
+    sidebar.classList.remove("open");
+    main.classList.remove("shift");
 });

@@ -1,198 +1,151 @@
+:root{
+    --bg: #f5f5f7;
+    --card: rgba(255,255,255,0.78);
+    --text: #1d1d1f;
+    --muted: #6e6e73;
+    --line: rgba(0,0,0,0.08);
+    --shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+/* ======================
+   Base
+====================== */
 body {
-    background-color:rgba(160, 160, 160, 0.005);
-    color:rgb(46, 49, 52);
-    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding-top: 120px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system,
+                 BlinkMacSystemFont,
+                 "SF Pro Text",
+                 "Helvetica Neue",
+                 Arial,
+                 sans-serif;
 }
 
+/* ======================
+   Header（Apple 毛玻璃）
+====================== */
 header{
-    position: fixed; /* 固定位置 */
-    top: 0; /* 固定在視窗頂部 */
-    left: 0; /* 固定在視窗左側 */
-    width: 100%; /* 填滿視窗寬度 */
-    background-color: rgb(182, 182, 182);
-    padding: 5px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    padding: 16px 0;
     text-align: center;
+
+    background: rgba(245,245,247,0.75);
+    backdrop-filter: blur(20px);
+
+    border-bottom: 1px solid var(--line);
+    z-index: 1000;
 }
 
+/* ======================
+   表頭列
+====================== */
 section{
     position: fixed;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 92%;
+    max-width: 420px;
+
     display: flex;
-    top: 100px;
-}
-.spot, .lastprice, .change{
-    display: inline-block;
-    position: relative;
-}
-section .spot{
-    position: flex;
-    left: 11px;
+    justify-content: space-between;
+
+    font-size: 12px;
+    color: var(--muted);
 }
 
-section .lastprice{
-    position: flex;
-    left: 205px;
-}
-
-section .change{
-    position: flex;
-    left: 315px;
-}
-
-.image-container1{
-    display: flex;
-    align-items: center; 
-    margin-top: 150px;
-}
-.image-container1 img, .image-container2 img{
-    width: 65px;
-    height: auto;
-    margin-right: 15px;
-    border-radius: 50%;
-}
+/* ======================
+   幣種 Card（Apple card）
+====================== */
+.image-container1,
 .image-container2{
     display: flex;
     align-items: center;
-    margin-top: 30px; 
-}
-#eth-price, #ada-price, #btc-price, #snek-price, #btc-change, #eth-change, #ada-change, #snek-change{
-    display: inline; /* 讓 div 與 h2 顯示在同一行 */
+    justify-content: space-between;
+
+    width: 92%;
+    max-width: 420px;
+
+    margin: 14px auto;
+
+    padding: 14px 16px;
+
+    background: var(--card);
+    backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 18px;
+
+    box-shadow: var(--shadow);
 }
 
-.btcclass{
-    position:relative;
-    left:70px;
-}
-.ethclass{
-    position:relative;
-    left:85px;
-}
-.adaclass{
-    position:relative;
-    left:95px;
-}
-.snekclass{
-    position:relative;
-    left:40px;
+/* 圖片 */
+.image-container1 img,
+.image-container2 img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }
 
-.btcchange{
-    position:relative;
-    left: 200px;
+/* 幣種名稱 */
+.coin-name{
+    flex: 1;
+    font-weight: 600;
+    padding-left: 10px;
 }
 
-.ethchange{
-    position:relative;
-    left: 215px;
+/* 價格 */
+#btc-price, #eth-price, #ada-price, #snek-price{
+    font-weight: 600;
+    min-width: 90px;
+    text-align: right;
 }
 
-.adachange{
-    position:relative;
-    left: 225px;
+/* 漲跌 */
+#btc-change, #eth-change, #ada-change, #snek-change{
+    font-weight: 600;
+    min-width: 70px;
+    text-align: right;
 }
 
-.snekchange{
-    position:relative;
-    left: 170px;
+/* 漲跌顏色 */
+.positive{
+    color: #34c759;
 }
 
-/* 媒體查詢 - 小於 390px 寬度（適配 iPhone 13 Pro） */
-@media(max-width: 390px) {
-    header {
-        position:fixed;
-        font-size: 10px;
-        padding: 20px 0;
-        width: 100%; /* 保證寬度是 100% */
-        margin: 0 auto; /* 水平居中 */
-        text-align: center;
-    }
-    
+.negative{
+    color: #ff3b30;
+}
 
-    h3{
-        font-size:15px;
-    }
+/* ======================
+   手機優化
+====================== */
+@media (max-width: 390px){
 
-    h2{
-        font-size:18px;
-    }
-
-    .spot, .lastprice, .change{
-        display: inline-block;
-        position: relative;
+    section{
+        font-size: 11px;
     }
 
-    section .spot{
-        position: flex;
-        left: 1px;
-    }
-    
-    section .lastprice{
-        position: flex;
-        left: 115px;
-    }
-    
-    section .change{
-        position: flex;
-        left: 165px;
-    }
-
-    .image-container1{
-        display: flex;
-        align-items: center; 
-        margin-top: 150px;
-    }
-
-    .image-container1 img, .image-container2 img{
-        width: 40px;
-        height: auto;
-        margin-right: 15px;
-        border-radius: 50%;
-    }
-
+    .image-container1,
     .image-container2{
-        display: flex;
-        align-items: center; 
-        margin-top: 50px;
+        padding: 12px 14px;
     }
 
-    #eth-price, #ada-price, #btc-price, #snek-price,
-    #btc-change, #eth-change, #ada-change, #snek-change {
-        display: inline;
-        font-size: 10px; 
-    }
-    .btcclass{
-        position:relative;
-        left:65px;
-    }
-    .ethclass{
-        position:relative;
-        left:73px;
-    }
-    .adaclass{
-        position:relative;
-        left:75px;
-    }
-    .snekclass{
-        position:relative;
-        left:48px;
+    .image-container1 img,
+    .image-container2 img{
+        width: 34px;
+        height: 34px;
     }
 
-    .btcchange{
-        position:relative;
-        left: 171px;
-    }
-    
-    .ethchange{
-        position:relative;
-        left: 174px;
-    }
-    
-    .adachange{
-        position:relative;
-        left: 181px;
-    }
-    
-    .snekchange{
-        position:relative;
-        left: 154px;
+    #btc-price, #eth-price, #ada-price, #snek-price,
+    #btc-change, #eth-change, #ada-change, #snek-change{
+        font-size: 12px;
     }
 }

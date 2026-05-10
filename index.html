@@ -1,27 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>.--...--..</title>
+    <title>Jackson | Profile</title>
     <link rel="icon" href="photo/cardano.png">
     <link rel="stylesheet" href="css/styles.css">
+</head>
 <body>
 
-<header>
-    <button class="menu-button" onclick="toggleMenu()">☰</button>
+<header class="topbar">
+    <button class="menu-button" onclick="toggleMenu()" aria-label="開啟選單">☰</button>
     <h2>PROFILE</h2>
 </header>
 
 <div id="sidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()"></a>
+    <button class="closebtn" onclick="toggleMenu()" aria-label="關閉選單">×</button>
+
     <a href="html/cv.html">CV</a>
     <a href="html/Crypto.html">Crypto</a>
-    <a href="html/progress.html">progress</a>
+    <a href="html/progress.html">Progress</a>
     <a href="html/dice.html">Stock simulation</a>
-    <a href="html/sort.html">sorting</a>
-    <a href="html/graph.html">graph</a>
+    <a href="html/sort.html">Sorting</a>
+    <a href="html/graph.html">Graph</a>
     <a href="html/blog.html">Blog</a>
+
     <div class="notes-section">
         <div class="notes-label" onclick="toggleNotes()">
             Notes <span id="notes-arrow">▼</span>
@@ -29,56 +32,61 @@
         <div id="notes-list" class="notes-list">
             <a href="notes/AI.pdf">AI</a>
             <a href="notes/network.pdf">Network</a>
-            <a href="notes/LA.pdf">LinearAlgebra</a>
-            <a href="notes/DM.pdf">DiscreteMath</a>
+            <a href="notes/LA.pdf">Linear Algebra</a>
+            <a href="notes/DM.pdf">Discrete Math</a>
             <a href="notes/os.pdf">OS</a>
             <a href="notes/DS.pdf">DS</a>
             <a href="notes/system.pdf">System</a>
         </div>
     </div>
-    <a href="#projects">Projects</a>
 </div>
 
-
-<section id="main-content">
-    <div class="profile-info">
-        <img src="photo/IMG_0087.JPG" alt="Profile Picture" width="150">
-        <div>
-            <h2>I'm Jackson.</h2>
-            <p>I'm enthusiast of all things tech. I love creating new things and learning new skills. I'm passionate about coding and software development.
-                Recently, I have been enthusiastic about blockchain.</p>
+<main id="main-content" class="main">
+    <section class="hero card">
+        <div class="profile-info">
+            <img src="photo/2026_4_25wuchiayu.jpg" alt="Profile Picture">
+            <div class="hero-text">
+                <p class="eyebrow">Tech Enthusiast</p>
+                <h1>WU, CHIA-YU</h1>
+                <p>
+                    I’m enthusiastic about all things tech. I enjoy creating new things,
+                    learning new skills, and building software. Recently, I’ve been especially interested in blockchain.
+                </p>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <div class="contact-info">
-        <h3>Contact Me</h3>
-        <p>Email: jacksonwu901224@gmail.com</p>
-        <p>Phone: +886 972 838 062</p>
-        <p>GitHub: <a href="https://github.com/JacksonWu901224" target="_blank">JacksonWu901224</a></p>
-        <P>Instagram: <a href="https://www.instagram.com/jacksonwu1224wmms/" target="_blank">JacksonWu1224wmms</a></P>
-        <p>Facebook: <a href="https://www.facebook.com/profile.php?id=100018745474835" target="_blank">巫佳祐</a></p>
-    </div>
-    <div style="font-family:Consolas,monospace;">
-    <span style="background:#f7f7f7; padding:4px 8px; border-radius:4px; display:inline-block;">
-        <span style="color:blue;">#include</span> &lt;bits/stdc++.h&gt;<br>
-        <span style="color:blue;">int</span> main(){<br>
-        if(<span style="color:#5e3c1b;">try</span>)<span style="color:purple;">{</span><br>
-            &nbsp;if(<span style="color:orange;">fail</span>)<br>
-            &nbsp;&nbsp;<span style="color:#13c602; font-weight:bold;">Learn</span>;<br>
-            &nbsp;else<br>
-            &nbsp;&nbsp;<span style="color:green; font-weight:bold;">Win</span>;<br>
-        <span style="color:purple;">}</span><br>
-        else<br>
-            &nbsp;<span style="color:red; font-weight:bold;">Lose</span>;<br>
-        return 0;<br>
-        }<br>
-    </span>
-    </div>
-</section>
+    <section class="contact-grid">
+        <div class="card contact-card">
+            <h3>Contact Me</h3>
+            <p>E-mail: <a href="mailto:jacksonwu901224@gmail.com">jacksonwu901224@gmail.com</a></p>
+            <p>Phone: +886 972 838 062</p>
+            <p>X: <a href="https://x.com/wu901224ADA" target="_blank">wu901224ADA</a></p>
+            <p>Instagram: <a href="https://www.instagram.com/jacksonwu1224wmms/" target="_blank">JacksonWu1224wmms</a></p>
+        </div>
+
+        <div class="card code-card">
+            <div class="code-title">Code mindset</div>
+            <pre><code><span class="blue">#include</span> &lt;bits/stdc++.h&gt;
+<span class="blue">int</span> main() {
+    if(<span class="purple">try</span>) {
+        if(<span class="orange">fail</span>)
+            <span class="green">Learn</span>;
+        else
+            <span class="bright-green">Win</span>;
+    } else {
+        <span class="red">Lose</span>;
+    }
+    return 0;
+}</code></pre>
+        </div>
+    </section>
+</main>
 
 <footer>
-    <p>&copy; 2024 Jackson. 6174,495. All rights reserved.</p>
+    <p>&copy; 2026 Jackson. 6174,495. All rights reserved.</p>
 </footer>
+
 <script src="javascript/script.js"></script>
 </body>
 </html>

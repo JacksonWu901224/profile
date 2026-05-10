@@ -1,42 +1,72 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="../css/crypto.css">
-        <link rel="icon" href="../photo/btc.png">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cryptocurrency</title>
-    </head>
-    <body>
-        <header><h1>price</h1></header>
-        <section>
-            <div class=spot><h3>Spot</h3></div>
-            <div class="lastprice"><h3>Last Price</h3></div>
-            <div class=change><h3>24hChange%</h3></div>
-        </section>
-        
-        <div class="image-container1">
-            <a href="https://bitcoin.org">
-                <img src="../photo/btc.png" alt="btc" class="btc">
-            </a>
-            <h2>BTC : <div id="btc-price" class="btcclass">Loading...</div> <div id="btc-change" class="btcchange">Loading...</div></h2>
-        </div>
-        <div class="image-container2">
-            <a href="https://ethereum.org/">
-                <img src="../photo/eth.png" alt="eth" class="eth">
-            </a>
-            <h2>ETH : <div id="eth-price" class="ethclass">Loading...</div> <div id="eth-change" class="ethchange">Loading...</div></h2>
-        </div>
-        <div class="image-container2">
-            <a href="https://cardano.org/">
-                <img src="../photo/cardano.png" alt="ada" class="ada">
-            </a>
-            <h2>ADA : <div id="ada-price" class="adaclass">Loading...</div> <div id="ada-change" class="adachange">Loading...</div></h2>
-        </div>
-        <div class="image-container2">
-            <a href="https://www.snek.com/">
-                <img src="../photo/snek.jpg" alt="snek" class="snek">
-            </a>
-            <h2>SNEK : <div id="snek-price" class="snekclass">Loading...</div> <div id="snek-change" class="snekchange">Loading...</div></h2>
-        </div>
-        <script src="../javascript/crypto.js"></script>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/crypto.css">
+    <link rel="icon" href="../photo/btc.png" type="image/png">
+    <link rel="apple-touch-icon" href="../photo/btc.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptocurrency</title>
+</head>
+
+<body>
+
+<header>
+    <h1>Crypto Price</h1>
+</header>
+
+<!-- 表頭 -->
+<section>
+    <div>Spot</div>
+    <div>Last Price</div>
+    <div>24h %</div>
+</section>
+
+<!-- BTC -->
+<div class="image-container1">
+    <a href="https://bitcoin.org">
+        <img src="../photo/btc.png" alt="btc">
+    </a>
+
+    <div class="coin-name">BTC</div>
+    <div id="btc-price">Loading...</div>
+    <div id="btc-change">Loading...</div>
+</div>
+
+<!-- ETH -->
+<div class="image-container2">
+    <a href="https://ethereum.org/">
+        <img src="../photo/eth.png" alt="eth">
+    </a>
+
+    <div class="coin-name">ETH</div>
+    <div id="eth-price">Loading...</div>
+    <div id="eth-change">Loading...</div>
+</div>
+
+<!-- ADA -->
+<div class="image-container2">
+    <a href="https://cardano.org/">
+        <img src="../photo/cardano.png" alt="ada">
+    </a>
+
+    <div class="coin-name">ADA</div>
+    <div id="ada-price">Loading...</div>
+    <div id="ada-change">Loading...</div>
+</div>
+
+<!-- SNEK -->
+<div class="image-container2">
+    <a href="https://www.snek.com/">
+        <img src="../photo/snek.jpg" alt="snek">
+    </a>
+
+    <div class="coin-name">SNEK</div>
+    <div id="snek-price">Loading...</div>
+    <div id="snek-change">Loading...</div>
+</div>
+
+<script src="../javascript/crypto.js"></script>
+
+</body>
 </html>

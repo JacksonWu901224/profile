@@ -1,29 +1,19 @@
 // 切換側邊選單的顯示和隱藏
 function toggleMenu() {
-    var sidebar = document.getElementById("sidebar");
-    var mainContent = document.getElementById("main-content");
-    if (sidebar.style.width === "150px") {
-        sidebar.style.width = "0"; // 隱藏
-        mainContent.style.marginLeft = "0";
-    } else {
-        sidebar.style.width = "150px"; // 顯示
-        mainContent.style.marginLeft = "150px";
-    }
+    const sidebar = document.getElementById("sidebar");
+    const main = document.getElementById("main-content");
+    sidebar.classList.toggle("open");
+    main.classList.toggle("shift");
 }
 
 function toggleNotes() {
-  const list = document.getElementById("notes-list");
-  list.style.display = (list.style.display === "block") ? "none" : "block";
-  const arrow = document.getElementById("notes-arrow");
-  if (list.style.display === "block") {
-    list.style.display = "block";
-    arrow.textContent = "▲"; // 收起 → 向下箭頭
-  } else {
-    list.style.display = "none";
-    arrow.textContent = "▼"; // 展開 → 向上箭頭
-  }
-}
+    const notesList = document.getElementById("notes-list");
+    const arrow = document.getElementById("notes-arrow");
 
+    const isOpen = notesList.style.display === "block";
+    notesList.style.display = isOpen ? "none" : "block";
+    arrow.textContent = isOpen ? "▼" : "▲";
+}
 // 當點擊頁面其他區域時，關閉側邊選單
 window.onclick = function(event) {
     var sidebar = document.getElementById("sidebar");

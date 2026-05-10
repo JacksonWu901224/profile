@@ -56,7 +56,6 @@ a:active {
 }
 #contact-details .header_1 img {
 	border: #fff solid 4px;
-	background: url("../images/bg_img_dark_green.png"); 
 	padding: 16px;
 	margin: 10px 0px 0px 0px;
 }
@@ -189,7 +188,6 @@ p.summary	{
 	width: 220px;
 }
 #skills li {
-    background: url("../images/bullet_green.png") no-repeat;
 	background-position: 0px 2px;
     padding: 0px 0px 0px 25px;
 }

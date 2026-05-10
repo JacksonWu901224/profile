@@ -333,6 +333,10 @@ footer{
     }
 }
 @media (max-width: 480px) {
+    :root {
+        --sidebar-width: 150px;
+    }
+
     .topbar {
         height: 56px;
     }

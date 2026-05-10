@@ -17,7 +17,7 @@ function toggleNotes() {
     arrow.textContent = isOpen ? "▲" : "▼";
 }
 // 當點擊頁面其他區域時，關閉側邊選單
-window.addEventListener("click", function (event) {
+window.addEventListener("pointerdown", function (event) {
     const sidebar = document.getElementById("sidebar");
     const menuBtn = document.querySelector(".menu-button");
     const main = document.getElementById("main-content");

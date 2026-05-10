@@ -3,70 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jackson | Profile</title>
+    <title>Profile</title>
     <link rel="icon" href="photo/cardano.png">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
 
-<header class="topbar">
-    <button class="menu-button" onclick="toggleMenu(event)">☰</button>
-    <h2>PROFILE</h2>
-</header>
+    <header class="topbar">
+        <button class="menu-button" onclick="toggleMenu(event)">☰</button>
+        <h2>PROFILE</h2>
+    </header>
 
-<div id="sidebar" class="sidebar">
+    <div id="sidebar" class="sidebar">
+        <a href="html/cv.html">CV</a>
+        <a href="html/Crypto.html">Crypto</a>
+        <a href="html/progress.html">Progress</a>
+        <a href="html/dice.html">Stock simulation</a>
+        <a href="html/sort.html">Sorting</a>
+        <a href="html/graph.html">Graph</a>
+        <a href="html/blog.html">Blog</a>
 
-    <a href="html/cv.html">CV</a>
-    <a href="html/Crypto.html">Crypto</a>
-    <a href="html/progress.html">Progress</a>
-    <a href="html/dice.html">Stock simulation</a>
-    <a href="html/sort.html">Sorting</a>
-    <a href="html/graph.html">Graph</a>
-    <a href="html/blog.html">Blog</a>
-
-    <div class="notes-section">
-        <div class="notes-label" onclick="toggleNotes()">
-            Notes <span id="notes-arrow">▼</span>
-        </div>
-        <div id="notes-list" class="notes-list">
-            <a href="notes/AI.pdf">AI</a>
-            <a href="notes/network.pdf">Network</a>
-            <a href="notes/LA.pdf">Linear Algebra</a>
-            <a href="notes/DM.pdf">Discrete Math</a>
-            <a href="notes/os.pdf">OS</a>
-            <a href="notes/DS.pdf">DS</a>
-            <a href="notes/system.pdf">System</a>
-        </div>
-    </div>
-</div>
-
-<main id="main-content" class="main">
-    <section class="hero card">
-        <div class="profile-info">
-            <img src="photo/2026_4_25wuchiayu.jpg" alt="Profile Picture">
-            <div class="hero-text">
-                <p class="eyebrow">Tech Enthusiast</p>
-                <h1>WU, CHIA-YU</h1>
-                <p>
-                    I’m enthusiastic about all things tech. I enjoy creating new things,
-                    learning new skills, and building software. Recently, I’ve been especially interested in blockchain.
-                </p>
+        <div class="notes-section">
+            <div class="notes-label" onclick="toggleNotes()">
+                Notes <span id="notes-arrow">▼</span>
+            </div>
+            <div id="notes-list" class="notes-list">
+                <a href="notes/AI.pdf">AI</a>
+                <a href="notes/network.pdf">Network</a>
+                <a href="notes/LA.pdf">Linear Algebra</a>
+                <a href="notes/DM.pdf">Discrete Math</a>
+                <a href="notes/os.pdf">OS</a>
+                <a href="notes/DS.pdf">DS</a>
+                <a href="notes/system.pdf">System</a>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section class="contact-grid">
-        <div class="card contact-card">
-            <h3>Contact Me</h3>
-            <p>E-mail: <a href="mailto:jacksonwu901224@gmail.com">jacksonwu901224@gmail.com</a></p>
-            <p>Phone: +886 972 838 062</p>
-            <p>X: <a href="https://x.com/wu901224ADA" target="_blank">wu901224ADA</a></p>
-            <p>Instagram: <a href="https://www.instagram.com/jacksonwu1224wmms/" target="_blank">JacksonWu1224wmms</a></p>
-        </div>
+    <main id="main-content" class="main">
+        <section class="hero card">
+            <div class="profile-info">
+                <div class="avatar-wrap">
+                    <img src="photo/2026_4_25wuchiayu.jpg" alt="Profile Picture">
+                    <span class="status-dot" title="Open to projects"></span>
+                </div>
 
-        <div class="card code-card">
-            <div class="code-title">Code mindset</div>
-            <pre><code><span class="blue">#include</span> &lt;bits/stdc++.h&gt;
+                <div class="hero-text">
+                    <p class="eyebrow">Tech Enthusiast · AI Explorer</p>
+                    <h1>WU, CHIA-YU</h1>
+                    <p>
+                        I’m enthusiastic about all things tech. I enjoy creating new things,
+                        learning new skills, and building software. Recently, I’ve been especially interested in blockchain.
+                    </p>
+
+                    <div class="profile-meta">
+                        <span class="pill">C++</span>
+                        <span class="pill">Python</span>
+                        <span class="pill">Blockchain</span>
+                        <span class="pill">Data Structures</span>
+                        <span class="pill">Computer Organization</span>
+                        <span class="pill">Algorithms</span>
+                    </div>
+
+                    <div class="social-row">
+                        <a class="ghost-btn" href="mailto:jacksonwu901224@gmail.com">Email</a>
+                        <a class="ghost-btn" href="https://github.com/JacksonWu901224" target="_blank" rel="noopener noreferrer">Github</a>
+                        <a class="ghost-btn" href="https://leetcode.com/u/JacksonWu0972/" target="_blank" rel="noopener noreferrer">Leetcode</a>
+                        <a class="ghost-btn" href="https://www.linkedin.com/in/%E4%BD%B3%E7%A5%90-%E5%B7%AB-b58956330/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a class="ghost-btn" href="https://x.com/wu901224ADA" target="_blank" rel="noopener noreferrer">X</a>
+                        <a class="ghost-btn" href="https://www.instagram.com/jacksonwu1224wmms/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-grid">
+    <div class="card contact-card">
+        <h3>Contact</h3>
+        <p>Phone: +886 972 838 062</p>
+        <p>Email: <a href="mailto:jacksonwu901224@gmail.com">jacksonwu901224@gmail.com</a></p>
+        <p>Open to projects in AI, blockchain, and system-level software.</p>
+        <p>Reach me by email or social links above.</p>
+    </div>
+
+    <div class="card contact-card">
+        <h3>Focus Areas</h3>
+        <p>• Blockchain and crypto tools</p>
+        <p>• Competitive programming and problem solving</p>
+        <p>• Data structures and algorithms</p>
+        <p>• Computer systems and architecture</p>
+    </div>
+
+    <div class="card contact-card">
+        <h3>Now Learning</h3>
+        <p>• Building better software projects</p>
+        <p>• Improving C++ and Python skills</p>
+        <p>• Exploring operating systems and computer architecture</p>
+        <p>• Learning AI and machine learning fundamentals</p>
+        <p>• Studying computer networks and distributed systems</p>
+    </div>
+
+    <div class="card code-card">
+        <div class="code-title">Code mindset</div>
+        <pre><code><span class="blue">#include</span> &lt;bits/stdc++.h&gt;
 <span class="blue">int</span> main() {
     if(<span class="purple">try</span>) {
         if(<span class="orange">fail</span>)
@@ -78,14 +118,14 @@
     }
     return 0;
 }</code></pre>
-        </div>
-    </section>
-</main>
+    </div>
+</section>
+    </main>
 
-<footer>
-    <p>&copy; 2026 Jackson. 6174,495. All rights reserved.</p>
-</footer>
+    <footer>
+        <p>&copy; 2026 Jackson. 6174,495. All rights reserved.</p>
+    </footer>
 
-<script src="javascript/script.js"></script>
+    <script src="javascript/script.js"></script>
 </body>
 </html>

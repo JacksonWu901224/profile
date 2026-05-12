@@ -1,14 +1,10 @@
-/* =========================
-   Apple Style Table Design
-========================= */
-
 :root{
     --bg: #f5f5f7;
     --card: rgba(255,255,255,0.88);
     --line: rgba(0,0,0,0.08);
     --text: #1d1d1f;
     --muted: #6e6e73;
-    --shadow: 0 10px 30px rgba(0,0,0,0.06);
+    --shadow: 0 6px 18px rgba(0,0,0,0.05);
     --accent: #0071e3;
 }
 
@@ -27,10 +23,10 @@ body{
 /* 標題 */
 h3{
     text-align: center;
-    font-size: 1.7rem;
+    font-size: 1.45rem;
     font-weight: 700;
     letter-spacing: -0.03em;
-    margin: 28px 0 20px;
+    margin: 8px 0 8px;
     color: var(--text);
 }
 
@@ -39,16 +35,13 @@ h3{
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    margin: 24px 0;
-    padding-bottom: 6px;
+    margin: 12px 0;
 }
 
-/* Apple 風表格 */
+/* 表格 */
 table{
-    width: 92%;
-    max-width: 1200px;
-    min-width: 700px;
-
+    width: 75%;
+    max-width: 1100px;
     margin: 0 auto;
 
     border-collapse: collapse;
@@ -56,7 +49,7 @@ table{
 
     background: var(--card);
 
-    border-radius: 22px;
+    border-radius: 16px;
 
     border: 1px solid rgba(255,255,255,0.7);
 
@@ -71,15 +64,15 @@ thead{
         linear-gradient(
             180deg,
             #fafafa 0%,
-            #f1f1f3 100%
+            #f3f3f4 100%
         );
 }
 
-/* 標題欄位 */
+/* 標題 */
 th{
-    padding: 16px 18px;
+    padding: 9px 8px;
 
-    font-size: 0.98rem;
+    font-size: 0.9rem;
     font-weight: 700;
 
     text-align: center;
@@ -90,12 +83,12 @@ th{
     border-bottom: 1px solid var(--line);
 }
 
-/* 內容欄位 */
+/* 內容 */
 td{
-    padding: 15px 18px;
+    padding: 8px 8px;
 
-    font-size: 0.97rem;
-    line-height: 1.7;
+    font-size: 0.9rem;
+    line-height: 1.45;
 
     text-align: center;
     vertical-align: middle;
@@ -105,20 +98,20 @@ td{
     border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-/* 最後一列不要底線 */
+/* 最後一列 */
 tr:last-child td{
     border-bottom: none;
 }
 
-/* Apple 風淡斑馬 */
+/* 淡斑馬 */
 tbody tr:nth-child(even){
-    background-color: rgba(0,0,0,0.018);
+    background-color: rgba(0,0,0,0.015);
 }
 
-/* Hover 效果 */
+/* Hover */
 tbody tr:hover{
-    background-color: rgba(0,113,227,0.06);
-    transition: 0.25s ease;
+    background-color: rgba(0,113,227,0.045);
+    transition: 0.2s ease;
 }
 
 /* 粗體 */
@@ -127,24 +120,21 @@ strong{
     font-weight: 700;
 }
 
-/* =========================
-   Mobile Responsive
-========================= */
-
+/* Mobile */
 @media screen and (max-width: 430px){
 
     h3{
-        font-size: 1.25rem;
-        margin: 22px 0 16px;
+        font-size: 1.05rem;
+        margin: 14px 0 10px;
     }
 
     table{
-        min-width: unset;
-        width: 100%;
+        width: 70%;
+        border-radius: 12px;
     }
 
     th, td{
-        font-size: 0.7rem;
-        padding: 8px 6px;
+        font-size: 0.72rem;
+        padding: 7px 5px;
     }
 }

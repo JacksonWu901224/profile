@@ -7,7 +7,7 @@
     --card: rgba(255,255,255,0.88);
     --line: rgba(0,0,0,0.08);
     --text: #1d1d1f;
-    --shadow: 0 10px 30px rgba(0,0,0,0.06);
+    --shadow: 0 6px 18px rgba(0,0,0,0.05);
     --accent: #0071e3;
 }
 
@@ -15,6 +15,7 @@
 body{
     background: var(--bg);
     color: var(--text);
+
     font-family: -apple-system,
                  BlinkMacSystemFont,
                  "SF Pro Text",
@@ -26,17 +27,21 @@ body{
 /* 標題 */
 h2{
     text-align: center;
-    font-size: 2rem;
+
+    font-size: 1.55rem;
     font-weight: 700;
+
     letter-spacing: -0.03em;
-    margin: 32px 0 24px;
+
+    margin: 8px 0 8px;
+
     color: var(--text);
 }
 
 /* 表格 */
 table{
-    width: 92%;
-    max-width: 1200px;
+    width: 55%;
+    max-width: 1100px;
 
     margin: 0 auto;
 
@@ -45,7 +50,7 @@ table{
 
     background: var(--card);
 
-    border-radius: 22px;
+    border-radius: 16px;
 
     border: 1px solid rgba(255,255,255,0.7);
 
@@ -60,15 +65,15 @@ thead{
         linear-gradient(
             180deg,
             #fafafa 0%,
-            #f1f1f3 100%
+            #f3f3f4 100%
         );
 }
 
 /* 標題欄位 */
 th{
-    padding: 16px 18px;
+    padding: 6px 8px;
 
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 700;
 
     text-align: center;
@@ -81,10 +86,10 @@ th{
 
 /* 內容欄位 */
 td{
-    padding: 15px 18px;
+    padding: 6px 8px;
 
-    font-size: 0.98rem;
-    line-height: 1.7;
+    font-size: 0.9rem;
+    line-height: 1.45;
 
     text-align: center;
     vertical-align: middle;
@@ -101,13 +106,13 @@ tr:last-child td{
 
 /* Apple 風淡斑馬 */
 tbody tr:nth-child(even){
-    background-color: rgba(0,0,0,0.018);
+    background-color: rgba(0,0,0,0.015);
 }
 
 /* Hover 效果 */
 tbody tr:hover{
-    background-color: rgba(0,113,227,0.06);
-    transition: 0.25s ease;
+    background-color: rgba(0,113,227,0.045);
+    transition: 0.2s ease;
 }
 
 /* 粗體 */
@@ -123,24 +128,23 @@ strong{
 @media screen and (max-width: 430px){
 
     h2{
-        font-size: 1.4rem;
-        margin: 24px 0 18px;
+        font-size: 1.08rem;
+        margin: 14px 0 10px;
     }
 
     table{
-        width: 96%;
-        font-size: 0.8rem;
-        border-radius: 18px;
+        width: 50%;
+        border-radius: 12px;
     }
 
     th{
-        font-size: 0.78rem;
-        padding: 10px 8px;
+        font-size: 0.72rem;
+        padding: 7px 5px;
     }
 
     td{
-        font-size: 0.76rem;
-        padding: 10px 8px;
-        line-height: 1.5;
+        font-size: 0.72rem;
+        padding: 7px 5px;
+        line-height: 1.35;
     }
 }

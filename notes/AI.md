@@ -94,6 +94,23 @@ Dataset Size 通常指的就是經過 Tokenization 後產生的 Tokens 總數。
 
 ![mlthreephases](mlthreephases.png)
 
+- <font color="green">Pretrained Models</font>
+  - NLP
+    - Encoder
+      - BERT / RoBERTa / ALBERT / ELECTRA
+    - Decoder
+      - GPT / LLaMA / OPT
+    - Seq2Seq
+      - T5
+  - Computer Vision
+    - Backbone
+      - ResNet / VGG / EfficientNet / Inception
+      - Vision Transformer (ViT)
+    - Object Detection
+      - YOLO / Faster R-CNN
+    - Instance Segmentation
+      - Mask R-CNN
+
 ## 0. ML三步驟
 ![mlthreesteps](mlthreesteps.png)
 ## 1. prepare data

@@ -364,7 +364,7 @@ flowchart LR
 <img src="crossattention.png" width="65%">
 
 <img src="crossattention-1.png" width="45%">
-<img src="crossattention-1.png" width="45%">
+<img src="crossattention-2.png" width="45%">
 
 ## Train
 
@@ -394,3 +394,16 @@ they are **Semi-Supervised**
 <img src="howtousebertcase2.png" width="45%">
 <img src="howtousebertcase3.png" width="45%">
 <img src="howtousebertcase4.png" width="45%">
+
+# Explainable ML
+
+<img src="whyexplainableml.png">
+
+- Goal of Explainable ML
+  - <font color="blue">Make people comfortable</font>
+
+- **saliency map**
+  - A **saliency map** is a **visual representation that highlights the most prominent or influential regions in a piece of data**, such as pixels in an image or tokens in a text. Its primary goal is to identify exactly which features most strongly influenced a specific outcome.
+<img src="smoothgrad.png" widht=45%>
+make people comfortable
+

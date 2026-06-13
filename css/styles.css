@@ -161,6 +161,42 @@ body{
     backdrop-filter: blur(16px);
 }
 
+/*MIRA lab*/
+.lab-card{
+    margin-bottom:22px;
+    padding:32px;
+}
+
+.lab-content{
+    display:flex;
+    align-items:center;
+    gap:36px;
+    flex-wrap:wrap;
+}
+
+.lab-logo{
+    width:200px;
+    max-width:100%;
+    height:auto;
+    object-fit:contain;
+}
+
+.lab-text{
+    flex:1;
+    min-width:300px;
+}
+
+.lab-text h2{
+    margin:0 0 12px;
+    font-size:2rem;
+    letter-spacing:-0.03em;
+}
+
+.lab-text p{
+    color:var(--muted);
+    line-height:1.8;
+}
+
 /* hero */
 .hero{
     padding: 28px;

@@ -106,6 +106,13 @@ Dataset Size 通常指的就是經過 Tokenization 後產生的 Tokens 總數。
 
 # Machine Learning
 
+| Stage | Learning Type | Purpose | Data Source & Scale | Limitations | Key References | Outcome |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Pre-training** | Self-Supervised Learning | 學習語言結構、世界知識、常識與基礎代碼邏輯（學會「文字接龍」）。 | 海量網頁、圖書、學術論文、代碼庫。<br>**(10T–100T+ Tokens)** | 偏見與幻覺根源於此階段的訓練數據；後續階段只能緩解，無法根除。 | GPT-3、LLaMA | **Base Model**<br>➔ 知識淵博但無法正常對話，只會盲目預測下一個字。 |
+| **Instruction Tuning / SFT** | Supervised Fine-Tuning | 轉變交互模式，讓模型理解「提示詞→回答」的結構，學會聽懂人話並執行指令。 | 人工撰寫或高質量 AI 生成的「高質量問答對 (Q&A Pairs)」。<br>**(數萬至數百萬條 Prompt-Response)** | Pre-training 帶入的偏見與幻覺並未被修正，只是「未被放大」；語氣可能仍粗糙。 | InstructGPT (Ouyang et al., 2022) | **SFT / Instruct Model**<br>➔ 成為合格的答題機器，能理解並執行指令，但仍缺乏價值觀對齊與推理深度。 |
+| **Alignment** | RLHF / RLAIF | 賦予模型價值觀：優化說話語氣 (Vibe)、建立安全防線（拒絕有害請求）、減少幻覺。RLAIF 以強大 AI 代替人類打分，已成主流替代方案。 | 人類或強大 AI（RLAIF）對多個回答進行的偏好排序 (Preferences)。<br>**(數十萬條偏好數據)** | 過度 RLHF 可能導致模型過於保守或討好用戶（Sycophancy）。 | InstructGPT、Claude (Constitutional AI) | **Aligned Model**<br>➔ 安全、友善、有立場的 AI 助理，但複雜推理深度仍受限。 |
+| **Reasoning Training** | Pure RL / Process Reward Model | 引入思維鏈 (CoT) 與自我糾錯能力，讓模型「先想後答」，大幅提升數學、代碼等複雜任務表現。此階段通常與 Alignment 分開進行。 | 針對數學/代碼等客觀正確答案的獎勵機制；以自動化驗證器提供獎勵信號。<br>**(自動化獎勵環境，無上限)** | 推理成本高（長 CoT）；在無驗證器的開放性問題上可能過度自信。 | o1、o3、DeepSeek-R1 (GRPO) | **Reasoning Model**<br>➔ 我們最終在 ChatGPT、Claude、DeepSeek 上使用的安全、好用、會思考的 AI 助理。 |
+
 ![mlthreephases](mlthreephases.png)
 
 - <font color="green">Pretrained Models</font>

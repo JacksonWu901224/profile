@@ -127,6 +127,57 @@
 </ul>
 <hr>
 <h1 id="machine-learning">Machine Learning </h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Stage</th>
+<th style="text-align:left">Learning Type</th>
+<th style="text-align:left">Purpose</th>
+<th style="text-align:left">Data Source &amp; Scale</th>
+<th style="text-align:left">Limitations</th>
+<th style="text-align:left">Key References</th>
+<th style="text-align:left">Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Pre-training</strong></td>
+<td style="text-align:left">Self-Supervised Learning</td>
+<td style="text-align:left">學習語言結構、世界知識、常識與基礎代碼邏輯（學會「文字接龍」）。</td>
+<td style="text-align:left">海量網頁、圖書、學術論文、代碼庫。<br><strong>(10T–100T+ Tokens)</strong></td>
+<td style="text-align:left">偏見與幻覺根源於此階段的訓練數據；後續階段只能緩解，無法根除。</td>
+<td style="text-align:left">GPT-3、LLaMA</td>
+<td style="text-align:left"><strong>Base Model</strong><br>➔ 知識淵博但無法正常對話，只會盲目預測下一個字。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Instruction Tuning / SFT</strong></td>
+<td style="text-align:left">Supervised Fine-Tuning</td>
+<td style="text-align:left">轉變交互模式，讓模型理解「提示詞→回答」的結構，學會聽懂人話並執行指令。</td>
+<td style="text-align:left">人工撰寫或高質量 AI 生成的「高質量問答對 (Q&amp;A Pairs)」。<br><strong>(數萬至數百萬條 Prompt-Response)</strong></td>
+<td style="text-align:left">Pre-training 帶入的偏見與幻覺並未被修正，只是「未被放大」；語氣可能仍粗糙。</td>
+<td style="text-align:left">InstructGPT (Ouyang et al., 2022)</td>
+<td style="text-align:left"><strong>SFT / Instruct Model</strong><br>➔ 成為合格的答題機器，能理解並執行指令，但仍缺乏價值觀對齊與推理深度。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Alignment</strong></td>
+<td style="text-align:left">RLHF / RLAIF</td>
+<td style="text-align:left">賦予模型價值觀：優化說話語氣 (Vibe)、建立安全防線（拒絕有害請求）、減少幻覺。RLAIF 以強大 AI 代替人類打分，已成主流替代方案。</td>
+<td style="text-align:left">人類或強大 AI（RLAIF）對多個回答進行的偏好排序 (Preferences)。<br><strong>(數十萬條偏好數據)</strong></td>
+<td style="text-align:left">過度 RLHF 可能導致模型過於保守或討好用戶（Sycophancy）。</td>
+<td style="text-align:left">InstructGPT、Claude (Constitutional AI)</td>
+<td style="text-align:left"><strong>Aligned Model</strong><br>➔ 安全、友善、有立場的 AI 助理，但複雜推理深度仍受限。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Reasoning Training</strong></td>
+<td style="text-align:left">Pure RL / Process Reward Model</td>
+<td style="text-align:left">引入思維鏈 (CoT) 與自我糾錯能力，讓模型「先想後答」，大幅提升數學、代碼等複雜任務表現。此階段通常與 Alignment 分開進行。</td>
+<td style="text-align:left">針對數學/代碼等客觀正確答案的獎勵機制；以自動化驗證器提供獎勵信號。<br><strong>(自動化獎勵環境，無上限)</strong></td>
+<td style="text-align:left">推理成本高（長 CoT）；在無驗證器的開放性問題上可能過度自信。</td>
+<td style="text-align:left">o1、o3、DeepSeek-R1 (GRPO)</td>
+<td style="text-align:left"><strong>Reasoning Model</strong><br>➔ 我們最終在 ChatGPT、Claude、DeepSeek 上使用的安全、好用、會思考的 AI 助理。</td>
+</tr>
+</tbody>
+</table>
 <p><img src="mlthreephases.png" alt="mlthreephases"></p>
 <ul>
 <li><font color="green">Pretrained Models</font>

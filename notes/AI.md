@@ -458,4 +458,6 @@ e.g.Space invader, Alpha go
 從遊戲開始到結束稱為一個<ins>**episode**</ins>, 每過一個episode算一次<ins>total reward</ins>(return)
 
 <img src="policygradient.png">
+The <font color="blue">trajectory</font> is defined as $\tau=\{s_1,a_1,s_2,a_2,\dots\}$
+
 train on reinforcement learning 很卡的一個地方是:每次更新一次參數就要蒐集一次資料, called <font color="blue">on-policy</font>(the <font color="green">actor to train</font> and the <font color="orange">actor for interacting</font> is the same)

@@ -61,6 +61,10 @@ flowchart TD
     style CV_Domain fill:#f3e5f5,stroke:#4a148c,stroke-dasharray: 5 5
 ```
 
+# AI model history timeline
+
+![ai model history](model_history_timeline.svg)
+
 # Definition: Generative AI
 
 ## 讓computer學會產生<u>複雜</u>而<u>有結構</u>的物件, 就是<font color="blue">Classification</font>, 因為Generative AI就是給一個未完成的句子, 去猜接下來接哪一個token
@@ -295,6 +299,19 @@ $W^q,W^k,W^v$是被learned出來的
 ## Self-Attention 少了位置資訊, 所以可以加上Positional Encoding
 
 <img src="positionalencoding.png" width="45%">
+
+### <a href="https://colab.research.google.com/drive/1Xhg8lQ1miCrZh2bwZv1LgCbS4XHpH19b?usp=drive_link" title="HW4 Self-Attention Colab ">HW4	Self-Attention</a>
+<font color="blue">Conformer</font> 就是 Transformer + CNN 的結合，專門為語音設計的，是目前語音辨識的主流架構。
+
+Conformer = **Transformer + CNN** 的混合架構，2020年 Google 提出，專門為語音設計。
+
+為什麼單用 Transformer 不夠？
+Transformer 的 Self-Attention 可以看到**整段序列**的關係，但對**局部細節**不夠敏感。
+語音有兩種重要的資訊:
+**局部**:相鄰幾幀的音素變化（子音、母音的轉換）→ CNN 擅長
+**全局**:整句話的韻律、說話者特徵 → Transformer 擅長
+
+單用 Transformer 只抓全局，單用 CNN 只抓局部，Conformer 把兩個合在一起。
 
 # seq2seq
 

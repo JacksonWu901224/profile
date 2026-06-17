@@ -117,20 +117,22 @@ Dataset Size 通常指的就是經過 Tokenization 後產生的 Tokens 總數。
 
 - <font color="green">Pretrained Models</font>
   - NLP
-    - Encoder
+    - Encoder(分類、理解)
       - BERT / RoBERTa / ALBERT / ELECTRA
-    - Decoder
+    - Decoder(生成、對話)
       - GPT / LLaMA / OPT
-    - Seq2Seq
-      - T5
+    - Seq2Seq(翻譯、摘要)
+      - T5/ BART
   - Computer Vision
-    - Backbone
-      - ResNet / VGG / EfficientNet / Inception
-      - Vision Transformer (ViT)
-    - Object Detection
-      - YOLO / Faster R-CNN
-    - Instance Segmentation
-      - Mask R-CNN
+    - Backbone(特徵提取，給下游用)
+      - CNN：ResNet(CNN+Residual) / VGG / EfficientNet / Inception / ConvNeXt
+      - Transformer：ViT / Swin Transformer / DINOv2
+    - Object Detection(框出物件)
+      - One-stage（快）：YOLO
+      - Two-stage（準）：Faster R-CNN
+      - Transformer：DETR / RT-DETR 
+    - Instance Segmentation(精確輪廓)
+      - Mask R-CNN/ YOLO-Seg / SAM
 
 ## 0. ML三步驟
 ![mlthreesteps](mlthreesteps.png)
@@ -263,9 +265,13 @@ Dataset Size 通常指的就是經過 Tokenization 後產生的 Tokens 總數。
 **channel** : R, G, B
 
 ![cnn benefit](cnn-2.png)
-不需Fully Connected Network, weight太龐大了, 用Receptive Field
+不需Fully Connected Network, weight太龐大了, 用**Receptive Field**(多大自己定義可大可小, 不同receptive field can be overlapped), 而每一個neron只關心自己的receptive field發生的事情
+<img src="receptivefield.png" width="50%">
 
 鳥嘴可能在任何地方, 所以可以parameters sharing, called **Filter**
+<img src="filter.png" width="50%">
+
+<ins>用Filter掃過一張圖片其實就是**convolution**</ins>
 
 ## The Whole CNN
 

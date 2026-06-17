@@ -184,39 +184,41 @@
 <ul>
 <li>NLP
 <ul>
-<li>Encoder
+<li>Encoder(分類、理解)
 <ul>
 <li>BERT / RoBERTa / ALBERT / ELECTRA</li>
 </ul>
 </li>
-<li>Decoder
+<li>Decoder(生成、對話)
 <ul>
 <li>GPT / LLaMA / OPT</li>
 </ul>
 </li>
-<li>Seq2Seq
+<li>Seq2Seq(翻譯、摘要)
 <ul>
-<li>T5</li>
+<li>T5/ BART</li>
 </ul>
 </li>
 </ul>
 </li>
 <li>Computer Vision
 <ul>
-<li>Backbone
+<li>Backbone(特徵提取，給下游用)
 <ul>
-<li>ResNet / VGG / EfficientNet / Inception</li>
-<li>Vision Transformer (ViT)</li>
+<li>CNN：ResNet(CNN+Residual) / VGG / EfficientNet / Inception / ConvNeXt</li>
+<li>Transformer：ViT / Swin Transformer / DINOv2</li>
 </ul>
 </li>
-<li>Object Detection
+<li>Object Detection(框出物件)
 <ul>
-<li>YOLO / Faster R-CNN</li>
+<li>One-stage（快）：YOLO</li>
+<li>Two-stage（準）：Faster R-CNN</li>
+<li>Transformer：DETR / RT-DETR</li>
 </ul>
 </li>
-<li>Instance Segmentation
+<li>Instance Segmentation(精確輪廓)
 <ul>
-<li>Mask R-CNN</li>
+<li>Mask R-CNN/ YOLO-Seg / SAM</li>
 </ul>
 </li>
 </ul>
@@ -451,8 +453,11 @@ global minimum用以脫離saddle point or local minimum
 <img src="cnn-1.png" width="50%">
 <p><strong>channel</strong> : R, G, B</p>
 <p><img src="cnn-2.png" alt="cnn benefit"><br>
-不需Fully Connected Network, weight太龐大了, 用Receptive Field</p>
-<p>鳥嘴可能在任何地方, 所以可以parameters sharing, called <strong>Filter</strong></p>
+不需Fully Connected Network, weight太龐大了, 用<strong>Receptive Field</strong>(多大自己定義可大可小, 不同receptive field can be overlapped), 而每一個neron只關心自己的receptive field發生的事情<br>
+<img src="receptivefield.png" width="50%"></p>
+<p>鳥嘴可能在任何地方, 所以可以parameters sharing, called <strong>Filter</strong><br>
+<img src="filter.png" width="50%"></p>
+<p><ins>用Filter掃過一張圖片其實就是<strong>convolution</strong></ins></p>
 <h2 id="the-whole-cnn">The Whole CNN </h2>
 <p><img src="cnn-3.png" alt="cnn whole picture"></p>
 <p><strong>Pooling</strong> :<br>

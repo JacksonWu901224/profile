@@ -92,7 +92,7 @@ flowchart TD
 - **核心思想**: 在固定訓練算力下，最佳策略是讓模型參數（$N$,Parameters）與訓練資料（$D$,Training Tokens）同步成長。
 - **最佳比例**:$$D \approx 20N$$
 - **行動方針**: Train Smaller Models Longer
-- **現代延伸**: 現代模型（如 Llama 3）為了極致壓縮推理成本，會進行「過度訓練（Over-training）」，將比例拉高至 $D \approx 200N$。
+- **現代延伸**: 現代模型（如 Llama 3）為了最佳化推理成本，通常採用「過度訓練（Over-training）」策略，將比例調至 $D \approx 50N \sim  200N+$, 具體取值因模型設計目標（延遲 vs 成本 vs 準確度）而異。
 
 <a href="https://arxiv.org/pdf/2408.03314">Test-Time Scaling</a>:
 
@@ -495,3 +495,40 @@ e.g.Space invader, Alpha go
 The <font color="blue">trajectory</font> is defined as $\tau=\{s_1,a_1,s_2,a_2,\dots\}$
 
 train on reinforcement learning 很卡的一個地方是:每次更新一次參數就要蒐集一次資料, called <font color="blue">on-policy</font>(the <font color="green">actor to train</font> and the <font color="orange">actor for interacting</font> is the same)
+
+---
+
+# Life Long Learning
+
+學完task1 再學task2, 可能會忘記task1學過的東西
+
+<img src="catastrophicforget.png" width=60%>
+
+跟Transfer Learning不一樣, 
+**Transfer Learning** is<font color="blue"> <ins>I can do task2 because I have learned task1.</ins></font>
+**Life Long Learning** is <font color="blue"><ins>even though i have learned task2, I do not forget task1.</ins></font>
+
+## Evaluate life long learning model(3 types)
+
+<img src="lllevaluation.png" width=70%>
+
+<img src="lllbackwardtransfer.png" width=70%>
+
+backward transfer是看model的遺忘程度
+
+<img src="lllforwardtransfer.png" width=70%>
+
+forward transfer是還未看到$T_T$, 只看到$T_1$到$T_T-1$時, 看model學到甚麼程度
+
+## 解決Catastrophic Forgetting
+
+### Selective Synaptic Plasticity
+
+<img src="SelectiveSynapticPlasticity-1.png" width=80%>
+<img src="SelectiveSynapticPlasticity-2.png" width=80%>
+<img src="SelectiveSynapticPlasticity-3.png" width=80%>
+
+$b_i$是人為設定的
+<img src="SelectiveSynapticPlasticity-4.png" width=80%>
+
+---

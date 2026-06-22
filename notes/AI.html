@@ -651,6 +651,34 @@ The <font color="blue">trajectory</font> is defined as <span class="katex"><span
 <p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">b_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>是人為設定的<br>
 <img src="SelectiveSynapticPlasticity-4.png" width="80%"></p>
 <hr>
+<h1 id="network-compression">Network Compression </h1>
+<p>why Network Compression?<br>
+<img src="networkcompression.png" width="70%"></p>
+<ul>
+<li>方法
+<ul>
+<li>Network Pruning
+<ul>
+<li>weight pruning(不推薦, 因為矩陣乘法還是沒有變小, 只是把weight改成0而已)</li>
+<li>neuron pruning(easy to implement, easy to speedup)</li>
+</ul>
+</li>
+<li>Knowledge Distillation</li>
+<li>Parameter Quantization</li>
+<li>Architecture Design(以CNN為例,
+<ul>
+<li>Depthwise Separable Convolution
+<ul>
+<li>Depthwise Convolution + Pointwise Convolution )</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Dynamic Computation(希望network可以自由地調整自己需要的運算量)</li>
+</ul>
+</li>
+</ul>
+<hr>
 
       </div>
       

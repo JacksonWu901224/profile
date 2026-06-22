@@ -532,3 +532,21 @@ $b_i$是人為設定的
 <img src="SelectiveSynapticPlasticity-4.png" width=80%>
 
 ---
+
+# Network Compression
+
+why Network Compression?
+<img src="networkcompression.png" width=70%>
+
+- 方法
+  - Network Pruning
+    - weight pruning(不推薦, 因為矩陣乘法還是沒有變小, 只是把weight改成0而已)
+    - neuron pruning(easy to implement, easy to speedup)
+  - Knowledge Distillation
+  - Parameter Quantization
+  - Architecture Design(以CNN為例,
+    - Depthwise Separable Convolution
+      - Depthwise Convolution + Pointwise Convolution )
+  - Dynamic Computation(希望network可以自由地調整自己需要的運算量)
+
+---

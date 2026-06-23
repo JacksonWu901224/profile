@@ -73,7 +73,7 @@
     end
 
     %% 註解說明
-    Note["註：本圖側重於深度學習演進路徑"]
+    Note["註:本圖側重於深度學習演進路徑"]
     Note --- AI
 
     %% Styles
@@ -259,6 +259,56 @@ iii. <strong>public test data</strong>  0.5%<br>
 iv. <strong>private test data</strong> 0.5%</li>
 </ul>
 <p><img src="dataspliting.png" alt="data spliting"></p>
+<ul>
+<li><strong>Data Scarcity / Insufficient sample size</strong>(data不夠)
+<ul>
+<li><strong>Data Augmentation</strong>
+<ul>
+<li><strong>Image Data Augmentation</strong>
+<ul>
+<li><strong>幾何變換</strong>:
+<ul>
+<li><strong>翻轉 (Flipping)</strong>:水平或垂直翻轉圖片。</li>
+<li><strong>旋轉 (Rotation)</strong>:將圖片隨機旋轉特定角度（如 ± 15°）。</li>
+<li><strong>縮放 (Scaling) 與裁切 (Cropping)</strong>:放大、縮小或隨機裁切圖片中的物件，強迫模型學習不同尺寸的特徵。</li>
+<li><strong>平移 (Translation)</strong>:將圖片沿著水平或垂直方向移動。</li>
+</ul>
+</li>
+<li><strong>色彩與像素變換</strong>:
+<ul>
+<li><strong>顏色調整</strong>:隨機改變亮度、對比度、飽和度或色調。</li>
+<li><strong>雜訊注入</strong>:加入高斯雜訊 (Gaussian Noise) 或椒鹽雜訊，模擬惡劣拍攝環境。</li>
+</ul>
+</li>
+<li><strong>影像混合 (Image Mixing)</strong>:
+<ul>
+<li><strong>Mixup</strong>:將兩張不同的圖片按隨機比例（λ）疊加混合。</li>
+<li><strong>CutMix</strong>:將一張圖片的一部分區域挖除，並用另一張圖片的內容填補。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>NLP Data Augmentation</strong>
+<ul>
+<li><strong>詞彙替換</strong>:使用同義詞詞庫（如 WordNet）將單字替換為同義詞。</li>
+<li><strong>詞彙操作</strong>:隨機對句子中的單字進行插入 (Insertion)、刪除 (Deletion) 或交換 (Swap)。</li>
+<li><strong>遮罩語言模型 (Masked Language Model)</strong>:利用像 BERT 等預訓練模型，將句中部分單字遮蔽 (Mask) 並讓模型自動預測填補，生成語意相同但寫法不同的新句子。</li>
+<li><strong>回譯 (Back-Translation)</strong>:將句子翻譯成另一種語言（例如中文翻成英文），再翻譯回原始語言，以獲得句型變化的資料。</li>
+</ul>
+</li>
+<li><strong>Audio Data Augmentation</strong>
+<ul>
+<li><strong>時間平移 (Time Shifting)</strong>:將音訊訊號往前或往後移動。</li>
+<li><strong>時間拉伸 (Time Stretching)</strong>:改變音訊的播放速度（加速或減速）而不改變音調。</li>
+<li><strong>音調調整 (Pitch Shifting)</strong>:改變音訊的音調高低。</li>
+<li><strong>背景雜訊加入</strong>:在語音中混入環境音（如咖啡廳噪音、街道聲），使模型適應真實環境。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h2 id="2-set-a-model">2. set a model </h2>
 <ul>
 <li>根據domain knowledge
@@ -679,6 +729,26 @@ The <font color="blue">trajectory</font> is defined as <span class="katex"><span
 </li>
 </ul>
 <hr>
+<h1 id="meta-learning">Meta Learning </h1>
+<p>what does "Meta" mean?<br>
+<font color="green">meta-X is <ins>X about X</ins></font>, so Meta Learning is <font color="blue"><ins>Learning about Learning</ins></font>.</p>
+<img src="metalearning.png" width="80%">
+<img src="metalearninggoal.png" width="80%">
+<h2 id="meta-learning-steps">meta learning steps </h2>
+<img src="metalearningstep1.png" width="80%">
+<img src="metalearningstep2-1.png" width="80%">
+<img src="metalearningstep2-2.png" width="80%">
+<img src="metalearningstep2-3.png" width="80%">
+<img src="metalearningstep2-4.png" width="80%">
+<img src="metalearningstep2-5.png" width="60%">
+<p>跟一般machine learning不太一樣, meta learning是用testing examples來算loss</p>
+<img src="metalearningstep3.png" width="80%">
+<h2 id="compare-machine-learning--meta-learning">compare machine learning &amp; meta learning </h2>
+<img src="compare-1.png" width="80%">
+<img src="compare-2.png" width="80%">
+<img src="compare-3.png" width="80%">
+<img src="compare-4.png" width="80%">
+<img src="compare-5findminloss.png" width="60%">
 
       </div>
       

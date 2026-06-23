@@ -48,7 +48,7 @@ flowchart TD
     end
 
     %% 註解說明
-    Note["註：本圖側重於深度學習演進路徑"]
+    Note["註:本圖側重於深度學習演進路徑"]
     Note --- AI
 
     %% Styles
@@ -162,6 +162,31 @@ flowchart TD
   iv. **private test data**&emsp;0.5%
 
 ![data spliting](dataspliting.png)
+
+- **Data Scarcity / Insufficient sample size**(data不夠)
+  - **Data Augmentation**
+    - **Image Data Augmentation**
+      - **幾何變換**:
+        - **翻轉 (Flipping)**:水平或垂直翻轉圖片。
+        - **旋轉 (Rotation)**:將圖片隨機旋轉特定角度（如 ± 15°）。
+        - **縮放 (Scaling) 與裁切 (Cropping)**:放大、縮小或隨機裁切圖片中的物件，強迫模型學習不同尺寸的特徵。
+        - **平移 (Translation)**:將圖片沿著水平或垂直方向移動。
+      - **色彩與像素變換**:
+        - **顏色調整**:隨機改變亮度、對比度、飽和度或色調。
+        - **雜訊注入**:加入高斯雜訊 (Gaussian Noise) 或椒鹽雜訊，模擬惡劣拍攝環境。
+      - **影像混合 (Image Mixing)**:
+        - **Mixup**:將兩張不同的圖片按隨機比例（λ）疊加混合。
+        - **CutMix**:將一張圖片的一部分區域挖除，並用另一張圖片的內容填補。
+    - **NLP Data Augmentation**
+      - **詞彙替換**:使用同義詞詞庫（如 WordNet）將單字替換為同義詞。
+      - **詞彙操作**:隨機對句子中的單字進行插入 (Insertion)、刪除 (Deletion) 或交換 (Swap)。
+      - **遮罩語言模型 (Masked Language Model)**:利用像 BERT 等預訓練模型，將句中部分單字遮蔽 (Mask) 並讓模型自動預測填補，生成語意相同但寫法不同的新句子。
+      - **回譯 (Back-Translation)**:將句子翻譯成另一種語言（例如中文翻成英文），再翻譯回原始語言，以獲得句型變化的資料。
+    - **Audio Data Augmentation**
+      - **時間平移 (Time Shifting)**:將音訊訊號往前或往後移動。
+      - **時間拉伸 (Time Stretching)**:改變音訊的播放速度（加速或減速）而不改變音調。
+      - **音調調整 (Pitch Shifting)**:改變音訊的音調高低。
+      - **背景雜訊加入**:在語音中混入環境音（如咖啡廳噪音、街道聲），使模型適應真實環境。
 
 ## 2. set a model
 
@@ -550,3 +575,34 @@ why Network Compression?
   - Dynamic Computation(希望network可以自由地調整自己需要的運算量)
 
 ---
+
+# Meta Learning
+
+
+what does "Meta" mean?
+<font color="green">meta-X is <ins>X about X</ins></font>, so Meta Learning is <font color="blue"><ins>Learning about Learning</ins></font>.
+
+<img src="metalearning.png" width=80%>
+<img src="metalearninggoal.png" width=80%>
+
+## meta learning steps
+
+<img src="metalearningstep1.png" width=80%>
+<img src="metalearningstep2-1.png" width=80%>
+<img src="metalearningstep2-2.png" width=80%>
+<img src="metalearningstep2-3.png" width=80%>
+<img src="metalearningstep2-4.png" width=80%>
+
+<img src="metalearningstep2-5.png" width=60%>
+
+跟一般machine learning不太一樣, meta learning是用testing examples來算loss
+
+<img src="metalearningstep3.png" width=80%>
+
+## compare machine learning & meta learning
+
+<img src="compare-1.png" width=80%>
+<img src="compare-2.png" width=80%>
+<img src="compare-3.png" width=80%>
+<img src="compare-4.png" width=80%>
+<img src="compare-5findminloss.png" width=60%>

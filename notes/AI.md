@@ -143,7 +143,7 @@ flowchart TD
   - Computer Vision
     - Backbone(特徵提取，給下游用)
       - CNN：ResNet(CNN+Residual) / VGG / EfficientNet / Inception / ConvNeXt
-      - Transformer：ViT / Swin Transformer / DINOv2
+      - Transformer：ViT(Vision Transformer) / Swin Transformer / DINOv2
     - Object Detection(框出物件)
       - One-stage（快）：YOLO
       - Two-stage（準）：Faster R-CNN
@@ -421,6 +421,9 @@ $b^1, b^2, b^3, b^4$是一次同時被計算出來的
 Truncated Self-Attention: 不要看一整句話, 看一個小範圍就好
 
 <img src="selfattentionforimage-1.png" width="70%">
+
+每個pixel看成是一個3-dimension vector,整張圖片就是5*10個vectors
+
 <img src="selfattentionforimage-2.png" width="70%">
 <img src="selfattentionforimage-3.png" width="70%">
 

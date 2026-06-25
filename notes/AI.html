@@ -228,7 +228,7 @@
 <li>Backbone(特徵提取，給下游用)
 <ul>
 <li>CNN：ResNet(CNN+Residual) / VGG / EfficientNet / Inception / ConvNeXt</li>
-<li>Transformer：ViT / Swin Transformer / DINOv2</li>
+<li>Transformer：ViT(Vision Transformer) / Swin Transformer / DINOv2</li>
 </ul>
 </li>
 <li>Object Detection(框出物件)
@@ -593,6 +593,7 @@ e.g. translation, speech recognition,...</p>
 <img src="selfattentionforspeech.png" width="60%">
 <p>Truncated Self-Attention: 不要看一整句話, 看一個小範圍就好</p>
 <img src="selfattentionforimage-1.png" width="70%">
+<p>每個pixel看成是一個3-dimension vector,整張圖片就是5*10個vectors</p>
 <img src="selfattentionforimage-2.png" width="70%">
 <img src="selfattentionforimage-3.png" width="70%">
 <p>CNN可看作是簡化版self-attention<br>

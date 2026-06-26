@@ -541,7 +541,7 @@ flowchart LR
 
 $$\text{FFN}(x) = \underbrace{(\overbrace{\max(0, \, xW_1 + b_1)}^{\text{Linear1 + ReLU}})W_2 + b_2}_{\text{Linear2}}$$
 
-xN 就是有好幾個block
+<span style="font-size: 24px;">Nx</span> 就是有好幾個block
 
 
 ## Transformer decoder - Autoregressive decoder(最常見)

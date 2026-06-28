@@ -53,21 +53,21 @@ header h2{
     color: var(--text);
 }
 
-/* Blog page container */
+/* review page container */
 section{
     padding: 0;
 }
 
-.blog{
+.review{
     max-width: 1200px;
     margin: 0 auto;
     padding: 24px 16px 56px;
     text-align: center;
 }
 
-.blog h2,
-.blog h3,
-.blog h4{
+.review h2,
+.review h3,
+.review h4{
     text-align: center;
     letter-spacing: -0.02em;
     line-height: 1.45;
@@ -75,7 +75,7 @@ section{
     margin-bottom: 0.7em;
 }
 
-.blog p{
+.review p{
     text-align: left;
     margin: 12px 0;
     font-size: 1.02rem;
@@ -83,24 +83,24 @@ section{
     overflow-wrap: anywhere;
 }
 
-.blog div{
+.review div{
     overflow-wrap: anywhere;
 }
 
-.blog span{
+.review span{
     overflow-wrap: anywhere;
 }
 
 /* Apple-style content blocks */
-.blog > div,
-.blog > p,
-.blog > h2,
-.blog > h3,
-.blog > h4,
-.blog > img,
-.blog > hr,
-.blog > .table-container,
-.blog > .Karp21{
+.review > div,
+.review > p,
+.review > h2,
+.review > h3,
+.review > h4,
+.review > img,
+.review > hr,
+.review > .table-container,
+.review > .Karp21{
     max-width: 100%;
 }
 
@@ -271,7 +271,7 @@ footer{
         letter-spacing: 0.10em;
     }
 
-    .blog{
+    .review{
         padding: 18px 12px 40px;
     }
 
@@ -289,7 +289,7 @@ footer{
         border-radius: 16px;
     }
 
-    .blog p{
+    .review p{
         font-size: 1rem;
     }
 }
@@ -307,7 +307,7 @@ footer{
         font-size: 0.98rem;
     }
 
-    .blog{
+    .review{
         padding: 14px 10px 32px;
     }
 

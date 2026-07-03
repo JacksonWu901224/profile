@@ -144,9 +144,12 @@ flowchart TD
     - Backbone(特徵提取，給下游用)
       - CNN：ResNet(CNN+Residual) / VGG / EfficientNet / Inception / ConvNeXt
       - Transformer：ViT(Vision Transformer) / Swin Transformer / DINOv2
+    - Semantic Segmentation(語義分割)
+      - CNN-based：[U-Net](https://arxiv.org/pdf/1505.04597) / ResU-Net / DeepLab / SegNet
+      - Transformer-based：SegFormer / SETR / Swin-UNET
     - Object Detection(框出物件)
-      - One-stage（快）：YOLO
-      - Two-stage（準）：Faster R-CNN
+      - One-stage（快）：YOLO(pure CNN)
+      - Two-stage（準）：Faster R-CNN(CNN backbone + RPN)
       - Transformer：DETR / RT-DETR 
     - Instance Segmentation(精確輪廓)
       - Mask R-CNN/ YOLO-Seg / SAM

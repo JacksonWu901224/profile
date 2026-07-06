@@ -250,6 +250,7 @@ flowchart TD
 - <font color="green">Gradient Descent(Vanilla Gradient Descent)</font>
   - $ \theta ^ {t+1} = \theta ^ {t} - \eta \cdot \nabla L(\theta ^ {t})$
     - $\nabla L(\theta ^ {t})$ 代表損失函數 $L$ 在當前參數 $\theta ^ {t}$ 位置的「斜率」或「坡度」
+      - [Backpropagation](BP.pdf): an efficient way to compute $\frac{\partial L}{\partial w}$ in neural network
     - $\eta$(Eta) : The Learning Rate
   - 問題 : 只根據當下算出來的$g^t$來決定方向
     - 解法 : Gradient Descent + Optimizer

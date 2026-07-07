@@ -121,7 +121,7 @@ flowchart TD
 
 ---
 
-# Machine Learning
+# Machine Learning $\approx$ looking for a function form data
 
 | Stage | Learning Type | Purpose | Data Source & Scale | Limitations | Key References | Outcome |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -218,7 +218,7 @@ flowchart TD
 ![compare regression and classification](compare.png)
 
 - $\sigma$ is called **activation function**
-  - Regression
+  - Regression(output is a "<font color="blue">scalar</font>")
     - $\sigma$ is Relu
   - Classification
     - $\sigma$ is sigmoid/softmax
@@ -306,30 +306,40 @@ flowchart TD
 
 # Convolutional Neural Networks, CNN
 
-<img src="cnn-1.png" width="50%">
+<img src="cnn-1.png" width="60%">
 
 **channel** : R, G, B
 
 ![cnn benefit](cnn-2.png)
 不需Fully Connected Network, weight太龐大了, 用**Receptive Field**(多大自己定義可大可小, 不同receptive field can be overlapped), 而每一個neron只關心自己的receptive field發生的事情
-<img src="receptivefield.png" width="50%">
+<img src="receptivefield.png" width="60%">
 
-鳥嘴可能在任何地方, 所以可以parameters sharing, called **Filter**
-<img src="filter.png" width="50%">
+鳥嘴可能在任何地方, 所以可以parameters sharing, called <ins>**Filter**</ins>
+<img src="filter-1.png" width="60%"> <img src="filter-2.png" width="35%">
+
+parameter sharing in details:
+<img src="cnn2017-1.png" width="50%"><img src="cnn2017-2.png" width="50%">
 
 <ins>用Filter掃過一張圖片其實就是**convolution**</ins>
+
+<img src="cnn_filter_animation.gif">
 
 ## The Whole CNN
 
 ![cnn whole picture](cnn-3.png)
 
 **Pooling** :  
-e.g. 把奇數rows, columns拿掉, 讓圖變小
+e.g. 把奇數rows, columns拿掉, 讓圖變小, max pooling, average pooling,...
 
-<img src="cnn-4.png" width="50%">
+<img src="cnn-4.png" width="55%"><img src="maxpoolingaveragepooling.jpg" width="45%">
 
 **Flatten** :  
 把matrix變成column
+
+**Fully Connected Feedforward Network** :
+![fully connected feedforward network](fullyconnectfeedforwardnetwork.png)
+
+$\sigma(\mathbf{b} + \mathbf{W}\mathbf{x})$ is a **<font color="blue">neuron</font>**
 
 ---
 

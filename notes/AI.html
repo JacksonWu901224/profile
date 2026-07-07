@@ -148,7 +148,7 @@
 </li>
 </ul>
 <hr>
-<h1 id="machine-learning">Machine Learning </h1>
+<h1 id="machine-learning-approx-looking-for-a-function-form-data">Machine Learning <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo></mrow><annotation encoding="application/x-tex">\approx</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4831em;"></span><span class="mrel">≈</span></span></span></span> looking for a function form data </h1>
 <table>
 <thead>
 <tr>
@@ -363,7 +363,7 @@ iv. <strong>private test data</strong> 0.5%</li>
 <ul>
 <li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">σ</span></span></span></span> is called <strong>activation function</strong>
 <ul>
-<li>Regression
+<li>Regression(output is a "<font color="blue">scalar</font>")
 <ul>
 <li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">σ</span></span></span></span> is Relu</li>
 </ul>
@@ -532,21 +532,27 @@ global minimum用以脫離saddle point or local minimum
 </ul>
 <hr>
 <h1 id="convolutional-neural-networks-cnn">Convolutional Neural Networks, CNN </h1>
-<img src="cnn-1.png" width="50%">
+<img src="cnn-1.png" width="60%">
 <p><strong>channel</strong> : R, G, B</p>
 <p><img src="cnn-2.png" alt="cnn benefit"><br>
 不需Fully Connected Network, weight太龐大了, 用<strong>Receptive Field</strong>(多大自己定義可大可小, 不同receptive field can be overlapped), 而每一個neron只關心自己的receptive field發生的事情<br>
-<img src="receptivefield.png" width="50%"></p>
-<p>鳥嘴可能在任何地方, 所以可以parameters sharing, called <strong>Filter</strong><br>
-<img src="filter.png" width="50%"></p>
+<img src="receptivefield.png" width="60%"></p>
+<p>鳥嘴可能在任何地方, 所以可以parameters sharing, called <ins><strong>Filter</strong></ins><br>
+<img src="filter-1.png" width="60%"> <img src="filter-2.png" width="35%"></p>
+<p>parameter sharing in details:<br>
+<img src="cnn2017-1.png" width="50%"><img src="cnn2017-2.png" width="50%"></p>
 <p><ins>用Filter掃過一張圖片其實就是<strong>convolution</strong></ins></p>
+<img src="cnn_filter_animation.gif">
 <h2 id="the-whole-cnn">The Whole CNN </h2>
 <p><img src="cnn-3.png" alt="cnn whole picture"></p>
 <p><strong>Pooling</strong> :<br>
-e.g. 把奇數rows, columns拿掉, 讓圖變小</p>
-<img src="cnn-4.png" width="50%">
+e.g. 把奇數rows, columns拿掉, 讓圖變小, max pooling, average pooling,...</p>
+<p><img src="cnn-4.png" width="55%"><img src="maxpoolingaveragepooling.jpg" width="45%"></p>
 <p><strong>Flatten</strong> :<br>
 把matrix變成column</p>
+<p><strong>Fully Connected Feedforward Network</strong> :<br>
+<img src="fullyconnectfeedforwardnetwork.png" alt="fully connected feedforward network"></p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo stretchy="false">(</mo><mi mathvariant="bold">b</mi><mo>+</mo><mi mathvariant="bold">W</mi><mi mathvariant="bold">x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\sigma(\mathbf{b} + \mathbf{W}\mathbf{x})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">σ</span><span class="mopen">(</span><span class="mord mathbf">b</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathbf">Wx</span><span class="mclose">)</span></span></span></span> is a <strong><font color="blue">neuron</font></strong></p>
 <hr>
 <h1 id="self-attention取代rnn">Self-Attention(取代RNN) </h1>
 <p><img src="selfattention-1.png" alt="input is a set of vectors"></p>

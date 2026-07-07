@@ -317,7 +317,7 @@ flowchart TD
 鳥嘴可能在任何地方, 所以可以parameters sharing, called <ins>**Filter**</ins>
 <img src="filter-1.png" width="60%"> <img src="filter-2.png" width="35%">
 
-parameter sharing in details:
+parameter sharing in details: 所以convolution不需要fully connected
 <img src="cnn2017-1.png" width="50%"><img src="cnn2017-2.png" width="50%">
 
 <ins>用Filter掃過一張圖片其實就是**convolution**</ins>
@@ -340,6 +340,12 @@ e.g. 把奇數rows, columns拿掉, 讓圖變小, max pooling, average pooling,..
 ![fully connected feedforward network](fullyconnectfeedforwardnetwork.png)
 
 $\sigma(\mathbf{b} + \mathbf{W}\mathbf{x})$ is a **<font color="blue">neuron</font>**
+
+## Demo
+
+<img src="cnndemo-1.png" width="80%">
+<img src="cnndemo-2.png" width="80%">
+<img src="cnndemo-3.png" width="80%">
 
 ---
 

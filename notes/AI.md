@@ -285,8 +285,15 @@ flowchart TD
 ## 5.Train the model
 
 - Initialization
-  - <font color="green">Kaiming Initialization</font>
+  1. set random seed
+  2. <font color="green">Kaiming Initialization</font>
 - **<font color="blue">Use gradient descent to train the model, accelerating convergence to the minimum loss and yielding the optimal model(Find the best $\beta_0, \beta_1, \beta_2, \beta_3,...., \epsilon$).</font>** (Basically, we're now [<ins>***tuning hyperparameters***</ins>](common_hyperparameters.html))
+
+- tips when training
+  - dropout(training 時把一些neuron or input丟掉, 當然, 相對應的weight也會丟掉)
+<img src="dropout.png" width="50%">
+  - early stopping
+<img src="earlystopping.webp" width="40%">
 
 - general guide
 

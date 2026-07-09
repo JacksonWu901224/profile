@@ -202,7 +202,11 @@ flowchart TD
   - <font color="green">Multiple Linear Regression</font>
     - $y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \dots + \beta_nx_n + \epsilon$
   -  <font color="green">Piecewise Linear Curves</font>
+     -  RELU(Rectified Linear Unit)
 ![piecewise linear curves](piecewiselinearcurves.png)
+     -  GELU(Gaussian Error Linear Unit)
+     - Swish
+     - SiLU(Sigmoid Linear Unit) 
   - <font color="green">Classification</font>
     - <font color="green">Binary Classification</font>(Sigmoid=Logistic Function)
       - $P(y=1|x) = \frac{1}{1 + e^{-(\beta_0 + \beta_1x_1 + \dots + \beta_nx_n)}}$

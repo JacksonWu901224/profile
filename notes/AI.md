@@ -279,6 +279,9 @@ flowchart TD
   ![feature scaling](feature_scaling.webp)
     - Normalization
       - Batch Normalization
+        - 大幅加速收斂: 允許模型使用較高的學習率（Learning Rate）來縮短訓練時間。
+        - 防止梯度消失: 讓資料避開飽和區（如 Sigmoid, Tanh 函數的兩端），有效解決梯度消失問題。
+        - 具備正則化 (Regularization) 效果: 減少模型對 Dropout 的依賴，降低過擬合（Overfitting）的風險。
   ![batch normalization](batchnormalization.png)
         - $\gamma$, $\beta$ are another network parameters, 另外再被learned出來的;因為normalization完後,$\tilde{z}^1,\tilde{z}^2,\tilde{z}^3,...$之平均為0, 可能會對模型產生限制,所以加上$\gamma$, $\beta$
         - $\gamma$ initialize to $[1, 1, \dots, 1]^T$

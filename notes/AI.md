@@ -256,6 +256,16 @@ flowchart TD
     - $\nabla L(\theta ^ {t})$ 代表損失函數 $L$ 在當前參數 $\theta ^ {t}$ 位置的「斜率」或「坡度」
       - [Backpropagation](BP.pdf): an efficient way to compute $\frac{\partial L}{\partial w}$ in neural network
     - $\eta$(Eta) : The Learning Rate
+    - 原始版本 : 每次更新要用「全部」訓練資料算一次 $\nabla L(\theta)$ → 稱為 <font color="green">Batch Gradient Descent</font>
+      - 問題 : 資料量大時，算一次梯度非常慢，且記憶體吃不下
+  - <font color="green">Stochastic Gradient Descent (SGD)</font>(<ins>SGD+Momentum 在 CNN 分類任務上常見，不代表 Adam 不適合</ins>)
+    - 解決 Batch GD 太慢的問題 : 每次只用「一筆」資料（或一個 mini-batch）來估計梯度並更新參數
+      - $ \theta ^ {t+1} = \theta ^ {t} - \eta \cdot \nabla L_i(\theta ^ {t})$
+        - $L_i$ 是第 $i$ 筆(或一個 batch)資料算出的 loss
+    - 優點 : 更新頻繁、速度快，且帶有隨機性(noisy)，反而有機會跳出 local minimum / saddle point
+    - 缺點 : 更新方向震盪較大，收斂路徑不穩定，需要搭配 learning rate schedule 或 Momentum 才好收斂
+    - 實務上常說的「SGD」多半是指 <font color="green">Mini-batch SGD</font>（一次用一小批資料，如 batch=32/128），純粹用單筆資料的版本很少見，因為效率太差
+    - PyTorch 的 `optim.SGD` 實際上就是 mini-batch 版本，並且內建可選 momentum 參數（`momentum=0.9`）
   - 問題 : 只根據當下算出來的$g^t$來決定方向
     - 解法 : Gradient Descent + Optimizer
       - 根據$g^0,g^1,g^2,...,g^t$一起來決定方向(調整learning rate)

@@ -1,4 +1,10 @@
 <!-- markdownlint-disable MD033 -->
+<style>
+  /* 強制網頁上所有元素（包括文字、段落、標題）都維持預設箭頭，不變一束 */
+  body, body * {
+    cursor: default; 
+  }
+</style>
 
 # AI outline graph
 

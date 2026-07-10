@@ -142,13 +142,13 @@ flowchart TD
       - T5/ BART
   - Computer Vision
     - Backbone(特徵提取，給下游用)
-      - CNN：ResNet(CNN+Residual) / VGG / EfficientNet / Inception / ConvNeXt
+      - CNN：[ResNet](https://arxiv.org/pdf/1512.03385)(CNN+Residual) / VGG / EfficientNet / Inception / ConvNeXt
       - Transformer：ViT(Vision Transformer) / Swin Transformer / DINOv2
     - Semantic Segmentation(語義分割)
       - CNN-based：[U-Net](https://arxiv.org/pdf/1505.04597) / ResU-Net / DeepLab / SegNet
       - Transformer-based：SegFormer / SETR / Swin-UNET
     - Object Detection(框出物件)
-      - One-stage（快）：YOLO(pure CNN)
+      - One-stage（快）：[YOLO](https://arxiv.org/pdf/1506.02640)(pure CNN)
       - Two-stage（準）：Faster R-CNN(CNN backbone + RPN)
       - Transformer：DETR / RT-DETR 
     - Instance Segmentation(精確輪廓)

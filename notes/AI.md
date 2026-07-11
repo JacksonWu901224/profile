@@ -148,7 +148,7 @@ flowchart TD
       - T5/ BART
   - Computer Vision
     - Backbone(特徵提取，給下游用)
-      - CNN：[ResNet](https://arxiv.org/pdf/1512.03385)(CNN+Residual) / VGG / EfficientNet / Inception / ConvNeXt
+      - [CNN](https://arxiv.org/pdf/1511.08458)：[ResNet](https://arxiv.org/pdf/1512.03385)(CNN+Residual) / VGG / EfficientNet / Inception / ConvNeXt
       - Transformer：ViT(Vision Transformer) / Swin Transformer / DINOv2
     - Semantic Segmentation(語義分割)
       - CNN-based：[U-Net](https://arxiv.org/pdf/1505.04597) / ResU-Net / DeepLab / SegNet
@@ -344,7 +344,7 @@ flowchart TD
 不需Fully Connected Network, weight太龐大了, 用**Receptive Field**(多大自己定義可大可小, 不同receptive field can be overlapped), 而每一個neron只關心自己的receptive field發生的事情
 <img src="receptivefield.png" width="60%">
 
-鳥嘴可能在任何地方, 所以可以parameters sharing, called <ins>**Filter**</ins>
+鳥嘴可能在任何地方, 所以可以parameters sharing, called <ins>**Filter**</ins>(有幾個Filter, output就有幾個channel)
 <img src="filter-1.png" width="60%"> <img src="filter-2.png" width="35%">
 
 parameter sharing in details: 所以convolution不需要fully connected
@@ -376,6 +376,19 @@ $\sigma(\mathbf{b} + \mathbf{W}\mathbf{x})$ is a **<font color="blue">neuron</fo
 <img src="cnndemo-1.png" width="80%">
 <img src="cnndemo-2.png" width="80%">
 <img src="cnndemo-3.png" width="80%">
+
+
+## CNN output size
+
+$$O = \lfloor \frac{I - K + 2P}{S} \rfloor + 1$$
+
+\(O\) : Output size
+\(I\) : Input size
+\(K\) : Filter size
+\(P\) : Padding
+\(S\) : Stride
+
+$$\text{output Channel}=\text{Number of Filter}$$
 
 ---
 

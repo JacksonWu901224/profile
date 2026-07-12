@@ -380,8 +380,23 @@ $\sigma(\mathbf{b} + \mathbf{W}\mathbf{x})$ is a **<font color="blue">neuron</fo
 
 ## CNN output size
 
+### Convolution=downsampling
+
 $$O = \lfloor \frac{I - K + 2P}{S} \rfloor + 1$$
 
+\(O\) : Output size
+\(I\) : Input size
+\(K\) : Filter size
+\(P\) : Padding
+\(S\) : Stride
+
+$$\text{output Channel}=\text{Number of Filter}$$
+
+### Transposed Convolution=Deconvolution=up-convolution=upsampling
+
+$$O = (I - 1) \times S - 2P + K + \text{Output Padding}$$
+
+$$(通常我們把 \text{Output Padding} 設為 0)$$
 \(O\) : Output size
 \(I\) : Input size
 \(K\) : Filter size

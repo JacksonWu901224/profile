@@ -380,7 +380,7 @@ $\sigma(\mathbf{b} + \mathbf{W}\mathbf{x})$ is a **<font color="blue">neuron</fo
 
 ## CNN output size
 
-### Convolution=downsampling
+### strided convolution=subsampling=downsampling
 
 $$O = \lfloor \frac{I - K + 2P}{S} \rfloor + 1$$
 

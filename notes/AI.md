@@ -352,7 +352,7 @@ parameter sharing in details: 所以convolution不需要fully connected
 
 <ins>用Filter掃過一張圖片其實就是**convolution**</ins>
 
-<img src="cnn_filter_animation.gif">
+<img src="cnn_filter_animation_downsampling.gif">
 
 ## The Whole CNN
 
@@ -392,6 +392,14 @@ $$O = \lfloor \frac{I - K + 2P}{S} \rfloor + 1$$
 
 $$\text{output Channel}=\text{Number of Filter}$$
 
+<img src="cnn_filter_downsampling.png" width="90%">
+
+\(O\) : 4
+\(I\) : 6
+\(K\) : 3
+\(P\) : 0
+\(S\) : 1
+
 ### Transposed Convolution=Deconvolution=up-convolution=upsampling
 
 $$O = (I - 1) \times S - 2P + K + \text{Output Padding}$$
@@ -404,6 +412,14 @@ $$(通常我們把 \text{Output Padding} 設為 0)$$
 \(S\) : Stride
 
 $$\text{output Channel}=\text{Number of Filter}$$
+
+<img src="cnn_filter_upsampling.png" width="90%">
+
+\(O\) : 3
+\(I\) : 2
+\(K\) : 2
+\(P\) : 0
+\(S\) : 1
 
 ---
 

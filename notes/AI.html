@@ -214,7 +214,7 @@
 <ul>
 <li>Encoder(分類、理解)
 <ul>
-<li>BERT / RoBERTa / ALBERT / ELECTRA</li>
+<li><a href="https://arxiv.org/pdf/1810.04805">BERT</a> / RoBERTa / ALBERT / ELECTRA</li>
 </ul>
 </li>
 <li>Decoder(生成、對話)
@@ -638,7 +638,22 @@ e.g. 把奇數rows, columns拿掉, 讓圖變小, max pooling, average pooling,..
 如何把一個詞彙表示成一個向量?</p>
 <ol>
 <li><strong>one-hot encoding</strong>(向量長度跟世界上存在的詞彙數目一樣多), 但無法看出各個詞彙的相關程度</li>
-<li><strong>word embedding</strong>(向量是有語意的資訊)</li>
+<li><strong>word embedding</strong>(向量是有語意的資訊)(Unsupervised Learning(Self-Supervised Learning))
+<ol>
+<li>Static Word Embedding
+<ol>
+<li>一個詞永遠對應一個固定向量，無法解決「一詞多義」問題</li>
+<li>Word2Vec, GloVe, FastText</li>
+</ol>
+</li>
+<li>Contextualized Word Embedding
+<ol>
+<li>向量會根據「當前句子的上下文」動態改變，可精準處理一詞多義</li>
+<li><font color="red">E</font>mbeddings from <font color="red">L</font>anguage <font color="red">Mo</font>dels (ELMO), <font color="red">B</font>idirectional <font color="red">E</font>ncoder <font color="red">R</font>epresentations from <font color="red">T</font>ransformers(BERT)</li>
+</ol>
+</li>
+</ol>
+</li>
 </ol>
 <p><img src="output-1.png" alt="output-1"><br>
 e.g. POS tagging,...</p>

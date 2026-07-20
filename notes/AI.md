@@ -141,7 +141,7 @@ flowchart TD
 - <font color="green">Pretrained Models</font>
   - NLP
     - Encoder(分類、理解)
-      - BERT / RoBERTa / ALBERT / ELECTRA
+      - [BERT](https://arxiv.org/pdf/1810.04805) / RoBERTa / ALBERT / ELECTRA
     - Decoder(生成、對話)
       - GPT / LLaMA / OPT
     - Seq2Seq(翻譯、摘要)
@@ -432,7 +432,13 @@ e.g. 文字處理, 聲音訊號(取一個範圍called window(通常為25ms), 描
 ![tokenize](tokenize.png)
 如何把一個詞彙表示成一個向量?
   1. **one-hot encoding**(向量長度跟世界上存在的詞彙數目一樣多), 但無法看出各個詞彙的相關程度
-  2. **word embedding**(向量是有語意的資訊)
+  2. **word embedding**(向量是有語意的資訊)(Unsupervised Learning(Self-Supervised Learning))
+     1. Static Word Embedding
+        1. 一個詞永遠對應一個固定向量，無法解決「一詞多義」問題
+        2. Word2Vec, GloVe, FastText 
+     2. Contextualized Word Embedding
+        1. 向量會根據「當前句子的上下文」動態改變，可精準處理一詞多義
+        2. <font color="red">E</font>mbeddings from <font color="red">L</font>anguage <font color="red">Mo</font>dels (ELMO), <font color="red">B</font>idirectional <font color="red">E</font>ncoder <font color="red">R</font>epresentations from <font color="red">T</font>ransformers(BERT)
 
 ![output-1](output-1.png)
 e.g. POS tagging,...

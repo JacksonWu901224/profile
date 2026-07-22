@@ -155,7 +155,52 @@
 </ul>
 <hr>
 <h1 id="machine-learning-approx-looking-for-a-function-form-data">Machine Learning <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo></mrow><annotation encoding="application/x-tex">\approx</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4831em;"></span><span class="mrel">≈</span></span></span></span> looking for a function form data </h1>
-<table>
+<h2 id="machine-learning-flowchart">Machine Learning flowchart </h2>
+<div class="mermaid">flowchart TD
+    subgraph PREP["Data Preparation"]
+        A[Data] --&gt; B["Transforms / Augmentation"]
+        B --&gt; C[Dataset]
+        C --&gt; D[DataLoader]
+    end
+
+    subgraph SETUP["Model &amp; Training Setup"]
+        E["Model (nn.Module)"]
+        F[Loss Function]
+        G[Optimizer]
+        H["Scheduler&lt;br&gt;學習率動態調整"]
+        G -.-&gt; H
+    end
+
+    D --&gt; E
+    E --&gt; F --&gt; G
+
+    subgraph LOOP["Training Loop"]
+        I[Forward + Backward + Optimizer.step]
+        I -.-&gt; J["Logger / Visualization&lt;br&gt;TensorBoard / WandB"]
+        H -.-&gt; I
+        I --&gt; K[Validation]
+        K -.-&gt; L["Early Stopping /&lt;br&gt;Checkpoint 判斷"]
+        L --&gt;|"Patience not reached&lt;br&gt;Continue"| I
+    end
+
+    G --&gt; I
+    L --&gt;|"Patience reached&lt;br&gt;Stop"| M[Save Best Model]
+
+    subgraph DEPLOY["Inference / Deployment"]
+        N["Load Best Model&lt;br&gt;model.load_state_dict()"]
+        O["model.eval()&lt;br&gt;torch.no_grad()"]
+        P[Inference]
+        Q["Post-processing"]
+    end
+
+    M --&gt; N --&gt; O --&gt; P --&gt; Q
+
+    style A fill:#e1f5fe,stroke:#0288d1,stroke-width:2px
+    style E fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    style I fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
+    style M fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    style P fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+</div><table>
 <thead>
 <tr>
 <th style="text-align:left">Stage</th>
@@ -822,6 +867,49 @@ c-100.7-8.3-195.3-44-280-108-55.3-42-101.7-93-139-153l-9-14c-2.7 4-5.7 8.7-9 14
 -6 6h-17c-12.7 0-19.3-.3-20-1-4-4-7.3-8.3-10-13-35.3-51.3-80.8-93.8-136.5-127.5
 s-117.2-55.8-184.5-66.5c-.7 0-2-.3-4-1-18.7-2.7-76-4.3-172-5H0V214h399571l6 1
 c124.7 8 235 61.7 331 161 31.3 33.3 59.7 72.7 85 118l7 13v35z"></path></svg></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.25em;"><span></span></span></span></span></span></span><span style="top:-5.0543em;"><span class="pstrut" style="height:3.398em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">Linear1&nbsp;+&nbsp;ReLU</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.25em;"><span></span></span></span></span></span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.898em;"><span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.5763em;"><span></span></span></span></span></span></span></span></span></span><p><span style="font-size: 24px;">Nx</span> 就是有好幾個block</p>
+<h3 id="encoder-architecture-applications">Encoder Architecture Applications </h3>
+<ol>
+<li>Seq2Seq Generation
+<ol>
+<li><strong>串接模組</strong> : <code>Encoder + Decoder</code></li>
+<li><strong>運作機制</strong> : Encoder 提煉輸入序列的資訊，輸出 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo separator="true">,</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">K, V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0715em;">K</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.2222em;">V</span></span></span></span> 向量供 Decoder 進行交叉注意力 (Cross-Attention) 計算。</li>
+<li><strong>代表架構</strong> : Original Transformer, T5, BART</li>
+<li><strong>典型應用</strong> :
+<ol>
+<li><strong>Machine Translation</strong> : 例如 英 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 中 翻譯</li>
+<li><strong>Summarization</strong> : 長文壓縮成短摘要</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Classification &amp; Tagging
+<ol>
+<li><strong>串接模組</strong> : <code>Encoder + Linear Head (Classifier)</code></li>
+<li><strong>運作機制</strong> : 將 Encoder 產生的特徵向量傳入簡單的線性層 (nn.Linear)，進行機率映射與類別判斷。</li>
+<li><strong>代表架構</strong> : BERT, RoBERTa, ELECTRA</li>
+<li><strong>典型應用</strong> :
+<ol>
+<li><strong>Sentiment Analysis</strong> : 判斷文本為正評或負評</li>
+<li><strong>Text Classification</strong> : 區分新聞主題（如:體育、政治、科技）</li>
+<li><strong>Named Entity Recognition (NER)</strong> : 標記 Token 層級的實體類別(如:人名、地名、組織、時間、貨幣及產品等)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Semantic Search &amp; Matching
+<ol>
+<li><strong>串接模組</strong> : <code>Encoder Only</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 輸出向量並存入 Vector Database</li>
+<li><strong>運作機制</strong> : 直接提取句子的向量表示(Sentence Embedding)，透過餘弦相似度 (Cosine Similarity) 等幾何距離比對兩段文字的語意相關性。</li>
+<li><strong>代表技術</strong> : Sentence-BERT, Dense Passage Retrieval (DPR)</li>
+<li><strong>典型應用</strong> :
+<ol>
+<li><strong>檢索增強生成 (RAG)</strong> : 比對 User Query 與知識庫文件的相關度</li>
+<li><strong>語意搜尋 (Semantic Search)</strong> : 突破傳統關鍵字匹配，實現「意思接近就能搜到」</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
 <h2 id="transformer-decoder---autoregressive-decoder最常見">Transformer decoder - Autoregressive decoder(最常見) </h2>
 <img src="atvsnat.png" width="70%">
 <img src="transformerdecoder-1.png" width="85%">
@@ -862,7 +950,95 @@ c124.7 8 235 61.7 331 161 31.3 33.3 59.7 72.7 85 118l7 13v35z"></path></svg></sp
 <img src="transformertraining-1.png" width="90%">
 <img src="transformertraining-2.png" width="90%">
 <p>訓練時會把正確答案當成decoder之輸入called <strong>teacher forcing</strong></p>
-<hr>
+<h3 id="demo-1">demo </h3>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-import">import</span> torch
+<span class="token keyword keyword-import">import</span> torch<span class="token punctuation">.</span>nn <span class="token keyword keyword-as">as</span> nn
+<span class="token keyword keyword-import">import</span> math
+
+<span class="token comment"># --- 1. 原論文經典正弦位置編碼 (Positional Encoding) ---</span>
+<span class="token keyword keyword-class">class</span> <span class="token class-name">PositionalEncoding</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-def">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> d_model<span class="token punctuation">,</span> max_len<span class="token operator">=</span><span class="token number">5000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        pe <span class="token operator">=</span> torch<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span>max_len<span class="token punctuation">,</span> d_model<span class="token punctuation">)</span>
+        position <span class="token operator">=</span> torch<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> max_len<span class="token punctuation">,</span> dtype<span class="token operator">=</span>torch<span class="token punctuation">.</span><span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">.</span>unsqueeze<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+        div_term <span class="token operator">=</span> torch<span class="token punctuation">.</span>exp<span class="token punctuation">(</span>torch<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> d_model<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">float</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token operator">-</span>math<span class="token punctuation">.</span>log<span class="token punctuation">(</span><span class="token number">10000.0</span><span class="token punctuation">)</span> <span class="token operator">/</span> d_model<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        
+        pe<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> torch<span class="token punctuation">.</span>sin<span class="token punctuation">(</span>position <span class="token operator">*</span> div_term<span class="token punctuation">)</span>
+        pe<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> torch<span class="token punctuation">.</span>cos<span class="token punctuation">(</span>position <span class="token operator">*</span> div_term<span class="token punctuation">)</span>
+        
+        self<span class="token punctuation">.</span>register_buffer<span class="token punctuation">(</span><span class="token string">'pe'</span><span class="token punctuation">,</span> pe<span class="token punctuation">.</span>unsqueeze<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># Shape: [1, max_len, d_model]</span>
+
+    <span class="token keyword keyword-def">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># x Shape: [batch_size, seq_len, d_model]</span>
+        <span class="token keyword keyword-return">return</span> x <span class="token operator">+</span> self<span class="token punctuation">.</span>pe<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token punctuation">:</span>x<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+<span class="token comment"># --- 2. 完整 Seq2Seq Transformer ---</span>
+<span class="token keyword keyword-class">class</span> <span class="token class-name">Seq2SeqTransformer</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-def">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> src_vocab_size<span class="token punctuation">,</span> tgt_vocab_size<span class="token punctuation">,</span> d_model<span class="token operator">=</span><span class="token number">512</span><span class="token punctuation">,</span> nhead<span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">,</span> 
+        num_encoder_blocks<span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">,</span> num_decoder_blocks<span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">,</span> pad_idx<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span> 
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        
+        self<span class="token punctuation">.</span>d_model <span class="token operator">=</span> d_model
+        self<span class="token punctuation">.</span>pad_idx <span class="token operator">=</span> pad_idx
+        
+        <span class="token comment"># Embedding &amp; Positional Encoding</span>
+        self<span class="token punctuation">.</span>src_embedding <span class="token operator">=</span> nn<span class="token punctuation">.</span>Embedding<span class="token punctuation">(</span>src_vocab_size<span class="token punctuation">,</span> d_model<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>tgt_embedding <span class="token operator">=</span> nn<span class="token punctuation">.</span>Embedding<span class="token punctuation">(</span>tgt_vocab_size<span class="token punctuation">,</span> d_model<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>pos_encoder <span class="token operator">=</span> PositionalEncoding<span class="token punctuation">(</span>d_model<span class="token punctuation">)</span>
+        
+        <span class="token comment"># Transformer Block</span>
+        self<span class="token punctuation">.</span>transformer <span class="token operator">=</span> nn<span class="token punctuation">.</span>Transformer<span class="token punctuation">(</span>
+            d_model<span class="token operator">=</span>d_model<span class="token punctuation">,</span>
+            nhead<span class="token operator">=</span>nhead<span class="token punctuation">,</span>
+            num_encoder_layers<span class="token operator">=</span>num_encoder_blocks<span class="token punctuation">,</span>
+            num_decoder_layers<span class="token operator">=</span>num_decoder_blocks<span class="token punctuation">,</span>
+            batch_first<span class="token operator">=</span><span class="token boolean">True</span>
+        <span class="token punctuation">)</span>
+        
+        <span class="token comment"># Final Output Head</span>
+        self<span class="token punctuation">.</span>fc_out <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>d_model<span class="token punctuation">,</span> tgt_vocab_size<span class="token punctuation">)</span>
+
+    <span class="token keyword keyword-def">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> src<span class="token punctuation">,</span> tgt<span class="token punctuation">,</span> tgt_mask<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> src_padding_mask<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> tgt_padding_mask<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 1. 詞嵌入 + 縮放 (論文要求乘以 sqrt(d_model)) + 位置編碼</span>
+        src_emb <span class="token operator">=</span> self<span class="token punctuation">.</span>pos_encoder<span class="token punctuation">(</span>self<span class="token punctuation">.</span>src_embedding<span class="token punctuation">(</span>src<span class="token punctuation">)</span> <span class="token operator">*</span> math<span class="token punctuation">.</span>sqrt<span class="token punctuation">(</span>self<span class="token punctuation">.</span>d_model<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        tgt_emb <span class="token operator">=</span> self<span class="token punctuation">.</span>pos_encoder<span class="token punctuation">(</span>self<span class="token punctuation">.</span>tgt_embedding<span class="token punctuation">(</span>tgt<span class="token punctuation">)</span> <span class="token operator">*</span> math<span class="token punctuation">.</span>sqrt<span class="token punctuation">(</span>self<span class="token punctuation">.</span>d_model<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 2. 丟入 Transformer</span>
+        out <span class="token operator">=</span> self<span class="token punctuation">.</span>transformer<span class="token punctuation">(</span>
+            src<span class="token operator">=</span>src_emb<span class="token punctuation">,</span> 
+            tgt<span class="token operator">=</span>tgt_emb<span class="token punctuation">,</span> 
+            tgt_mask<span class="token operator">=</span>tgt_mask<span class="token punctuation">,</span>
+            src_key_padding_mask<span class="token operator">=</span>src_padding_mask<span class="token punctuation">,</span>
+            tgt_key_padding_mask<span class="token operator">=</span>tgt_padding_mask
+        <span class="token punctuation">)</span>
+        
+        <span class="token comment"># 3. 輸出映射</span>
+        logits <span class="token operator">=</span> self<span class="token punctuation">.</span>fc_out<span class="token punctuation">(</span>out<span class="token punctuation">)</span>
+        <span class="token keyword keyword-return">return</span> logits
+
+<span class="token comment"># --- 3. 測試執行範例 ---</span>
+pad_idx <span class="token operator">=</span> <span class="token number">0</span>
+model <span class="token operator">=</span> Seq2SeqTransformer<span class="token punctuation">(</span>src_vocab_size<span class="token operator">=</span><span class="token number">10000</span><span class="token punctuation">,</span> tgt_vocab_size<span class="token operator">=</span><span class="token number">10000</span><span class="token punctuation">,</span> pad_idx<span class="token operator">=</span>pad_idx<span class="token punctuation">)</span>
+
+src <span class="token operator">=</span> torch<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10000</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 假設 0 是 pad_idx</span>
+tgt <span class="token operator">=</span> torch<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10000</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 建立 Masks</span>
+tgt_mask <span class="token operator">=</span> nn<span class="token punctuation">.</span>Transformer<span class="token punctuation">.</span>generate_square_subsequent_mask<span class="token punctuation">(</span>tgt<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># Look-ahead mask</span>
+src_padding_mask <span class="token operator">=</span> <span class="token punctuation">(</span>src <span class="token operator">==</span> pad_idx<span class="token punctuation">)</span>                                     <span class="token comment"># Pad mask</span>
+tgt_padding_mask <span class="token operator">=</span> <span class="token punctuation">(</span>tgt <span class="token operator">==</span> pad_idx<span class="token punctuation">)</span>
+
+<span class="token comment"># 前向傳播</span>
+output <span class="token operator">=</span> model<span class="token punctuation">(</span>
+    src<span class="token punctuation">,</span> tgt<span class="token punctuation">,</span> 
+    tgt_mask<span class="token operator">=</span>tgt_mask<span class="token punctuation">,</span> 
+    src_padding_mask<span class="token operator">=</span>src_padding_mask<span class="token punctuation">,</span> 
+    tgt_padding_mask<span class="token operator">=</span>tgt_padding_mask
+<span class="token punctuation">)</span>
+
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">"Output Shape:"</span><span class="token punctuation">,</span> output<span class="token punctuation">.</span>shape<span class="token punctuation">)</span> 
+<span class="token comment"># -&gt; torch.Size([32, 12, 10000])</span>
+</code></pre><hr>
 <h1 id="generative-adversarial-networkgan">Generative Adversarial Network(GAN) </h1>
 <h2 id="generator">Generator </h2>
 <h2 id="discriminator">Discriminator </h2>

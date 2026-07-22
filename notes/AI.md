@@ -129,6 +129,55 @@ flowchart TD
 
 # Machine Learning $\approx$ looking for a function form data
 
+## Machine Learning flowchart
+
+```mermaid
+flowchart TD
+    subgraph PREP["Data Preparation"]
+        A[Data] --> B["Transforms / Augmentation"]
+        B --> C[Dataset]
+        C --> D[DataLoader]
+    end
+
+    subgraph SETUP["Model & Training Setup"]
+        E["Model (nn.Module)"]
+        F[Loss Function]
+        G[Optimizer]
+        H["Scheduler<br>學習率動態調整"]
+        G -.-> H
+    end
+
+    D --> E
+    E --> F --> G
+
+    subgraph LOOP["Training Loop"]
+        I[Forward + Backward + Optimizer.step]
+        I -.-> J["Logger / Visualization<br>TensorBoard / WandB"]
+        H -.-> I
+        I --> K[Validation]
+        K -.-> L["Early Stopping /<br>Checkpoint 判斷"]
+        L -->|"Patience not reached<br>Continue"| I
+    end
+
+    G --> I
+    L -->|"Patience reached<br>Stop"| M[Save Best Model]
+
+    subgraph DEPLOY["Inference / Deployment"]
+        N["Load Best Model<br>model.load_state_dict()"]
+        O["model.eval()<br>torch.no_grad()"]
+        P[Inference]
+        Q["Post-processing"]
+    end
+
+    M --> N --> O --> P --> Q
+
+    style A fill:#e1f5fe,stroke:#0288d1,stroke-width:2px
+    style E fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    style I fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
+    style M fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    style P fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+```
+
 | Stage | Learning Type | Purpose | Data Source & Scale | Limitations | Key References | Outcome |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | **Pre-training** | Self-Supervised Learning | 學習語言結構、世界知識、常識與基礎代碼邏輯（學會「文字接龍」）。 | 海量網頁、圖書、學術論文、代碼庫。<br>**(10T–100T+ Tokens)** | 偏見與幻覺根源於此階段的訓練數據；後續階段只能緩解，無法根除。 | GPT-3、LLaMA | **Base Model**<br>➔ 知識淵博但無法正常對話，只會盲目預測下一個字。 |
@@ -643,6 +692,30 @@ $$\text{FFN}(x) = \underbrace{(\overbrace{\max(0, \, xW_1 + b_1)}^{\text{Linear1
 
 <span style="font-size: 24px;">Nx</span> 就是有好幾個block
 
+### Encoder Architecture Applications
+
+1. Seq2Seq Generation
+   1. **串接模組** : `Encoder + Decoder`
+   2. **運作機制** : Encoder 提煉輸入序列的資訊，輸出 $K, V$ 向量供 Decoder 進行交叉注意力 (Cross-Attention) 計算。
+   3. **代表架構** : Original Transformer, T5, BART
+   4. **典型應用** : 
+      1. **Machine Translation** : 例如 英 $\rightarrow$ 中 翻譯
+      2. **Summarization** : 長文壓縮成短摘要
+2. Classification & Tagging
+   1. **串接模組** : `Encoder + Linear Head (Classifier)`
+   2. **運作機制** : 將 Encoder 產生的特徵向量傳入簡單的線性層 (nn.Linear)，進行機率映射與類別判斷。
+   3. **代表架構** : BERT, RoBERTa, ELECTRA
+   4. **典型應用** :
+      1. **Sentiment Analysis** : 判斷文本為正評或負評
+      2. **Text Classification** : 區分新聞主題（如:體育、政治、科技）
+      3. **Named Entity Recognition (NER)** : 標記 Token 層級的實體類別(如:人名、地名、組織、時間、貨幣及產品等)
+3. Semantic Search & Matching
+   1. **串接模組** : `Encoder Only` $\rightarrow$ 輸出向量並存入 Vector Database
+   2. **運作機制** : 直接提取句子的向量表示(Sentence Embedding)，透過餘弦相似度 (Cosine Similarity) 等幾何距離比對兩段文字的語意相關性。
+   3. **代表技術** : Sentence-BERT, Dense Passage Retrieval (DPR)
+   4. **典型應用** :
+      1. **檢索增強生成 (RAG)** : 比對 User Query 與知識庫文件的相關度
+      2. **語意搜尋 (Semantic Search)** : 突破傳統關鍵字匹配，實現「意思接近就能搜到」
 
 ## Transformer decoder - Autoregressive decoder(最常見)
 
@@ -703,6 +776,98 @@ $$\text{FFN}(x) = \underbrace{(\overbrace{\max(0, \, xW_1 + b_1)}^{\text{Linear1
 <img src="transformertraining-2.png" width="90%">
 
 訓練時會把正確答案當成decoder之輸入called **teacher forcing**
+
+### demo
+
+```python
+import torch
+import torch.nn as nn
+import math
+
+# --- 1. 原論文經典正弦位置編碼 (Positional Encoding) ---
+class PositionalEncoding(nn.Module):
+    def __init__(self, d_model, max_len=5000):
+        super().__init__()
+        pe = torch.zeros(max_len, d_model)
+        position = torch.arange(0, max_len, dtype=torch.float).unsqueeze(1)
+        div_term = torch.exp(torch.arange(0, d_model, 2).float() * (-math.log(10000.0) / d_model))
+        
+        pe[:, 0::2] = torch.sin(position * div_term)
+        pe[:, 1::2] = torch.cos(position * div_term)
+        
+        self.register_buffer('pe', pe.unsqueeze(0)) # Shape: [1, max_len, d_model]
+
+    def forward(self, x):
+        # x Shape: [batch_size, seq_len, d_model]
+        return x + self.pe[:, :x.size(1)]
+
+# --- 2. 完整 Seq2Seq Transformer ---
+class Seq2SeqTransformer(nn.Module):
+    def __init__(self, src_vocab_size, tgt_vocab_size, d_model=512, nhead=8, 
+        num_encoder_blocks=6, num_decoder_blocks=6, pad_idx=0): 
+        super().__init__()
+        
+        self.d_model = d_model
+        self.pad_idx = pad_idx
+        
+        # Embedding & Positional Encoding
+        self.src_embedding = nn.Embedding(src_vocab_size, d_model)
+        self.tgt_embedding = nn.Embedding(tgt_vocab_size, d_model)
+        self.pos_encoder = PositionalEncoding(d_model)
+        
+        # Transformer Block
+        self.transformer = nn.Transformer(
+            d_model=d_model,
+            nhead=nhead,
+            num_encoder_layers=num_encoder_blocks,
+            num_decoder_layers=num_decoder_blocks,
+            batch_first=True
+        )
+        
+        # Final Output Head
+        self.fc_out = nn.Linear(d_model, tgt_vocab_size)
+
+    def forward(self, src, tgt, tgt_mask=None, src_padding_mask=None, tgt_padding_mask=None):
+        # 1. 詞嵌入 + 縮放 (論文要求乘以 sqrt(d_model)) + 位置編碼
+        src_emb = self.pos_encoder(self.src_embedding(src) * math.sqrt(self.d_model))
+        tgt_emb = self.pos_encoder(self.tgt_embedding(tgt) * math.sqrt(self.d_model))
+        
+        # 2. 丟入 Transformer
+        out = self.transformer(
+            src=src_emb, 
+            tgt=tgt_emb, 
+            tgt_mask=tgt_mask,
+            src_key_padding_mask=src_padding_mask,
+            tgt_key_padding_mask=tgt_padding_mask
+        )
+        
+        # 3. 輸出映射
+        logits = self.fc_out(out)
+        return logits
+
+# --- 3. 測試執行範例 ---
+pad_idx = 0
+model = Seq2SeqTransformer(src_vocab_size=10000, tgt_vocab_size=10000, pad_idx=pad_idx)
+
+src = torch.randint(1, 10000, (32, 10)) # 假設 0 是 pad_idx
+tgt = torch.randint(1, 10000, (32, 12))
+
+# 建立 Masks
+tgt_mask = nn.Transformer.generate_square_subsequent_mask(tgt.size(1)) # Look-ahead mask
+src_padding_mask = (src == pad_idx)                                     # Pad mask
+tgt_padding_mask = (tgt == pad_idx)
+
+# 前向傳播
+output = model(
+    src, tgt, 
+    tgt_mask=tgt_mask, 
+    src_padding_mask=src_padding_mask, 
+    tgt_padding_mask=tgt_padding_mask
+)
+
+print("Output Shape:", output.shape) 
+# -> torch.Size([32, 12, 10000])
+```
 
 ---
 

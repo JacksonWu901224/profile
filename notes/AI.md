@@ -198,7 +198,7 @@ flowchart TD
   - Computer Vision
     - Backbone(特徵提取，給下游用)
       - [CNN](https://arxiv.org/pdf/1511.08458)：[ResNet](https://arxiv.org/pdf/1512.03385)(CNN+Residual) / VGG / EfficientNet / Inception / ConvNeXt
-      - Transformer：ViT(Vision Transformer) / Swin Transformer / DINOv2
+      - Transformer：[ViT(Vision Transformer)](https://arxiv.org/pdf/2010.11929) / Swin Transformer / DINOv2
     - Semantic Segmentation(語義分割)
       - CNN-based：[U-Net](https://arxiv.org/pdf/1505.04597) / ResU-Net / DeepLab / SegNet
       - Transformer-based：SegFormer / SETR / Swin-UNET
@@ -716,6 +716,13 @@ $$\text{FFN}(x) = \underbrace{(\overbrace{\max(0, \, xW_1 + b_1)}^{\text{Linear1
    4. **典型應用** :
       1. **檢索增強生成 (RAG)** : 比對 User Query 與知識庫文件的相關度
       2. **語意搜尋 (Semantic Search)** : 突破傳統關鍵字匹配，實現「意思接近就能搜到」
+4. **Computer Vision (CV) & Multimodal**
+   1. **串接模組** : `Patch Embedding + Encoder + MLP Head`
+   2. **運作機制** : 將圖片切割成固定大小的圖像塊 (Patches) 並壓平為 1D 序列，加上位置編碼 (Positional Encoding) 後送入 Encoder 提煉全域視覺特徵。
+   3. **代表架構** : Vision Transformer (ViT), Swin Transformer, CLIP (Vision Encoder)
+   4. **典型應用** :
+      1. **Image Classification** : 圖像類別識別與物件分類
+      2. **Cross-Modal Retrieval / Multimodal** : 將圖像與文字對齊至同一向量空間（如 CLIP），實現以圖搜圖或Text-Image Alignment
 
 ## Transformer decoder - Autoregressive decoder(最常見)
 

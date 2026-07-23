@@ -279,7 +279,7 @@
 <li>Backbone(特徵提取，給下游用)
 <ul>
 <li><a href="https://arxiv.org/pdf/1511.08458">CNN</a>：<a href="https://arxiv.org/pdf/1512.03385">ResNet</a>(CNN+Residual) / VGG / EfficientNet / Inception / ConvNeXt</li>
-<li>Transformer：ViT(Vision Transformer) / Swin Transformer / DINOv2</li>
+<li>Transformer：<a href="https://arxiv.org/pdf/2010.11929">ViT(Vision Transformer)</a> / Swin Transformer / DINOv2</li>
 </ul>
 </li>
 <li>Semantic Segmentation(語義分割)
@@ -905,6 +905,19 @@ c124.7 8 235 61.7 331 161 31.3 33.3 59.7 72.7 85 118l7 13v35z"></path></svg></sp
 <ol>
 <li><strong>檢索增強生成 (RAG)</strong> : 比對 User Query 與知識庫文件的相關度</li>
 <li><strong>語意搜尋 (Semantic Search)</strong> : 突破傳統關鍵字匹配，實現「意思接近就能搜到」</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><strong>Computer Vision (CV) &amp; Multimodal</strong>
+<ol>
+<li><strong>串接模組</strong> : <code>Patch Embedding + Encoder + MLP Head</code></li>
+<li><strong>運作機制</strong> : 將圖片切割成固定大小的圖像塊 (Patches) 並壓平為 1D 序列，加上位置編碼 (Positional Encoding) 後送入 Encoder 提煉全域視覺特徵。</li>
+<li><strong>代表架構</strong> : Vision Transformer (ViT), Swin Transformer, CLIP (Vision Encoder)</li>
+<li><strong>典型應用</strong> :
+<ol>
+<li><strong>Image Classification</strong> : 圖像類別識別與物件分類</li>
+<li><strong>Cross-Modal Retrieval / Multimodal</strong> : 將圖像與文字對齊至同一向量空間（如 CLIP），實現以圖搜圖或Text-Image Alignment</li>
 </ol>
 </li>
 </ol>

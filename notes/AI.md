@@ -770,6 +770,10 @@ $$\text{FFN}(x) = \underbrace{(\overbrace{\max(0, \, xW_1 + b_1)}^{\text{Linear1
 
 <!-- 橘色方塊 --><span style="background-color: #F4A27E; color: #000000; padding: 4px 8px; font-weight: bold;">q</span>, <!-- 土黃色方塊 --><span style="background-color: #FAD06C; color: #000000; padding: 4px 8px; font-weight: bold;">kⁱ</span>, <!-- 藍色方塊 --><span style="background-color: #85B7E2; color: #000000; padding: 4px 8px; font-weight: bold;">vⁱ</span>, 是被<span style="background-color: #85B7E2; color: #000000; padding: 4px 8px; font-weight: bold; #000000; display: inline-block;">W<sup>q</sup></span> <span style="background-color: #85B7E2; color: #000000; padding: 4px 8px; font-weight: bold; #000000; display: inline-block;">W<sup>k</sup></span> <span style="background-color: #85B7E2; color: #000000; padding: 4px 8px; font-weight: bold; #000000; display: inline-block;">W<sup>v</sup></span>乘出來的
 
+### <span style="background-color: #E2E2F6; color: #000000; padding: 4px 12px; border-radius: 6px; font-weight: bold; border: 2px solid #000000;">Linear</span> to <span style="background-color: #E2F0D9; color: #000000; padding: 4px 12px; border-radius: 6px; font-weight: bold; border: 2px solid #000000;">Softmax</span> :
+
+$$\text{Output}(x) = \underbrace{\text{Softmax}(\overbrace{xW + b}^{\text{\color{#6B62B2}Linear (Logits)}})}_{\text{\color{#3E7A44}Softmax (Probabilities)}}$$
+
 ## Train
 
 <img src="transformertraining-1.png" width="90%">
@@ -844,6 +848,9 @@ class Seq2SeqTransformer(nn.Module):
         # 3. 輸出映射
         logits = self.fc_out(out)
         return logits
+
+        # 不需要過nn.Softmax(), softmax在nn.CrossEntropyLoss()裡面了
+        # CrossEntropyLoss = LogSoftmax + NLLLoss (Negative Log Likelihood)
 
 # --- 3. 測試執行範例 ---
 pad_idx = 0

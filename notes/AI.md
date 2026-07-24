@@ -680,7 +680,29 @@ flowchart LR
 
 這是一個block的輸出
 
-<span style="background-color: #FCD7D7; color: #000000; padding: 4px 12px; border-radius: 6px; font-weight: bold; border: 2px solid #000000;">Input Embedding</span> 就是 Embedding Look-up
+<span style="background-color: #FCD7D7; color: #000000; padding: 4px 12px; border-radius: 6px; font-weight: bold; border: 2px solid #000000;">Input Embedding</span> Embedding Look-up (learned)
+
+```mermaid
+flowchart LR
+    A[input] -->|tokenize BPE| B[token ID]
+    B -->|"lookup W[id]"| C["embedding vector e<br/>dim: d_model"]
+    C -->|"× √(d_model)"| D[scaled embedding]
+```
+
+- Tokenize(byte-pair encoding)先切詞 → 查表轉成 embedding vector e
+- Encoder/decoder 兩個 embedding layers 與 pre-softmax linear transformation **共享同一組 weight matrix** $W \in \mathbb{R}^{V \times d_{model}}$
+- 輸出乘上 $\sqrt{d_{model}}$, $Scaled Embedding(x) = Embedding(x)\times\sqrt{d_{model}}$(推論: ​與 positional encoding 尺度對齊(其數值範圍固定在 [−1,1]),避免 positional encoding 的訊號被稀釋或蓋過)
+
+<span style="background-color: #FFFFFF; color: #000000; padding: 4px 12px; border-radius: 6px; font-weight: bold; border: 2px solid #000000;">Positional Encoding</span> 用 sin/cos 固定公式產生，逐元素加到 Embedding 上
+
+$$PE_{(pos,\,2i)} = \sin\!\left(\frac{pos}{10000^{2i/d_{model}}}\right)$$
+
+$$PE_{(pos,\,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d_{model}}}\right)$$
+
+- $pos$ : the position of the token in the sequence (0, 1, 2, ...)
+- $i$ : the dimension index, $i \in [0, d_{model}/2)$
+- $d_{model}$ : the dimension of the token embedding vectors
+- Even dimensions use $\sin$, odd dimensions use $\cos$, paired two by two
 
 <span style="background-color: #FADBB3; color: #000000; padding: 4px 12px; border-radius: 6px; font-weight: bold; border: 2px solid #000000;">Multi-Head Attention</span> 就是 Multi-Head self-attention
 

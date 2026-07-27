@@ -309,6 +309,80 @@ code{
 .bright-green{ color:#00ac2b; font-weight:700; }
 .red{ color:#ff3b30; }
 
+/* ==========================================
+   Kurt Gödel Theorems Card Styles
+   ========================================== */
+.theorem-card { 
+    margin-bottom: 22px; 
+    padding: 32px; 
+} 
+
+.theorem-header { 
+    margin-bottom: 24px; 
+    border-bottom: 1px solid var(--line); 
+    padding-bottom: 12px; 
+} 
+
+.theorem-header h2 { 
+    margin: 8px 0 0; 
+    font-size: 2rem; 
+    letter-spacing: -0.03em; 
+    color: var(--text); 
+} 
+
+.theorem-body { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 20px; 
+} 
+
+.theorem-item { 
+    /* 縮減上下內襯墊，改為 flex 排版以便緊湊控制 */
+    padding: 5px 20px 14px; 
+    border-radius: 18px; 
+    background: rgba(255, 255, 255, 0.34); 
+    border: 1px solid rgba(255, 255, 255, 0.42); 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* 讓 badge 不會被撐滿 */
+} 
+
+.theorem-badge { 
+    display: inline-block; 
+    padding: 4px 10px; 
+    background: rgba(0, 113, 227, 0.08); 
+    color: var(--accent); 
+    border-radius: 8px; 
+    font-size: 0.8rem; 
+    font-weight: 700; 
+    letter-spacing: 0.03em; 
+    margin-top: 1px;     /* 控制 badge 距離卡片最上緣的微小間距 */
+    margin-bottom: 6px;  /* 控制 badge 與下方文字的距離 */
+    border: 1px solid rgba(0, 113, 227, 0.12); 
+} 
+
+.theorem-item blockquote { 
+    font-style: italic; 
+    color: var(--muted); 
+    font-size: 1.3rem; 
+    line-height: 1.4; 
+    padding-left: 0; 
+    margin: 0; 
+}
+
+/* 響應式手機板調整 */
+@media (max-width: 480px) {
+    .theorem-card {
+        padding: 18px;
+    }
+    .theorem-header h2 {
+        font-size: 1.5rem;
+    }
+    .theorem-item blockquote {
+        font-size: 0.95rem;
+    }
+}
+
 /* footer */
 footer{
     margin-top: 24px;

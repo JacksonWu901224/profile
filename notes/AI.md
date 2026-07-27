@@ -361,6 +361,24 @@ flowchart TD
   2. <font color="green">Kaiming Initialization</font>
 - **<font color="blue">Use gradient descent to train the model, accelerating convergence to the minimum loss and yielding the optimal model(Find the best $\beta_0, \beta_1, \beta_2, \beta_3,...., \epsilon$).</font>** (Basically, we're now [<ins>***tuning hyperparameters***</ins>](common_hyperparameters.html))
 
+- Sample Code
+  ```python
+  # Iterating over the dataset per batch
+  for inputs, targets in dataloader:
+      # 0. Move data to GPU/CPU per batch
+      inputs, targets = inputs.to(device), targets.to(device)
+      # 1. Clear gradients per batch
+      optimizer.zero_grad()
+      # 2. Forward pass
+      outputs = model(inputs)
+      # 3. Compute loss
+      loss = criterion(outputs, targets)
+      # 4. Backward pass (Backpropagation)
+      loss.backward()
+      # 5. Update model parameters per batch
+      optimizer.step()
+  ```
+
 - tips when training
   - dropout(training 時把一些neuron or input丟掉, 當然, 相對應的weight也會丟掉)
 <img src="dropout.png" width="50%">

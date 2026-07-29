@@ -3,6 +3,14 @@
 想了解「自監督學習/純特徵提取」 → 先讀 DAX
 ----------------------------------------------------------------------------------------------------------------------------------------------
 常用
+# 創建完repository後, 如何把project initialize to github
+git init                                                  1. 將目前的資料夾初始化為 Git 倉庫（會在背景建立隱藏的 .git 資料夾）
+git add .                                                 2. 將目錄下的所有檔案（ excluding .gitignore 排除的項目）加入「暫存區」(Staging Area)
+git commit -m "Initial commit"                            3. 將暫存區裡的所有變更打包，建立第一個正式的版本紀錄（Commit），並附上說明訊息
+git branch -M main                                        4. 將當前的分支強制改名為 "main"（確保與 GitHub 現代預設的主分支名稱一致）
+git remote add origin https://github.com/帳號/專案名稱.git 5. 新增一個名為 "origin" 的遠端倉庫位址（讓本地 Git 知道要把程式碼送到哪個 GitHub 網址）
+git push -u origin main                                   6. 將本地 main 分支的內容推送到遠端 origin 的 main 分支，並加上 -u (綁定上游)，讓未來可以直接使用簡短的 `git push` 或 `git pull`
+
 #查看 Git 命令的說明文件
 git help
 

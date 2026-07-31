@@ -1,8 +1,13 @@
 <!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD041 -->
+<!-- markdownlint-disable MD007 -->
+<!-- markdownlint-disable MD005 -->
+<!-- markdownlint-disable MD045 -->
+<!-- markdownlint-disable MD032 -->
 <style>
   /* 強制網頁上所有元素（包括文字、段落、標題）都維持預設箭頭，不變一束 */
   body, body * {
-    cursor: default; 
+    cursor: default;
   }
 </style>
 
@@ -81,7 +86,7 @@ flowchart TD
 
 - 複雜 : 無限可能
 - 有結構 : 由有限的<u>基本單位</u>(toekn)所構成
-- 基本單位(token) : 
+- 基本單位(token) :
   - 影像 : 是由<font color="blue">像素</font>構成的. 每個像素又由RGB三個子像素組成,而每個子像素的可能值範圍為0-255. 影像只考慮兩個維度: width, height
   - 聲音訊號 : 是由<font color="blue">取樣點</font>構成的. 遠看是聲音訊號,拉進後則可以看到一個一個的取樣點.一秒鐘有多少取樣點,取決於取樣率(sampling rate);比如, 16kHz的取樣率意味著一秒鐘有16000個取樣點. 而每個取樣點有多少種可能的數值,則取決於取樣解析度(bit resolution);常見的16-bit解析度有65,536種可能的數值
   - 影片 : 就是<font color="blue">一連串的圖片</font>, 每一張圖片又叫<font color="blue">Frame</font>. 需考慮三個維度: width, height, time
@@ -205,12 +210,14 @@ flowchart TD
     - Object Detection(框出物件)
       - One-stage（快）：[YOLO](https://arxiv.org/pdf/1506.02640)(pure CNN)
       - Two-stage（準）：Faster R-CNN(CNN backbone + RPN)
-      - Transformer：DETR / RT-DETR 
+      - Transformer：DETR / RT-DETR
     - Instance Segmentation(精確輪廓)
       - Mask R-CNN/ YOLO-Seg / SAM
 
 ## 0. ML三步驟
+
 ![mlthreesteps](mlthreesteps.png)
+
 ## 1. prepare data
 
 - split data into  
@@ -256,19 +263,42 @@ flowchart TD
       - **$\text{Parameters} = \text{Weights} + \text{Biases}$**
   - <font color="green">Multiple Linear Regression</font>
     - $y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \dots + \beta_nx_n + \epsilon$
-  -  <font color="green">Piecewise Linear Curves</font>
-     -  RELU(Rectified Linear Unit)
+  - <font color="green">Piecewise Linear Curves</font>
+     - RELU(Rectified Linear Unit)
 ![piecewise linear curves](piecewiselinearcurves.png)
-     -  GELU(Gaussian Error Linear Unit)
+     - GELU(Gaussian Error Linear Unit)
      - Swish
-     - SiLU(Sigmoid Linear Unit) 
+     - SiLU(Sigmoid Linear Unit)
   - <font color="green">Classification</font>
-    - <font color="green">Binary Classification</font>(Sigmoid=Logistic Function)
-      - $P(y=1|x) = \frac{1}{1 + e^{-(\beta_0 + \beta_1x_1 + \dots + \beta_nx_n)}}$
-  <br>
-  ![sigmoid function](Sigmoid-Activation-Function.png)
-    - <font color="green">Multi-class Classification</font>(Softmax)
-  ![softmax](softmax.png)
+    - <font color="green">Binary Classification</font>
+      - Logistic Regression (Sigmoid Function)
+        - Goal: predict probability of class 1
+        - Formula:
+          $$P(y=1|x)=\frac{1}{1+e^{-(\beta_0+\beta_1x_1+\dots+\beta_nx_n)}}$$
+
+        - Sigmoid Function:
+
+          ![Sigmoid Function](Sigmoid-Activation-Function.png)
+
+        - Output:
+          - $0 \leq P(y=1|x) \leq 1$
+          - Usually threshold = 0.5
+            - $P(y=1|x)\geq0.5 \rightarrow y=1$
+            - $P(y=1|x)<0.5 \rightarrow y=0$
+
+        - Evaluation:
+          - [confusion matrix](confusion_matrix.pdf)
+    - <font color="green">Multi-class Classification</font>
+      - Softmax Function
+
+        - Goal: predict probability of each class
+
+        - Formula:
+          $$P(y=k|x)=\frac{e^{z_k}}{\sum_{j=1}^{K}e^{z_j}}$$
+
+        - Softmax Function:
+
+          ![Softmax](softmax.png)
   - <font color="green">Structured Learning</font>
     - **create** something with structure(e.g. image, document)
 
@@ -326,7 +356,7 @@ flowchart TD
       - 根據$g^0,g^1,g^2,...,g^t$一起來決定方向(調整learning rate)
         - <font color="green">Adagrad</font>
           - for each dimension i : $\eta=\frac{\eta}{\sigma_i^t}$, $\sigma_i^t=\sqrt{\sum_{i=0}^{t} (g_i^t)^2}$
-          - 問題 : 每一個維度權重相同 
+          - 問題 : 每一個維度權重相同
         - <font color="green">RMSProp</font>
           - 解決Adagrad : 最近算出來的gradient給比較大的影響
           - use $\alpha$
@@ -362,6 +392,7 @@ flowchart TD
 - **<font color="blue">Use gradient descent to train the model, accelerating convergence to the minimum loss and yielding the optimal model(Find the best $\beta_0, \beta_1, \beta_2, \beta_3,...., \epsilon$).</font>** (Basically, we're now [<ins>***tuning hyperparameters***</ins>](common_hyperparameters.html))
 
 - Sample Code
+
   ```python
   # Iterating over the dataset per batch
   for inputs, targets in dataloader:
@@ -444,7 +475,6 @@ $\sigma(\mathbf{b} + \mathbf{W}\mathbf{x})$ is a **<font color="blue">neuron</fo
 <img src="cnndemo-2.png" width="80%">
 <img src="cnndemo-3.png" width="80%">
 
-
 ## CNN output size
 
 ### strided convolution=subsampling=downsampling
@@ -498,11 +528,12 @@ e.g. 文字處理, 聲音訊號(取一個範圍called window(通常為25ms), 描
 
 ![tokenize](tokenize.png)
 如何把一個詞彙表示成一個向量?
+
   1. **one-hot encoding**(向量長度跟世界上存在的詞彙數目一樣多), 但無法看出各個詞彙的相關程度
   2. **word embedding**(向量是有語意的資訊)(Unsupervised Learning(Self-Supervised Learning))
      1. Static Word Embedding
         1. 一個詞永遠對應一個固定向量，無法解決「一詞多義」問題
-        2. Word2Vec, GloVe, FastText 
+        2. Word2Vec, GloVe, FastText
      2. Contextualized Word Embedding
         1. 向量會根據「當前句子的上下文」動態改變，可精準處理一詞多義
         2. <font color="red">E</font>mbeddings from <font color="red">L</font>anguage <font color="red">Mo</font>dels (ELMO), <font color="red">B</font>idirectional <font color="red">E</font>ncoder <font color="red">R</font>epresentations from <font color="red">T</font>ransformers(BERT)
@@ -561,6 +592,7 @@ $b^1, b^2, b^3, b^4$是一次同時被計算出來的
 用矩陣乘法來看weighted sum
 
 ## Fianl Self-Attention
+
 <img src="selfattention-10.png" width="85%">
 
 ## 進階版 Self-Attention: Multi-head Self-Attention
@@ -627,6 +659,7 @@ self-attention可看作是複雜版CNN
    - Transformer 訓練速度遠快於 RNN，這也是 Transformer 能取代 RNN 的最重要原因之一。
 
 ### <a href="https://colab.research.google.com/drive/1Xhg8lQ1miCrZh2bwZv1LgCbS4XHpH19b?usp=drive_link" title="HW4 Self-Attention Colab ">HW4	Self-Attention</a>
+
 <font color="blue">Conformer</font> 就是 Transformer + CNN 的結合，專門為語音設計的，是目前語音辨識的主流架構。
 
 Conformer = **Transformer + CNN** 的混合架構，2020年 Google 提出，專門為語音設計。
@@ -687,12 +720,14 @@ flowchart LR
 ```
 
 ## seq2seq encoder
+
 <img src="seq2seqencoder-1.png" width="75%">
 <img src="seq2seqencoder-2.png" width="75%">
 
 一個Block在做的事情是好幾個layer在做的事情
 
 ## 原始Transformer encoder(BERT)
+
 <img src="transformerencoder.png" width="70%">
 <img src="realtransformerencoder.png" width="25%">
 
@@ -738,7 +773,7 @@ $$\text{FFN}(x) = \underbrace{(\overbrace{\max(0, \, xW_1 + b_1)}^{\text{Linear1
    1. **串接模組** : `Encoder + Decoder`
    2. **運作機制** : Encoder 提煉輸入序列的資訊，輸出 $K, V$ 向量供 Decoder 進行交叉注意力 (Cross-Attention) 計算。
    3. **代表架構** : Original Transformer, T5, BART
-   4. **典型應用** : 
+   4. **典型應用** :
       1. **Machine Translation** : 例如 英 $\rightarrow$ 中 翻譯
       2. **Summarization** : 長文壓縮成短摘要
 2. Classification & Tagging
@@ -976,7 +1011,7 @@ why saliency map? ans:make people comfortable
 
 # Reinforcement Learning
 
-what is Reinforcement Learning? 
+what is Reinforcement Learning?
 ans:<font color="green">It is still a machine learning method used when labeled data is unavailable; the model learns through rewards and penalties from its actions.</font>
 ![reinforcement learning](reinforcementlearning.png)
 e.g.Space invader, Alpha go
@@ -998,7 +1033,7 @@ train on reinforcement learning 很卡的一個地方是:每次更新一次參�
 
 <img src="catastrophicforget.png" width="60%">
 
-跟Transfer Learning不一樣, 
+跟Transfer Learning不一樣,
 **Transfer Learning** is<font color="blue"> <ins>I can do task2 because I have learned task1.</ins></font>
 **Life Long Learning** is <font color="blue"><ins>even though i have learned task2, I do not forget task1.</ins></font>
 
@@ -1046,7 +1081,6 @@ why Network Compression?
 ---
 
 # Meta Learning
-
 
 what does "Meta" mean?
 <font color="green">meta-X is <ins>X about X</ins></font>, so Meta Learning is <font color="blue"><ins>Learning about Learning</ins></font>.

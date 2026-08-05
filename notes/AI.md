@@ -520,6 +520,22 @@ $$\text{output Channel}=\text{Number of Filter}$$
 
 ---
 
+# Graph Neural Networks, GNN
+
+## pipeline:
+
+<img src="gnn_pipeline.svg" width="90%">
+
+## GNN Roadmap:
+
+<img src="gnnroadmap.png" width="90%">
+
+## Spatial-based convolution's Terminology:
+
+<img src="spatial-basedterminology.png" width="90%">
+
+---
+
 # Self-Attention(取代RNN)
 
 ![input is a set of vectors](selfattention-1.png)

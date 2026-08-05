@@ -452,7 +452,7 @@ parameter sharing in details: 所以convolution不需要fully connected
 
 <img src="cnn_filter_animation_downsampling.gif">
 
-## The Whole CNN
+## CNN Pipeline:
 
 ![cnn whole picture](cnn-3.png)
 
@@ -522,7 +522,7 @@ $$\text{output Channel}=\text{Number of Filter}$$
 
 # Graph Neural Networks, GNN
 
-## pipeline:
+## GNN pipeline:
 
 <img src="gnn_pipeline.svg" width="90%">
 
